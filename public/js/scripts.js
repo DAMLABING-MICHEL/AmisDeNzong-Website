@@ -17,6 +17,27 @@ $(document).ready(function () {
         }
     });
     $('#exampleModalLong').modal('toggle')
+    var name = document.getElementById('username');
+    name.addEventListener("keyup", function (event) {
+                var errorname = document.getElementById('errorname');
+                var regname = /^[a-zA-Z]{2,10}$/;
+                var validName = regname.test(name.value);
+                if (name.value.length == 0) {
+                    errorname.innerHTML = "vous devez renseigner votre nom";
+                    errorname.style.color = "red";
+                } else if (validName == false && name.value.length < 2) {
+                    errorname.innerHTML = "veuillez renseigner un nom valide! minimum 2 caractères.";
+                    errorname.style.color = "orange";
+                }
+                else if (validName == false && name.value.length >= 10) {
+                    errorname.innerHTML = "veuillez renseigner un nom valide! maximum 10 caractères.";
+                    errorname.style.color = "orange";
+                }
+                else {
+                    errorname.innerHTML = "valid";
+                    errorname.style.color = "limegreen";
+                }
+            });
 });
 // $(document).ready(function () {
 //     // verified form
