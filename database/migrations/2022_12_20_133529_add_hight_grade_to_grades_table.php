@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('newsletters', function (Blueprint $table) {
-            $table->id();
-            $table->string('email')->unique();
-            $table->timestamps();
+        Schema::table('grades', function (Blueprint $table) {
+            $table->boolean('hight_grade')->default(false);
         });
     }
 
@@ -27,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('newsletters');
+        Schema::table('grades', function (Blueprint $table) {
+            //
+        });
     }
 };

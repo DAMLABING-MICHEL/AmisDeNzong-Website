@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NewsEventsController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
@@ -68,6 +69,14 @@ Route::name('page')->get('page/{page:slug}', PageController::class);
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->middleware(['auth', 'is_verify_email']); 
 Route::get('account/verify/{token}', [AuthController::class, 'verifyAccount'])->name('user.verify'); 
 Route::get('event-single/{id}', [NewsEventsController::class, 'event'])->name('event'); 
+
+
+// Route qui permet de connaître la langue active
+Route::get('locale', [LocalizationController::class,'getLang'])->name('getlang');
+
+// Route qui permet de modifier la langue
+Route::get('locale/{lang}', [LocalizationController::class,'setLang'])->name('setlang');
+
     
 // Profile
 Route::middleware(['auth', 'password.confirm'])->group(function () {

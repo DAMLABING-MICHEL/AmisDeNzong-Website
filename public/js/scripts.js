@@ -16,6 +16,9 @@ $(document).ready(function () {
             enabled: true
         }
     });
+    $(function(){
+        $('.selectpicker').selectpicker();
+    });
     $('#exampleModalLong').modal('toggle')
     var name = document.forms["register-form"]["name"];
     var email = document.forms["register-form"]["email"];

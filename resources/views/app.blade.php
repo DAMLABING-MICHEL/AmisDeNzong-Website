@@ -6,8 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="csrf-token" content="{{ csrf_token() }}">
-  <x-meta title="Groue Scolaire Bilingue Privé Laic Les Amis De Nzong & Fondation Candia"
-  image="{{ asset('images/logo.jpg') }}"/>
+  <x-meta title="Groue Scolaire Bilingue Privé Laic Les Amis De Nzong & Fondation Candia" image="{{ asset('images/logo.jpg') }}" />
   <!-- 
   <link href="{{url('https://fonts.googleapis.com/css?family=Work+Sans:100,200,300,400,500,600,700,800,900') }}" rel="stylesheet">
   <link href="{{ url('https://fonts.googleapis.com/css?family=Fredericka+the+Great') }}" rel="stylesheet"> -->
@@ -60,46 +59,61 @@
       </button>
       <div class="collapse navbar-collapse" id="ftco-nav">
         <ul class="navbar-nav ml-auto">
-          <li class="nav-item"><a href="{{ url('/')}}" class="nav-link pl-0" id="{{ (request()->is('/')) ? 'active-link' : '' }}">Home</a></li>
-          <li class="nav-item"><a href="{{ url('about')}}" class="nav-link" id="{{ (request()->is('about*')) ? 'active-link' : '' }}">About</a></li>
-          <li class="nav-item"><a href="{{ url('staff')}}" class="nav-link" id="{{ (request()->is('staff*')) ? 'active-link' : '' }}">Staff</a></li>
-          <li class="nav-item"><a href="{{ url('gallery')}}" class="nav-link" id="{{ (request()->is('gallery*')) ? 'active-link' : '' }}">Gallery</a></li>
-          <li class="nav-item"><a href="{{ url('news-events')}}" class="nav-link" id="{{ (request()->is('news-events*')) ? 'active-link' : '' }}">News & Events</a></li>
-          <li class="nav-item"><a href="{{ url('blog')}}" class="nav-link" id="{{ (request()->is('blog*')) ? 'active-link' : '' }}">Blog</a></li>
-          <li class="nav-item"><a href="{{ url('contact')}}" class="nav-link" id="{{ (request()->is('contact*')) ? 'active-link' : '' }}">Contact</a></li>
-          @guest
-          <li class="nav-item"><a href="{{ route('login') }}" class="nav-link ml-5"><span class="log-link">Login</span></a></li>
-          @request ('register')
-          <li class="nav-item"><a href="{{ request()->url() }}" class="nav-link ml-5"><span class="log-link">Register</span></a></li>
-          @endrequest
-          @request('forgot-password')
-          <li class="current nav-item">
-            <a href="{{ request()->url() }}" class="nav-link" id="{{ (request()->is('forgot-password*')) ? 'active-link' : '' }}">@lang('Password')</a>
-          </li>
-          @endrequest
-          @request('reset-password/*')
-          <li class="current">
-            <a href="{{ request()->url() }}" class="nav-link " id="{{ (request()->is('reset-password*')) ? 'active-link' : '' }}">@lang('Password')</a>
-          </li>
-          @endrequest
+          <li class="nav-item"><a href="{{ url('/')}}" class="nav-link pl-0" id="{{ (request()->is('/')) ? 'active-link' : '' }}">@lang("Home")</a></li>
+          <li class="nav-item"><a href="{{ url('about')}}" class="nav-link" id="{{ (request()->is('about*')) ? 'active-link' : '' }}">@lang("About")</a></li>
+          <li class="nav-item"><a href="{{ url('staff')}}" class="nav-link" id="{{ (request()->is('staff*')) ? 'active-link' : '' }}">@lang("Staff")</a></li>
+          <li class="nav-item"><a href="{{ url('gallery')}}" class="nav-link" id="{{ (request()->is('gallery*')) ? 'active-link' : '' }}">@lang("Gallery")</a></li>
+          <li class="nav-item"><a href="{{ url('news-events')}}" class="nav-link" id="{{ (request()->is('news-events*')) ? 'active-link' : '' }}">@lang("News & Events")</a></li>
+          <li class="nav-item"><a href="{{ url('blog')}}" class="nav-link" id="{{ (request()->is('blog*')) ? 'active-link' : '' }}">@lang("Blog")</a></li>
+          <li class="nav-item"><a href="{{ url('contact')}}" class="nav-link" id="{{ (request()->is('contact*')) ? 'active-link' : '' }}">@lang("Contact")</a></li>
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdownFlag" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <img width="32" height="32" alt="{{ session('locale') }}" src="{!! asset('images/flags/' . session('lang') . '-flag.png') !!}" />
+              </a>
+              <div id="flags" class="dropdown-menu" aria-labelledby="navbarDropdownFlag">
+                @foreach(config('app.locales') as $locale)
+                @if($locale != session('lang'))
+                <a class="dropdown-item" href="{{ url('locale/'.$locale) }}">
+                  <img width="32" height="32" alt="{{ session('lang') }}" src="{!! asset('images/flags/' . $locale . '-flag.png') !!}" />
+                </a>
+                @endif
+                @endforeach
+              </div>
+            </li>
+            @guest
+            <li class="nav-item"><a href="{{ route('login') }}" class="nav-link ml-5"><span class="log-link">Login</span></a></li>
+            @request ('register')
+            <li class="nav-item"><a href="{{ request()->url() }}" class="nav-link ml-5"><span class="log-link">Register</span></a></li>
+            @endrequest
+            @request('forgot-password')
+            <li class="current nav-item">
+              <a href="{{ request()->url() }}" class="nav-link" id="{{ (request()->is('forgot-password*')) ? 'active-link' : '' }}">@lang('Password')</a>
+            </li>
+            @endrequest
+            @request('reset-password/*')
+            <li class="current">
+              <a href="{{ request()->url() }}" class="nav-link " id="{{ (request()->is('reset-password*')) ? 'active-link' : '' }}">@lang('Password')</a>
+            </li>
+            @endrequest
 
-          @else
-          <div class="dropdown ml-4">
-            <button class="btn dropdown-toggle" type="button" id="btn-user-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {{ auth()->user()->name }}
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-              <a class="dropdown-item" href="{{ url('profile') }}">profile</a>
-              <li class="nav-item">
-                <form action="{{ route('logout') }}" method="POST" hidden>
-                  @csrf
-                </form>
-                <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.previousElementSibling.submit();"><span>Logout</span></a>
-              </li>
+            @else
+            <div class="dropdown ml-4">
+              <button class="btn dropdown-toggle" type="button" id="btn-user-name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ auth()->user()->name }}
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="{{ url('profile') }}">profile</a>
+                <li class="nav-item">
+                  <form action="{{ route('logout') }}" method="POST" hidden>
+                    @csrf
+                  </form>
+                  <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault(); this.previousElementSibling.submit();"><span>Logout</span></a>
+                </li>
+              </div>
             </div>
-          </div>
-          @endguest
-        </ul>
+            @endguest
+          </ul>
       </div>
       <!-- <div class="sign-up-btn ml-5">
         <a href="#" class="text-center p-4 rounded text-white">Singn Up</a>
@@ -126,9 +140,9 @@
         </div>
         <div class="col-md-6 col-lg-3">
           <div class="ftco-footer-widget mb-5">
-           @if(@isset($latestPosts))
-           <h2 class="ftco-heading-2">Recent Blog</h2>
-           @foreach($latestPosts as $index=>$post)
+            @if(@isset($latestPosts))
+            <h2 class="ftco-heading-2">Recent Blog</h2>
+            @foreach($latestPosts as $index=>$post)
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(/images/{{$post->image->url}});"></a>
               <div class="text">
@@ -136,7 +150,8 @@
                 <div class="meta">
                   <!-- <div><a href="#"><span class="icon-calendar"></span> {{ $post->created_at->format('d-m-y') }}</a></div> -->
                   <div><a href="#"><span class="icon-calendar"></span> {{ strftime('%m %B %Y', strtotime($post->created_at)) }}</a></div>
-                  <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</</a></div>
+                  <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</< /a>
+                  </div>
                   @if($post->valid_comments_count)
                   <div><a href="#"><span class="icon-chat"></span> {{$post->valid_comments_count}}</a></div>
                   @endif
@@ -144,7 +159,7 @@
               </div>
             </div>
             @endforeach
-           @endif
+            @endif
           </div>
         </div>
         <div class="col-md-6 col-lg-3">
