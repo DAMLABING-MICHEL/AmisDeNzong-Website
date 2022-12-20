@@ -211,3 +211,7 @@
 .input-register{
     width: 25rem;
 }
+#btn-submit:disabled{
+    background-color: rgb(137, 147, 155);
+    cursor: not-allowed;
+}

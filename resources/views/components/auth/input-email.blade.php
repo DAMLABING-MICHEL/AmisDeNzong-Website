@@ -12,4 +12,5 @@
   placeholder="Your email" 
   aria-describedby="emailHelp" 
   placeholder="Enter email">
+  <div id="errorEmail"></div>
 </div>

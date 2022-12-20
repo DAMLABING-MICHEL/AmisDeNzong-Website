@@ -17,53 +17,91 @@ $(document).ready(function () {
         }
     });
     $('#exampleModalLong').modal('toggle')
-    var name = document.getElementById('username');
+    var name = document.forms["register-form"]["name"];
+    var email = document.forms["register-form"]["email"];
+    var password = document.forms["register-form"]["password"];
+    var passwordConfirm = document.forms["register-form"]["password_confirmation"];
+    var submit = document.querySelector('#btn-submit');
+    var errorname = document.getElementById('errorname');
+    var validFields = 0
+    submit.disabled = true
     name.addEventListener("keyup", function (event) {
-                var errorname = document.getElementById('errorname');
-                var regname = /^[a-zA-Z]{2,10}$/;
-                var validName = regname.test(name.value);
-                if (name.value.length == 0) {
-                    errorname.innerHTML = "vous devez renseigner votre nom";
-                    errorname.style.color = "red";
-                } else if (validName == false && name.value.length < 2) {
-                    errorname.innerHTML = "veuillez renseigner un nom valide! minimum 2 caractères.";
-                    errorname.style.color = "orange";
-                }
-                else if (validName == false && name.value.length >= 10) {
-                    errorname.innerHTML = "veuillez renseigner un nom valide! maximum 10 caractères.";
-                    errorname.style.color = "orange";
-                }
-                else {
-                    errorname.innerHTML = "valid";
-                    errorname.style.color = "limegreen";
-                }
-            });
+        // var errorname = document.getElementById('errorname');
+        var regname = /^[a-zA-Z]{2,10}$/;
+        var validName = regname.test(name.value);
+        if (name.value == "") {
+            errorname.innerHTML = "you must fill in your name";
+            errorname.style.color = "red";
+            // submit.disabled = true
+        } else if (validName == false && name.value.length < 2) {
+            errorname.innerHTML = "please enter a valid name! minimum 2 characters.";
+            errorname.style.color = "orange";
+            // submit.disabled = false
+        } else if (validName == false && name.value.length >= 10) {
+            errorname.innerHTML = "please enter a valid name! maximum 10 characters.";
+            errorname.style.color = "orange";
+        } else {
+            errorname.innerHTML = "";
+            errorname.style.color = "limegreen";
+            validFields += 1
+        }
+        buttunStatus()
+    });
+    email.addEventListener('keyup' , function () {
+        var regmail = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+        if (email.value.length == 0) {
+            errorEmail.innerHTML = "you must fill in your e-mail address";
+            errorEmail.style.color = "red";   
+        }
+        else if (regmail.test(email.value) == false) {
+            errorEmail.innerHTML = "invalid e-mail address";
+            errorEmail.style.color = "red";   
+        }
+        else{
+            errorEmail.innerHTML = "";
+            errorEmail.style.color = "limegreen";
+            validFields += 1
+        }
+        buttunStatus()
+    })
+    password.addEventListener('keyup' , function () {
+        if (password.value.length == 0) {
+            errorPassword.innerHTML = "you must fill in your password";
+            errorPassword.style.color = "red";   
+        }
+        else if ( password.value.length >= 8) {
+            errorPassword.innerHTML = "";
+            validFields += 1
+        }
+        else{
+            errorPassword.innerHTML = "please enter a correct password.minimum 8 characters!";
+            errorPassword.style.color = "red";
+        }
+        buttunStatus()
+    })
+    passwordConfirm.addEventListener('keyup' , function () {
+        if (passwordConfirm.value.length == 0 || password.value != passwordConfirm.value) {
+            errorPasswordConfirm.innerHTML = "you must confirm your password";
+            errorPasswordConfirm.style.color = "red";   
+        }
+        else{
+            errorPasswordConfirm.innerHTML = "";
+            validFields += 1
+        }
+        buttunStatus()
+    })
+    function buttunStatus() {
+        if(validFields == 4){
+            submit.disabled = false
+        }
+        if (name.value != "" && email.value != "" && password.value != "" && passwordConfirm.value != "" &&
+            (errorname.innerHTML == "" && errorEmail.innerHTML == "" && errorPassword.innerHTML == "" && errorPasswordConfirm.innerHTML == "")) {
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    }
 });
-// $(document).ready(function () {
-//     // verified form
-//     var name = document.getElementById('username');
-//     name.addEventListener("keyup", function (event) {
-//         var errorname = document.getElementById('errorname');
-//         var regname = /^[a-zA-Z]{2,10}$/;
-//         var validName = regname.test(name.value);
-//         if (name.value.length == 0) {
-//             errorname.innerHTML = "vous devez renseigner votre nom";
-//             errorname.style.color = "red";
-//         } else if (validName == false && name.value.length < 2) {
-//             errorname.innerHTML = "veuillez renseigner un nom valide! minimum 2 caractères.";
-//             errorname.style.color = "orange";
-//         }
-//         else if (validName == false && name.value.length >= 10) {
-//             errorname.innerHTML = "veuillez renseigner un nom valide! maximum 10 caractères.";
-//             errorname.style.color = "orange";
-//         }
-//         else {
-//             errorname.innerHTML = "valid";
-//             errorname.style.color = "limegreen";
-//         }
-//     });
-// })
-
 //   start post comment
 (() => {
     // Variables
@@ -230,7 +268,7 @@ $(document).ready(function () {
     window.addEventListener('DOMContentLoaded', () => {
         wrapper('#commentsList', 'click', deleteComment, "e.target.matches('.deletecomment')");
     })
-    
+
     // subscribe to newsletter
     var email = document.getElementById('email')
     var emailError = document.getElementById('email-error')
@@ -248,11 +286,11 @@ $(document).ready(function () {
         });
         // Wait for response
         const data = await response.json();
-        
+
         // Manage response
         if (response.ok) {
             if (data == 'subscribe') {
-            window.alert('You need to confirm your subscription, please check your email:' +email.value)
+                window.alert('You need to confirm your subscription, please check your email:' + email.value)
             } else {
                 showAlert('info', 'you have already subscribed');
             }
@@ -264,7 +302,7 @@ $(document).ready(function () {
             }
         }
     }
-    
+
     window.addEventListener('DOMContentLoaded', () => {
         wrapper('#newsletter-form', 'submit', subscribeToNewsletter);
     })

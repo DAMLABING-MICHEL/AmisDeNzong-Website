@@ -41,23 +41,28 @@ class RegisteredUserController extends Controller
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 
-        $user = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        event(new Registered($user));
         $token = Str::random(64);
-         UserVerify::create([
-              'user_id' => $user->id, 
-              'token' => $token
-            ]);
+        //  UserVerify::create([
+        //       'user_id' => $user->id, 
+        //       'token' => $token
+        //     ]);
   
-        Mail::send('verification-email', ['token' => $token], function($message) use($request){
-              $message->to($request->email);
-              $message->subject('Email Verification Mail');
-          });
+        try {
+            Mail::send('verification-email', ['token' => $token], function($message) use($request){
+                $message->to($request->email);
+                $message->subject('Email Verification Mail');
+            });
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($request->password),
+                'token' => $token,
+            ]);
+    
+            event(new Registered($user));
+        } catch (\Throwable $th) {
+            echo("connection failed!");
+        }
 
         // Auth::login($user);
         return back()->with('status', 'You need to confirm your account. We have sent you an activation code, please check your email.');

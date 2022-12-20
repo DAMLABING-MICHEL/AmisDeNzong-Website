@@ -7,4 +7,5 @@
     name="password" 
     placeholder="Your Password"
     required>
+    <div id="errorPassword"></div>
 </div>
