@@ -64,19 +64,19 @@
 }
 
 .service1 {
-    background-color: rgb(99, 8, 8);
+    background-color:rgb(115, 36, 36) ;
 }
 
 .service2 {
-    background-color: rgb(174, 253, 95);
+    background-color: rgb(169, 74, 74);
 }
 
 .service3 {
-    background-color: rgb(247, 59, 59);
+    background-color: rgb(200, 130, 130);
 }
 
 .service4 {
-    background-color: rgb(245, 245, 110);
+    background-color: rgb(107, 14, 14);
 }
 
 .log-link {
@@ -85,6 +85,7 @@
 }
 
 #gallery-img {
+    object-fit: cover;
     width: 100%;
     height: 190px;
 }
@@ -118,7 +119,7 @@
 }
 
 .event-image {
-    width: 800px;
+    width: 600px;
 }
 
 .event_info ul {
@@ -190,10 +191,6 @@
     color: pink;
 }
 
-.blog-username {
-    color: rgb(174, 253, 95);
-}
-
 .submit-button {
     width: 15rem;
     background-color: rgb(99, 8, 8) !important;
@@ -214,4 +211,32 @@
 #btn-submit:disabled{
     background-color: rgb(137, 147, 155);
     cursor: not-allowed;
+}
+.card-image-description{
+    visibility: hidden;
+}
+.staff:hover .card-image-description{
+    height: 300px;
+    visibility: visible;
+}
+.staff:hover .img{
+    opacity: 0.3;
+}
+.ftco-footer-social li #icon-facebook:hover{
+    background-color: #4267B2;
+}
+.ftco-footer-social li #icon-youtube:hover{
+    background-color: #FF0000;
+}
+#teacher-image,#event-img{
+    object-fit: cover;
+}
+#event-img{
+    height: 250px !important;
+}
+.events-list{
+    margin-top: 50px;
+}
+.posts-list{
+    margin-bottom: 10px;
 }

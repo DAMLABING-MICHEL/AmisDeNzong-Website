@@ -6,7 +6,7 @@
         <x-auth.session-status :status="session('status')" />
         <!-- Validation Errors -->
         <x-auth.validation-errors :errors="$errors" />
-        <h3 class="text-center">Login</h3>
+        <h3 class="text-center">@lang('Login')</h3>
     </div>
     <div class="col-md-4">
         <form class="" method="POST" action="{{ route('login') }}">
@@ -18,7 +18,7 @@
             <!-- Remember Me -->
             <label class="">
                 <input id="remember_me" type="checkbox" name="remember_me" {{ old('remember_me') ? 'checked' : '' }}>
-                <span class="label-text">Remember me</span>
+                <span class="label-text">@lang('Remember me')</span>
             </label>
             <div class="row justify-content-center">
                 <x-auth.submit title="Login" />
@@ -26,8 +26,8 @@
 
             <div class="row justify-content-center">
                 <label class="">
-                    <a href="{{ route('password.request') }}" class="lb-link"> Forgot Your Password?</a> /&nbsp;&nbsp;
-                    <a href="{{ route('register') }}" style="float: right;" class="lb-link">Not registered?</a>
+                    <a href="{{ route('password.request') }}" class="lb-link"> @lang('Forgot Your Password')?</a> /&nbsp;&nbsp;
+                    <a href="{{ route('register') }}" style="float: right;" class="lb-link">@lang('Not registered')?</a>
                 </label>
             </div>
         </form>

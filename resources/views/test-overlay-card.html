@@ -1,0 +1,50 @@
+Hi, Try this solution and adapt to your needs: CSS:
+<style>
+    #example {
+    background-repeat: repeat-x;    
+    margin-left: 20px;
+    margin-top: 13px;
+}
+
+#example .but1{    
+   
+    line-height: 0px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right:0px;
+    display:inline-block;
+    position:relative;
+}
+
+#example .but1 h3 {
+    position:absolute;
+    top: 20px;
+    left: 20px;
+}
+
+#example .but1 .test1 {
+    position:absolute;
+    top: 50px;
+    left: 20px;
+}
+</style>
+<div class="container pt-6">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="example">
+                    <div class="card">
+                         <div class="but1 view overlay hm-blue-light white-text">
+                            <img src="https://mdbootstrap.com/img/Photos/Horizontal/People/6-col/img%20(7).jpg" class="img-fluid " alt="">
+                           <div style="display: flex; justify-content: center; background-color: chartreuse;">
+                            <h3 class="pb-3">Project title</h3>
+                            <p class="test1">Lorem ipsum dolor sit amet.</p>
+                           </div>
+                            <div class="mask flex-center">
+                                <p class="white-text">Light overlay</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

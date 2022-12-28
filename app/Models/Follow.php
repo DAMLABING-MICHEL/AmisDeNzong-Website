@@ -9,4 +9,8 @@ class Follow extends Model
 {
     use HasFactory;
     protected $fillable = ['href', 'title'];
+    
+    public function staffs(){
+        return $this->belongsToMany(Staff::class);
+    }
 }

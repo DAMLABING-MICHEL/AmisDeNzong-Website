@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Follow;
+use App\Models\Number;
 use App\Models\Page;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
@@ -33,12 +34,15 @@ class AppServiceProvider extends ServiceProvider
     {
         //
         Schema::defaultStringLength(255);
-        Blade::if('request', function ($url) {
-            return request()->is($url);
-        });
+        
         $postController = new PostController();
         $latestPosts = $postController->latestPosts();
+           Blade::if('request', function ($url) {
+            return request()->is($url);
+        });
+        $numbers = Number::all();
         FacadesView::share('latestPosts', $latestPosts);
+        FacadesView::share('numbers',$numbers);
     }
     public function compose(View $view)
     {

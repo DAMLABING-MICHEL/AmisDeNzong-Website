@@ -15,8 +15,8 @@
 
 <section class="ftco-section">
   <div class="container">
-    <div class="row">
-      <div class="col-lg-8 ftco-animate">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 ftco-animate">
         @if(@isset($newsSingle))
         <h2 class="mb-3">#{{$newsSingle->id}}. {{$newsSingle->title}}</h2>
         <p>
@@ -35,7 +35,7 @@
           <div class="block-21 mb-4 d-flex">
             <a class="blog-img mr-4" style="background-image: url(/images/{{$newsSingle->image->url}});"></a>
             <div class="text">
-              <h3 class="heading"><a href="{{url('/news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
+              <h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
               <div class="meta">
                 <div><a href="#"><span class="icon-calendar"></span> {{$newsSingle->created_at}}</a></div>
               </div>

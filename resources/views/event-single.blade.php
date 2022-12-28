@@ -15,10 +15,9 @@
 <section class="ftco-section bg-light">
     <div class="container">
         @if(@isset($event))
-        <div class="row">
+        <div class="row justify-content-center">
 
-            <div class="col-md-8 col-sm-8 col-xs-12">
-                <div class="single_event_single">
+            <div class="col-lg-6 col-sm-8 col-xs-12">
                     <img alt="Event title here" class="img-responsive event-image" src="/images/{{$event->image->url}}" />
                     <div class="single_event_text_single">
                         <h4>{{$event->title}}</h4>
@@ -32,12 +31,11 @@
                         </div>
                     </div>
 
-                </div>
                 <!--- END SINGLE EVENT -->
             </div>
             <!--- END COL -->
 
-            <div class="col-md-4 col-sm-4 col-xs-12">
+            <div class="col-lg-4 col-sm-4 col-xs-12">
                 <div class="event_info border rounded">
                     <h3 class="p-3 m-2 text-center text-white font-bold event-info-title">Event Informations</h3>
                     <div class="event-list pb-5">

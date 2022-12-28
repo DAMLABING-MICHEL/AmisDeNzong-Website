@@ -11951,11 +11951,12 @@ h5,
 
 .owl-carousel.home-slider {
     position: relative;
-    height: 600px;
+    height: 500px;
     z-index: 0;
 }
 
 .owl-carousel.home-slider .slider-item {
+    object-fit: cover;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -12134,7 +12135,8 @@ h5,
     height: 10px;
     margin: 5px;
     border-radius: 50%;
-    background: #1eaaf1;
+    /* background: #1eaaf1; */
+    background: rgb(99, 8, 8);
 }
 
 .owl-carousel.home-slider .owl-dots .owl-dot.active {
@@ -12479,10 +12481,13 @@ h5,
 }
 
 .staff .img-wrap {
+    object-fit: cover;
     height: 300px;
 }
 
 .staff .img {
+    background-size: cover;
+    object-fit: cover;
     width: 100%;
     display: block;
     background-position: top center;
@@ -12527,11 +12532,11 @@ h5,
 
 .staff .ftco-social {
     position: absolute;
-    top: -30px;
+   margin-top: 300px;
     left: 0;
     right: 0;
-    padding: 15px 10px;
-    background: #fff;
+    padding: 5px 2px;
+    /* background: #fff; */
     opacity: 0;
     -moz-transition: all 0.3s ease;
     -o-transition: all 0.3s ease;
@@ -12541,9 +12546,11 @@ h5,
 }
 
 .staff .ftco-social li a {
-    color: #fda638;
+    /* color: rgb(99, 8, 8); */
 }
-
+.staff .ftco-social li .icon-follow {
+   color: rgb(99, 8, 8);
+}
 .staff:hover .ftco-social,
 .staff:focus .ftco-social {
     opacity: 1;
@@ -12679,7 +12686,9 @@ h5,
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    height: 275px;
+    /* height: 275px; */
+    object-fit: cover;
+    height: 200px;
     position: relative;
     display: block;
 }
@@ -12689,7 +12698,6 @@ h5,
         margin-bottom: 30px;
     }
 }
-
 @media (max-width: 767.98px) {
     .blog-entry {
         margin-bottom: 30px;
@@ -12852,7 +12860,8 @@ textarea.form-control {
 }
 
 .ftco-section {
-    padding: 7em 0;
+    /* padding: 7em 0; */
+    padding: 3em 0;
     position: relative;
 }
 
@@ -13276,6 +13285,7 @@ textarea.form-control {
 
 .testimony-section .owl-dots .owl-dot.active {
     background: #1eaaf1;
+    background:  rgb(99, 8, 8);
 }
 
 .testimony-section .owl-item {

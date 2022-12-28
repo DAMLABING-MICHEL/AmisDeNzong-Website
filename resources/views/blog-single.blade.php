@@ -5,8 +5,8 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <h1 class="mb-2 bread">Blog Single</h1>
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{{ url('/blog')}}">Blog <i class="ion-ios-arrow-forward"></i></a></span> <span>Blog Single <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-2 bread">@lang('Blog Single')</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{{ url('/blog')}}">@lang('Blog') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Blog Single') <i class="ion-ios-arrow-forward"></i></span></p>
       </div>
     </div>
   </div>
@@ -51,7 +51,7 @@
             @if($post->valid_comments_count > 0)
             <div id="forShow">
               <p id="showbutton" class="text-center">
-                <button id="showcomments" class="btn h-full-width">Show comments</button>
+                <button id="showcomments" class="btn h-full-width">@lang('Show comments')</button>
               </p>
               <p id="showicon" class="h-text-center" hidden>
                 <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
@@ -59,7 +59,7 @@
             </div>
             @else
             @if(Auth::guest())
-            <span>You must be connected to add a comment. <a href="{{route('login')}}">login</a></span>
+            <span>@lang('You must be connected to add a comment.') <a href="{{route('login')}}">@lang('login')</a></span>
             @endif
             @endif
           </div>
@@ -69,9 +69,9 @@
           <!-- END comment-list -->
           @if(Auth::check())
           <div class="comment-form-wrap pt-5">
-            <h3 class="mb-5 h4 font-weight-bold">Leave a comment
+            <h3 class="mb-5 h4 font-weight-bold">@lang('Leave a comment')
               <span id="forName"></span>
-              <span><a id="abort" hidden href="#">Abort reply</a></span>
+              <span><a id="abort" hidden href="#">@lang('Abort reply')</a></span>
             </h3>
             <div id="alert" class="alert-box" style="display: none">
               <p></p>
@@ -108,35 +108,29 @@
           </form>
         </div>
         <div class="sidebar-box ftco-animate">
-          <h3>Category</h3>
+          <h3>@lang('Category')</h3>
           @if(@isset($categories))
           <ul class="categories">
             @foreach($categories as $index=>$category)
-            <li><a href="{{url('/blog/view-posts-by-categories/'.$category->slug)}}" class="category-link">{{$category->title}}
-                @if(@isset($kinderPosts) && $category->title == "Kindergarden")
-                <span>({{@count($kinderPosts)}})</span>
-                @endif
-                @if(@isset($primaryPosts) && $category->title == "Primary")
-                <span>({{@count($primaryPosts)}})</span>
-                @endif
-                @if(@isset($leisurePosts) && $category->title == "Leisure")
-                <span>({{@count($leisurePosts)}})</span>
-                @endif
+              @if (count($category->posts()->get()) > 0)
+              <li><a href="{{url('/blog/view-posts-by-categories/'.$category->slug)}}" class="category-link">{{$category->title}}
+                <span>({{count($category->posts()->get())}})</span>
               </a></li>
+              @endif
             @endforeach
           </ul>
           @endif
         </div>
 
         <div class="sidebar-box ftco-animate">
-          <h3>Latest Articles</h3>
+          <h3>@lang('Latest Articles')</h3>
           <div class="row">
             @if(@isset($lastPosts))
             @foreach($lastPosts as $index=>$post)
             <div class="block-21 mb-4 d-flex">
               <a class="blog-img mr-4" style="background-image: url(/images/{{$post->image->url}});"></a>
               <div class="text">
-                <h3 class="heading"><a href="{{ url('/blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
+                <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">
                   <!-- <div><a href="#"><span class="icon-calendar"></span> {{ $post->created_at->format('d-m-y') }}</a></div> -->
                   <div><a href="#"><span class="icon-calendar"></span> {{ strftime('%m %B %Y', strtotime($post->created_at)) }}</a></div>
@@ -152,19 +146,16 @@
           </div>
 
           <div class="sidebar-box ftco-animate">
-            <h3>Tag Cloud</h3>
+            <h3>@lang('Tag Cloud')</h3>
             @if(@isset($tags))
             <ul class="tagcloud m-0 p-0">
               @foreach($tags as $index=>$tag)
-              <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
+                @if (count($tag->posts()->get()) > 0)
+                <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
+                @endif
               @endforeach
             </ul>
             @endif
-          </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>Paragraph</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus itaque, autem necessitatibus voluptate quod mollitia delectus aut, sunt placeat nam vero culpa sapiente consectetur similique, inventore eos fugit cupiditate numquam!</p>
           </div>
         </div><!-- END COL -->
       </div>

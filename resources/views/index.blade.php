@@ -1,18 +1,16 @@
 @extends('app')
 @section('content')
-<!-- start subscribe confirmation madal -->
-<!-- Modal -->
+<!-- start subscribe confirmation modal -->
 <x-front.modal :modal="session('modal')" />
 <x-front.unsubscribe-modal :unsubscribe="session('unsubscribe')" />
-<!-- end subscribe confirmation maodal -->
+<!-- end subscribe confirmation modal -->
 <section class="home-slider owl-carousel">
 	<div class="slider-item" style="background-image: url(/images/slide1.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-8 text-center ftco-animate">
-					<h1 class="mb-4">Kids Are The Best <span>Explorers In The World</span></h1>
-					<p><a href="{{ url('about.blade.php')}}" class="btn px-4 py-3 mt-3 text-white">Read More</a></p>
+					<h1 class="mb-4">@lang('Primary Education') <span>@lang('English and Bilingual sections')</span></h1>
 				</div>
 			</div>
 		</div>
@@ -23,8 +21,7 @@
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-8 text-center ftco-animate">
-					<h1 class="mb-4">Perfect Learned<span> For Your Child</span></h1>
-					<p><a href="{{ url('about.blade.php')}}" class="btn px-4 py-3 mt-3 text-white">Read More</a></p>
+					<h1 class="mb-4">@lang('Kindergarten Education')<span>@lang('English and Bilingual sections')</span></h1>
 				</div>
 			</div>
 		</div>
@@ -40,8 +37,8 @@
 						<span class="flaticon-teacher"></span>
 					</div>
 					<div class="media-body p-2 mt-3">
-						<h3 class="heading">Certified Teachers</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<h3 class="heading">@lang('Certified Teachers')</h3>
+						<p>@lang('A dynamic, talented and experienced team of staff is here to take care of your children\'s education.')</p>
 					</div>
 				</div>
 			</div>
@@ -51,8 +48,8 @@
 						<span class="flaticon-reading"></span>
 					</div>
 					<div class="media-body p-2 mt-3">
-						<h3 class="heading">Special Education</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<h3 class="heading">@lang('Special Education')</h3>
+						<p>@lang('The lessons are taught in French and English. The lessons also offers basic training in Italian language and computer science.')</p>
 					</div>
 				</div>
 			</div>
@@ -62,8 +59,8 @@
 						<span class="flaticon-books"></span>
 					</div>
 					<div class="media-body p-2 mt-3">
-						<h3 class="heading">Book &amp; Library</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<h3 class="heading">@lang('Environmental Quality')</h3>
+						<p>@lang('School is in a clean, calm and secure area. Leisure activities are inside a secure environment.')</p>
 					</div>
 				</div>
 			</div>
@@ -73,8 +70,8 @@
 						<span class="flaticon-diploma"></span>
 					</div>
 					<div class="media-body p-2 mt-3">
-						<h3 class="heading">Certification</h3>
-						<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic.</p>
+						<h3 class="heading">@lang('why choose our Establishment?')</h3>
+						<p>@lang('Emphasis is placed on the quality of education and the success of your children is our priority.')</p>
 					</div>
 				</div>
 			</div>
@@ -82,173 +79,20 @@
 	</div>
 </section>
 
-<section class="ftco-section ftco-no-pt ftc-no-pb">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-5 order-md-last wrap-about py-5 wrap-about bg-light">
-				<div class="text px-4 ftco-animate">
-					<h2 class="mb-4">Welcome to Groupe Scolaire "Les Amis De Nzong & Fondation Candia" Learning School</h2>
-					<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word.</p>
-					<p>Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean. A small river named Duden flows by their place and supplies it with the necessary regelialia. And if she hasn’t been rewritten, then they are still using her.</p>
-					<p><a href="{{ url('about.blade.php')}}" class="btn px-4 py-3 text-white">Read More</a></p>
-				</div>
-			</div>
-			<div class="col-md-7 wrap-about py-5 pr-md-4 ftco-animate">
-				<h2 class="mb-4">What We Offer</h2>
-				<p>On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word.</p>
-				<div class="row mt-5">
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-security"></span></div>
-							<div class="text">
-								<h3>Safety First</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-reading"></span></div>
-							<div class="text">
-								<h3>Kindergarten education</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-diploma"></span></div>
-							<div class="text">
-								<h3>Primary education</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-education"></span></div>
-							<div class="text">
-								<h3>Basic courses in Italian and Computer Science</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-jigsaw"></span></div>
-							<div class="text">
-								<h3>Pupil transport bus</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-6">
-						<div class="services-2 d-flex">
-							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-kids"></span></div>
-							<div class="text">
-								<h3>Sports Facilities</h3>
-								<p>Far far away, behind the word mountains, far from the countries Vokalia.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
-
-
-
-<section class="ftco-section ftco-no-pb">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-2">
-			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>Certified</span> Teachers</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-			</div>
-		</div>
-		<div class="row">
-			@if(@isset($certifiedTeachers))
-			@foreach($certifiedTeachers as $index=>$certifiedTeachers)
-			<div class="col-md-6 col-lg-3 ftco-animate">
-				<div class="staff">
-					<div class="img-wrap d-flex align-items-stretch">
-						@if(!@empty($certifiedTeachers->image))
-						<div class="img align-self-stretch" style="background-image: url(images/{{$certifiedTeachers->image->url}});"></div>
-						@endif
-
-					</div>
-					<div class="text pt-3 text-center">
-						<h3>{{$certifiedTeachers->lastName}}</h3>
-						<span class="position mb-2">{{$certifiedTeachers->position}}</span>
-						<div class="faded">
-							<p>{{$certifiedTeachers->description}}</p>
-							<ul class="ftco-social text-center">
-								<li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
-								<li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
-								<li class="ftco-animate"><a href="#"><span class="icon-google-plus"></span></a></li>
-								<li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-			@endforeach
-			@endif
-
-		</div>
-	</div>
-</section>
-
-<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/images/bg_4.jpg);" data-stellar-background-ratio="0.5">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-2">
-			<div class="col-md-8 text-center heading-section heading-section-black ftco-animate">
-				<h2 class="mb-4"><span>7 Years of</span> Experience</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-			</div>
-		</div>
-		<div class="row d-md-flex align-items-center justify-content-center">
-			<div class="col-lg-10">
-				<div class="row d-md-flex align-items-center justify-content-center">
-					<div class="col-md-2 d-flex justify-content-center counter-wrap ftco-animate">
-						<div class="block-18">
-							<div class="icon"><span class="flaticon-doctor"></span></div>
-							<div class="text">
-								<strong class="number" data-number="18">0</strong>
-								<span>Certified Teachers</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-2 d-flex justify-content-center counter-wrap ftco-animate">
-						<div class="block-18">
-							<div class="icon"><span class="flaticon-doctor"></span></div>
-							<div class="text">
-								<strong class="number" data-number="351">0</strong>
-								<span>Successful Kids</span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
+@include('welcome-section')
 
 <section class="ftco-section">
 	<div class="container">
 		<div class="d-flex justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>Our</span> Gallery</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+				<h2 class="mb-4"><span>@lang('Our')</span> @lang('Gallery')</h2>
+				<p>@lang('Learn more about the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by exploring our Image Gallery')</p>
 				<div class="portfolio-menu mt-2 mb-4">
 					<ul>
-						<li class="btn btn-outline-danger active" data-filter="*">All</li>
-						<li class="btn btn-outline-danger" data-filter=".kindergarden">Kindergarden</li>
-						<li class="btn btn-outline-danger" data-filter=".elementary">Elementary</li>
-						<li class="btn btn-outline-danger text" data-filter=".leisure">Leisure</li>
+						<li class="btn btn-outline-danger active" data-filter="*">@lang('All')</li>
+						<li class="btn btn-outline-danger" data-filter=".kindergarten">@lang('Kindergarden')</li>
+						<li class="btn btn-outline-danger" data-filter=".elementary">@lang('Elementary')</li>
+						<li class="btn btn-outline-danger text" data-filter=".leisure">@lang('Leisure')</li>
 					</ul>
 				</div>
 			</div>
@@ -256,7 +100,7 @@
 		<div class="portfolio-item row d-flex justify-content-center">
 			@if(@isset($kinderImages))
 			@foreach($kinderImages as $index=>$kinderImage)
-			<div class="item kindergarden col-lg-3 col-md-4 col-6 col-sm">
+			<div class="item kindergarten col-lg-3 col-md-4 col-6 col-sm">
 				<a href="{{url('images/'.$kinderImage->url)}}" class="fancylight popup-btn" data-fancybox-group="light">
 					<img class="img-fluid" id="gallery-img" src="{{asset('images/'.$kinderImage->url)}}" alt="">
 				</a>
@@ -283,55 +127,19 @@
 			@endif
 		</div>
 		<div class="text-center btn-gallery">
-			<p><a href="{{ url('gallery.blade.php')}}" class="btn px-4 py-3 mt-3 text-white">see more Gallery</a></p>
+			<p><a href="{{ url('gallery')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See more Gallery')</a></p>
 		</div>
 </section>
 
-<section class="ftco-section testimony-section bg-light">
-	<div class="container">
-		<div class="row justify-content-center mb-5 pb-2">
-			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>What Parents</span> Says About Us</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
-			</div>
-		</div>
-		<div class="row ftco-animate justify-content-center">
-			<div class="col-md-12">
-				<div class="carousel-testimony owl-carousel">
-					@if(@isset($testimonials))
-					@foreach($testimonials as $index=>$testimonial)
-					<div class="item">
-						<div class="testimony-wrap d-flex">
-							@if(@isset($testimonial->image))
-							<div class="user-img mr-4" style="background-image: url(images/{{$testimonial->image->url}})">
-							</div>
-							@endif
-							<div class="text ml-2 bg-light">
-								<span class="quote d-flex align-items-center justify-content-center">
-									<i class="icon-quote-left"></i>
-								</span>
-								<p>{{$testimonial->content}}</p>
-								<p class="name">{{$testimonial->name}}</p>
-								<span class="position">{{$testimonial->feature}}</span>
-							</div>
-						</div>
-					</div>
-					@endforeach
-					@endif
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
+@include('testimonials-section')
 
 
 <section class="ftco-section bg-light">
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>Lattest</span> News</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+				<h2 class="mb-4"><span>@lang('Latest')</span> @lang('News')</h2>
+				<p>@lang('Get informed about the activities of the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by reading our different news')</p>
 			</div>
 		</div>
 		<div class="row">
@@ -342,13 +150,19 @@
 					<a href="#" class="block-20 d-flex align-items-end" style="background-image: url('/images/{{$newsSingle->image->url}}');">
 					</a>
 					<div class="text bg-white p-4">
-						<h3 class="heading"><a href="{{'/news-single/'.$newsSingle->id}}">{{$newsSingle->title}}</a></h3>
+						<h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
 						<p>{{$newsSingle->content}}</p>
+						<div class="d-flex align-items-center mt-4">
+							<p class="mb-0"><a href="{{ url('news-single/'.$newsSingle->id)}}" class="btn">@lang('Read More') <span class="ion-ios-arrow-round-forward"></span></a></p>
+						</div>
 					</div>
 				</div>
 			</div>
 			@endforeach
 			@endif
+		</div>
+		<div class="text-center btn-gallery">
+			<p><a href="{{ url('news-events')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See more News items')</a></p>
 		</div>
 	</div>
 </section>
@@ -357,11 +171,11 @@
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>Recent</span> Blog</h2>
-				<p>Separated they live in. A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country</p>
+				<h2 class="mb-4"><span>@lang('Recent')</span> @lang('Blog')</h2>
+				<p>@lang('Find articles on several subjects concerning the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" and more')</p>
 			</div>
 		</div>
-		<div class="row">
+		<div class="row d-flex justify-content-center">
 			@if(@isset($posts))
 			@foreach($posts as $index=>$post)
 			<div class="col-md-6 col-lg-4 ftco-animate">
@@ -375,11 +189,11 @@
 					</a>
 					<div class="text bg-white p-4">
 						<h3 class="heading"><a href="#">{{$post->title}}</a></h3>
+						<small class="">@lang('Written on') {{ strftime('%m %B %Y', strtotime($post->created_at)) }} @lang('By') {{$post->user->name}}</small>
 						<p>{{$post->summary}}</p>
 						<div class="d-flex align-items-center mt-4">
-							<p class="mb-0"><a href="{{ url('blog-single/'. $post->id)}}" class="btn">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+							<p class="mb-0"><a href="{{ url('blog-single/'. $post->id)}}" class="btn">@lang('Read More') <span class="ion-ios-arrow-round-forward"></span></a></p>
 							<p class="ml-auto mb-0">
-								<span class="mr-2 blog-username">{{$post->user->name}}</span>
 								@if($post->valid_comments_count)
 								<span class="meta-chat blog-username"><span class="icon-chat"></span>{{ $post->valid_comments_count }}</span>
 								@endif
@@ -391,6 +205,9 @@
 			@endforeach
 			@endif
 		</div>
+		<div class="text-center btn-gallery">
+			<p><a href="{{ url('blog')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See more Articles')</a></p>
+		</div>
 	</div>
 </section>
 
@@ -398,7 +215,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class=""><span>Our</span> Parteners</h2>
+				<h2 class=""><span>@lang('Our')</span> @lang('Parteners')</h2>
 			</div>
 		</div>
 		<div class="row justify-content-around">

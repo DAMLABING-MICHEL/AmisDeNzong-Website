@@ -5,8 +5,8 @@
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
-        <h1 class="mb-2 bread">Contact Us</h1>
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Contact <i class="ion-ios-arrow-forward"></i></span></p>
+        <h1 class="mb-2 bread">@lang('Contact Us')</h1>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Contact') <i class="ion-ios-arrow-forward"></i></span></p>
       </div>
     </div>
   </div>
@@ -17,25 +17,25 @@
     <div class="row d-flex mb-5 contact-info">
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
-          <h3 class="mb-4">Address</h3>
-          <p>BP.150 West Region, In Nzong-Foto Village</p>
+          <h3 class="mb-4">@lang('Address')</h3>
+          <p>@lang('BP.150 West Region, In Nzong-Foto Village')</p>
         </div>
       </div>
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
-          <h3 class="mb-4">Contact Number</h3>
+          <h3 class="mb-4">@lang('Contact Number')</h3>
           <p>+237 65 71 83 89 / 693 03 44 72</p>
         </div>
       </div>
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
-          <h3 class="mb-4">Email Address</h3>
+          <h3 class="mb-4">@lang('Email Address')</h3>
           <p>contact@lesamisdenzong-fondationcandia.com</p>
         </div>
       </div>
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
-          <h3 class="mb-4">Website</h3>
+          <h3 class="mb-4">@lang('Website')</h3>
           <p><a href="#">yoursite.com</a></p>
         </div>
       </div>
@@ -57,7 +57,7 @@
         <form method="post" action="{{ route('contact.store') }}">
         @csrf
           <div class="form-group">
-            <input type="text" class="form-control  {{ $errors->has('name') ? 'error' : '' }}" placeholder="Your Name" name="name" id="name">
+            <input type="text" class="form-control  {{ $errors->has('name') ? 'error' : '' }}" placeholder="@lang('Your Name')" name="name" id="name">
             <!-- Error -->
             @if($errors->has('name'))
             <div class="error">
@@ -66,7 +66,7 @@
             @endif
           </div>
           <div class="form-group">
-            <input type="text" class="form-control {{ $errors->has('email') ? 'error' : '' }}" placeholder="Your Email" name="email" id="email">
+            <input type="text" class="form-control {{ $errors->has('email') ? 'error' : '' }}" placeholder="@lang('Your Email')" name="email" id="email">
             <!-- Error -->
             @if($errors->has('email'))
             <div class="error">
@@ -75,7 +75,7 @@
             @endif
           </div>
           <div class="form-group">
-            <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}" placeholder="Subject" name="subject" id="subject">
+            <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}" placeholder="@lang('Subject')" name="subject" id="subject">
             <!-- Error -->
             @if($errors->has('subject'))
             <div class="error">
@@ -93,7 +93,7 @@
             @endif
           </div>
           <div class="form-group">
-            <input type="submit" value="Send Message" name="send" class="btn py-3 px-5 text-white" id="send">
+            <input type="submit" value="@lang('Send Message')" name="send" class="btn py-3 px-5 text-white" id="send">
           </div>
         </form>
       </div>

@@ -46,7 +46,7 @@ Route::controller(ContactController::class)->group(function () {
 });
 Route::controller(NewsEventsController::class)->group(function () {
     Route::get('/news-events','getNews'); 
-    Route::get('/news-single/{id}','getNewsSingle'); 
+    Route::get('/news-single/{id}','getNewsSingle')->name('news-single'); 
 });
 Route::controller(PostController::class)->group(function () {
     Route::get('/blog','getPosts'); 

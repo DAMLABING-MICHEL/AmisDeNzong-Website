@@ -1,8 +1,8 @@
-    <h3 class="text-center">Comments</h3>
+    <h3 class="text-center">@lang('Comments')</h3>
 <!-- Commentlist -->
 <ol class="commentlist">
   <x-front.comments :comments="$comments" />
 </ol>
 @if(Auth::guest())
-<span>You must be connected to add a comment or reply. <a href="{{route('login')}}">login</a></span>
+<span>@lang('You must be connected to add a comment or reply.') <a href="{{route('login')}}">@lang('Login')</a></span>
 @endif

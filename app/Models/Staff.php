@@ -35,4 +35,8 @@ class Staff extends Model
     public function grade(){
         return $this->belongsTo(Grade::class);
     }
+    
+    public function follows(){
+        return $this->belongsToMany(Follow::class);
+    }
 }

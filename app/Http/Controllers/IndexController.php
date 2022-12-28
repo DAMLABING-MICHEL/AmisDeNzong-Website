@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Grade;
 use App\Models\News;
+use App\Models\Number;
 use App\Models\Post;
 use App\Models\Rubric;
 use App\Models\Testimonial;
@@ -18,11 +19,11 @@ class IndexController extends Controller
         $rubrics = Rubric::all();
         for ($i = 0; $i < count($rubrics); $i++) {
             if ($rubrics[$i]->title == 'Kindergarden') {
-                $kinderImages = Rubric::find($rubrics[$i]->id)->images()->get();
+                $kinderImages = Rubric::find($rubrics[$i]->id)->images()->limit(3)->get();
             } elseif ($rubrics[$i]->title == 'primary') {
-                $elementaryImages = Rubric::find($rubrics[$i]->id)->images()->get();
+                $elementaryImages = Rubric::find($rubrics[$i]->id)->images()->limit(3)->get();
             } elseif ($rubrics[$i]->title == 'Leisure') {
-                $leisureImages = Rubric::find($rubrics[$i]->id)->images()->get();
+                $leisureImages = Rubric::find($rubrics[$i]->id)->images()->limit(2)->get();
             }
         }
         $news = News::limit(3)->select('*')->orderBy('created_at', 'asc')->get();
