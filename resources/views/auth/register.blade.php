@@ -1,4 +1,4 @@
-@extends('app')
+@extends('front.app')
 @section('content')
 <div class="register-form">
     <div class="d-flex flex-column align items-center justify-content-center">

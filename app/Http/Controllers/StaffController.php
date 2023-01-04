@@ -16,6 +16,6 @@ class StaffController extends Controller
     {
         $features = Feature::all();
             $staffs = Staff::all();
-        return view('staff', compact('staffs'), compact('features'));
+        return view('front.staff', compact('staffs'), compact('features'));
     }
 }

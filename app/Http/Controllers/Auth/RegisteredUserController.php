@@ -42,30 +42,23 @@ class RegisteredUserController extends Controller
         ]);
 
         $token = Str::random(64);
-        //  UserVerify::create([
-        //       'user_id' => $user->id, 
-        //       'token' => $token
-        //     ]);
-  
+        $user = User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'token' => $token,
+        ]);
+        event(new Registered($user));
         try {
-            Mail::send('verification-email', ['token' => $token], function($message) use($request){
+            Mail::send('front.verification-email', ['token' => $token], function($message) use($request){
                 $message->to($request->email);
                 $message->subject('Email Verification Mail');
             });
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => Hash::make($request->password),
-                'token' => $token,
-            ]);
-    
-            event(new Registered($user));
+            return back()->with('status', 'You need to confirm your account. We have sent you an activation code, please check your email.');
         } catch (\Throwable $th) {
             echo("connection failed!");
         }
-
         // Auth::login($user);
-        return back()->with('status', 'You need to confirm your account. We have sent you an activation code, please check your email.');
         // return redirect(RouteServiceProvider::HOME);
     }
     

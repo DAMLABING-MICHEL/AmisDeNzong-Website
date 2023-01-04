@@ -13284,7 +13284,7 @@ textarea.form-control {
 }
 
 .testimony-section .owl-dots .owl-dot.active {
-    background: #1eaaf1;
+    /* background: #1eaaf1; */
     background:  rgb(99, 8, 8);
 }
 

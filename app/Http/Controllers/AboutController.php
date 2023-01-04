@@ -10,10 +10,10 @@ class AboutController extends Controller
 {
     public function index()
     {
-        $highestGrade = Grade::where('title',"Baccalaureat")->get();
-        $certifiedTeachers  = (Grade::find($highestGrade[0]->id))->staffs()->get();
+        $highestGrade = Grade::where('hight_grade', true)->get()->first();
+        $certifiedTeachers = ($highestGrade != null) ? (Grade::findOrFail($highestGrade->id))->staffs()->get():null;
         $testimonials = Testimonial::all();
-        return view('about', compact([
+        return view('front.about', compact([
         'testimonials',
         'certifiedTeachers'
         ]));

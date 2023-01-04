@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\NewsEventsController;
@@ -33,11 +34,8 @@ use Illuminate\Support\Facades\Route;
 Route::controller(StaffController::class)->group(function () {
     Route::get('staff', 'staff');
 });
-// Route::controller(IndexController::class)->group(function () {
-//     Route::get('/', 'index');
-// })->middleware('auth');
 Route::get('/',[IndexController::class,'index']);
-Route::controller(GalleryController::class)->group(function () {
+Route::controller(ImageController::class)->group(function () {
     Route::get('/gallery','getImages'); 
 });
 Route::controller(ContactController::class)->group(function () {
@@ -45,12 +43,12 @@ Route::controller(ContactController::class)->group(function () {
     Route::post('/contact', 'ContactUsForm')->name('contact.store');
 });
 Route::controller(NewsEventsController::class)->group(function () {
-    Route::get('/news-events','getNews'); 
+    Route::get('/news-events','index'); 
     Route::get('/news-single/{id}','getNewsSingle')->name('news-single'); 
 });
 Route::controller(PostController::class)->group(function () {
     Route::get('/blog','getPosts'); 
-    Route::get('/blog-single/{slug}','getPost');
+    Route::get('blog-single/{slug}','getPost');
     Route::get('/blog/view-posts-by-categories/{slug}','getPostsByCategorySlug'); 
     Route::get('/blog/view-posts-by-tags/{slug}','getPostsByTagSlug'); 
     Route::post('/blog/search-posts','searchPosts'); 

@@ -11,7 +11,7 @@ class ContactController extends Controller
     //
     // Create Contact Form
     public function createForm(Request $request) {
-        return view('contact');
+        return view('front.contact');
       }
   
     // Store Contact Form data
@@ -28,7 +28,7 @@ class ContactController extends Controller
         // 
            //  Send mail to admin
         try {
-            Mail::send('mail', array(
+            Mail::send('front.mail', array(
                 'name' => $request->get('name'),
                 'email' => $request->get('email'),
                 'subject' => $request->get('subject'),

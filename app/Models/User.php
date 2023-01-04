@@ -29,7 +29,6 @@ class User extends Authenticatable
         'token',
         'role',
         'valid',
-        'description',
         'is_email_verified'
     ];
 

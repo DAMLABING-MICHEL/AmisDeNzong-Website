@@ -12,6 +12,7 @@ class Grade extends Model
     protected $fillable = [
         'title',
         'description',
+        'hight_grade',
     ];
     
     public function staffs(){
