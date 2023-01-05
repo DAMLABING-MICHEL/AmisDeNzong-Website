@@ -5,14 +5,17 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Services\CommentService;
 
 class CommentController extends Controller
 {
+    protected $commentService;
     public function __construct()
     {
         if (!app()->runningInConsole() && !request()->ajax()) {
             abort(403);
         }
+        $this->commentService = new CommentService();
     }
     public function store(CommentRequest $request, $slug)
     {
@@ -33,17 +36,10 @@ class CommentController extends Controller
 
     public function comments($slug)
     {
-        $post = Post::where('slug', $slug)->get();
-        $post = Post::withCount('validComments')->findOrFail($post->first()->id);
-
-        $comments = $post->validComments()
-            ->withDepth()
-            ->latest()
-            ->get()
-            ->toTree();
+        $comments = $this->commentService->getCommentsByPostSlug($slug);
 
         return [
-            'html' => view('comments', compact('comments'))->render(),
+            'html' => view('front.comments', compact('comments'))->render(),
         ];
     }
     public function destroy(Comment $comment)

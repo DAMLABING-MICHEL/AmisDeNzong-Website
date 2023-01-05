@@ -13,7 +13,7 @@ class NewsLetterController extends Controller
 {
     public function create()
     {
-        return view('newsletter');
+        return view('front.newsletter');
     }
 
     public function newsletter(Request $request)
@@ -21,7 +21,7 @@ class NewsLetterController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.ModelsNewsletter::class],
         ]);
-            Mail::send('newsletter-confirmation', array(
+            Mail::send('front.newsletter-confirmation', array(
                 'email' => $request->get('email'),
             ), function($message) use($request){
                 $message->to($request->email);
@@ -35,7 +35,7 @@ class NewsLetterController extends Controller
         ModelsNewsletter::UpdateOrCreate([
             'email' => $email,
         ]);
-        Mail::send('newsletter-welcome', array(
+        Mail::send('front.newsletter-welcome', array(
             'email' => $email,
         ), function($message) use($email){
             $message->to($email);

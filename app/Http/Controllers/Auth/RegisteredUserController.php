@@ -4,8 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
-use App\Models\UserVerify;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -58,8 +56,6 @@ class RegisteredUserController extends Controller
         } catch (\Throwable $th) {
             echo("connection failed!");
         }
-        // Auth::login($user);
-        // return redirect(RouteServiceProvider::HOME);
     }
     
     public function update(Request $request)

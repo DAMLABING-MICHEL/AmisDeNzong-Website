@@ -1,4 +1,4 @@
-@extends('app')
+@extends('front.app')
 @section('content')
 <div class="row justify-content-center">
     <div class="col-md-8 forgot-password-form row justify-content-center">

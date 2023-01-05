@@ -39,7 +39,7 @@
 							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-reading"></span></div>
 							<div class="text">
 								<h3>@lang('Kindergarten education')</h3>
-								<p>@lang('From kindergarten to nursery school, classes are taught in French and English in the Anglophone system and only in English in the Bilingual system.')</p>
+								<p>@lang('From preschool to kindergarten, classes are taught in French and English in the Bilingual system and only in English in the Anglophone system.')</p>
 							</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 							<div class="icon mt-2 mr-3 d-flex justify-content-center align-items-center"><span class="flaticon-diploma"></span></div>
 							<div class="text">
 								<h3>@lang('Primary education')</h3>
-								<p>@lang('In Primary education, classes are taught in French and English in the Anglophone system and only in English in the Bilingual system.')</p>
+								<p>@lang('In Primary education, classes are taught in French and English in the Bilingual system and only in English in the Anglophone system.')</p>
 							</div>
 						</div>
 					</div>

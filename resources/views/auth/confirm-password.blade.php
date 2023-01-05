@@ -1,4 +1,4 @@
-@extends('app')
+@extends('front.app')
 
 @section('content')
     <div class="row d-flex justify-content-center">
