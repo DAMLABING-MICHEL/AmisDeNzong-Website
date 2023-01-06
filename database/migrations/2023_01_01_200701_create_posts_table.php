@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('seo_title');
             $table->string('meta_description');
             $table->string('meta_keywords');
-            $table->string('summary');
+            $table->text('summary');
             $table->text('content');
             $table->foreignId('user_id')->constrained();
             $table->foreignId('category_id')->constrained();

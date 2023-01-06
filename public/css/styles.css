@@ -118,8 +118,10 @@
     margin-left: 20px;
 }
 
-.event-image {
+.event-image,.news-image {
+    object-fit: cover !important;
     width: 600px;
+    height: 400px !important;
 }
 
 .event_info ul {

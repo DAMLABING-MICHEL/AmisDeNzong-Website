@@ -58,11 +58,12 @@
                     <form method="post" action="{{url('newsletter')}}" class="subscribe-form">
                         @csrf
                         <div class="form-group">
-                            <input type="text" class="form-control mb-2 text-center" name="email" id="email" placeholder="Enter email address">
+                            <input type="email" class="form-control mb-2 text-center" name="email" id="email" placeholder="Enter email address">
                             <div>
                                 <p class="text-danger" id="email-error"></p>
                             </div>
                             <input type="submit" value="Subscribe" class="form-control submit px-3" id="subscribe">
+                            <input type="button" value="Subscribing..." disabled class="form-control px-3" id="subscribing" hidden>
                         </div>
                     </form>
                 </div>

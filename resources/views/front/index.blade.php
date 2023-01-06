@@ -102,8 +102,8 @@
 			</div>
 		</div>
 		@include('front.news-section')
-		<div class="text-center btn-gallery">
-			<p><a href="{{ url('news-events')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See more News items')</a></p>
+		<div class="text-center">
+			<p><a href="{{ url('news-events')}}" class="px-4 py-3 mt-3">@lang('See more News items') <span class="ion-ios-arrow-round-forward"></span></a></p>
 		</div>
 	</div>
 </section>
@@ -117,8 +117,8 @@
 			</div>
 		</div>
 		@include('front.posts-section')
-		<div class="text-center btn-gallery">
-			<p><a href="{{ url('blog')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See more Articles')</a></p>
+		<div class="text-center">
+			<p><a href="{{ url('blog')}}" class="px-4 py-3 mt-3">@lang('See more Articles') <span class="ion-ios-arrow-round-forward"></span></a></p>
 		</div>
 	</div>
 </section>

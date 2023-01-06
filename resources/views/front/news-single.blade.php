@@ -21,7 +21,7 @@
         <h2 class="mb-3">#{{$newsSingle->id}}. {{$newsSingle->title}}</h2>
         <p>{!! $newsSingle->summary !!}</p>
         <p>
-          <img src="{{asset('images/'.$newsSingle->image->url)}}" alt="" class="img-fluid">
+          <img src="{{asset('images/'.$newsSingle->image->url)}}" alt="" class="img-fluid news-image">
         </p>
         <p>{{$newsSingle->content}}</p>
         @endif
@@ -30,7 +30,7 @@
       <div class="col-lg-4 sidebar ftco-animate">
 
         <div class="sidebar-box ftco-animate">
-          <h3>Recent News</h3>
+          <h3>@lang('Recent News')</h3>
           @if(@isset($lattestNews))
           @foreach($lattestNews as $index=>$newsSingle)
           <div class="block-21 mb-4 d-flex">

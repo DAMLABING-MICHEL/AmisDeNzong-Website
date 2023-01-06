@@ -49,11 +49,11 @@ class LoginRequest extends FormRequest
             RateLimiter::hit($this->throttleKey());
 
             throw ValidationException::withMessages([
-                'email' => trans('auth.failed'),
+                'email' => __('These credentials do not match our records.'),
             ]);
         }
 
-        RateLimiter::clear($this->throttleKey());
+            RateLimiter::clear($this->throttleKey());
     }
 
     /**

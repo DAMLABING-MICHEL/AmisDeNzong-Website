@@ -272,7 +272,11 @@ $(document).ready(function () {
     // subscribe to newsletter
     var email = document.getElementById('email')
     var emailError = document.getElementById('email-error')
+    var submit = document.getElementById('subscribe')
+    var subscribing = document.getElementById('subscribing')
     const subscribeToNewsletter = async e => {
+            submit.hidden = true
+            subscribing.hidden = false
         e.preventDefault();
         // Get datas
         const datas = {
@@ -291,14 +295,20 @@ $(document).ready(function () {
         if (response.ok) {
             if (data == 'subscribe') {
                 window.alert('You need to confirm your subscription, please check your email:' + email.value)
+                submit.hidden = false
+                subscribing.hidden = true
             } else {
                 showAlert('info', 'you have already subscribed');
             }
         } else {
             if (response.status == 422) {
                 emailError.innerText = data.message
+                submit.hidden = false
+                subscribing.hidden = true
             } else {
                 errorAlert();
+                submit.hidden = false
+                subscribing.hidden = true
             }
         }
     }

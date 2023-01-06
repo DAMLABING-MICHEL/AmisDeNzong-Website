@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Newsletter as ModelsNewsletter;
 use App\Models\Unsubscriber;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use Spatie\Newsletter\Facades\Newsletter;
 
 class NewsLetterController extends Controller
 {
@@ -21,13 +19,13 @@ class NewsLetterController extends Controller
         $request->validate([
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.ModelsNewsletter::class],
         ]);
-            Mail::send('front.newsletter-confirmation', array(
+          Mail::send('front.newsletter-confirmation', array(
                 'email' => $request->get('email'),
             ), function($message) use($request){
                 $message->to($request->email);
                 $message->subject('Newsletter Confirmation');
+                return back()->with('sending','value');
             });
-  
             return response()->json('subscribe');
     }
     

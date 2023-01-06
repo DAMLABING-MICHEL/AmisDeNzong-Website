@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('description');
-            $table->string('summary');
+            $table->text('summary');
             $table->string('venue');
             $table->date('date');
             $table->time('start_time');
