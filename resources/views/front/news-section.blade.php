@@ -9,7 +9,7 @@
             </a>
             <div class="text bg-white p-4">
                 <h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
-                <p>{{$newsSingle->summary}}</p>
+                <p>{!! substr($newsSingle->summary,0,100) !!}...</p>
                 <div class="d-flex align-items-center mt-4">
                     <p class="mb-0"><a href="{{ url('news-single/'.$newsSingle->id)}}" class="btn">@lang('Read More') <span class="ion-ios-arrow-round-forward"></span></a></p>
                 </div>

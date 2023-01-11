@@ -15,7 +15,7 @@
             <div class="text bg-white p-4">
                 <h3 class="heading"><a href="{{ url('blog-single/'. $post->slug)}}">{{$post->title}}</a></h3>
                 <small class="">@lang('Written on') {{ strftime('%d %B %Y', strtotime($post->created_at)) }} @lang('By') {{$post->user->name}}</small>
-                <p>{{$post->summary}}</p>
+                <p>{!! substr($post->summary,0,100) !!}...</p>
                 <div class="d-flex align-items-center mt-4">
                     <p class="mb-0"><a href="{{ url('blog-single/'. $post->slug)}}" class="btn">@lang('Read More') <span class="ion-ios-arrow-round-forward"></span></a></p>
                     <p class="ml-auto mb-0">

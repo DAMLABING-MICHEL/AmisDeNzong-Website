@@ -49,7 +49,7 @@
 							<p class="mb-0 ml-3"><span class="icon icon-clock-o event-grid-icon"></span> {{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</p>
 							<p class="mb-0 ml-3"><span class="icon icon-table event-grid-icon"></span> {{ $event->venue}}</p>
 						</div>
-						<p>{{$event->summary}}</p>
+						<p>{!! substr($event->summary,0,100) !!}...</p>
 						<div class="d-flex align-items-center mt-4">
 							<p class="mb-0"><a href="{{route('event',$event->id)}}" class="btn">@lang('Read More')<span class="ion-ios-arrow-round-forward"></span></a></p>
 						</div>
