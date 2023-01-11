@@ -20,7 +20,7 @@
                     @foreach($latestPosts as $index=>$post)
                     <div class="block-21 mb-4 d-flex">
                         @if (!@empty($post->image))
-                        <a class="blog-img mr-4" style="background-image: url(/images/{{$post->image->url}});"></a>
+                        <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$post->image->url)}});"></a>
                         @endif
                         <div class="text">
                             <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
@@ -62,8 +62,9 @@
                             <div>
                                 <p class="text-danger" id="email-error"></p>
                             </div>
-                            <input type="submit" value="Subscribe" class="form-control submit px-3" id="subscribe">
-                            <input type="button" value="Subscribing..." disabled class="form-control px-3" id="subscribing" hidden>
+                            <input type="submit" value="@lang('Subscribe')" class="form-control submit px-3" id="subscribe">
+                            <input type="button" value="@lang('Subscribing...')" disabled class="form-control px-3" id="subscribing" hidden>
+                            <input type="hidden" value="{{ url('newsletter') }}" id="newsletter-route">
                         </div>
                     </form>
                 </div>
@@ -82,7 +83,7 @@
                 <p>
                     @lang('Copyright') &copy;<script>
                         document.write(new Date().getFullYear());
-                    </script>@lang(' All rights reserved')
+                    </script> &nbsp; @lang(' All rights reserved')
                 </p>
             </div>
         </div>
@@ -110,8 +111,6 @@
 <script src="{{asset('js/aos.js')}}"></script>
 <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
 <script src="{{asset('js/scrollax.min.js')}}"></script>
-{{-- <script src="{{url('https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false')}}"></script>  --}}
- {{-- <script src="{{asset('js/google-map.js')}}"></script> --}}
 <script src="{{asset('js/main.js')}}"></script>
 <script src="{{asset('js/scripts.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

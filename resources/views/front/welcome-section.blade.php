@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-md-5 order-md-last wrap-about py-5 wrap-about bg-light">
 				<div class="text px-4 ftco-animate">
-					<h2 class="mb-4">@lang('Welcome to Groupe Scolaire Bilingue Privé LAÏC "Les Amis De Nzong & Fondation Candia"')</h2>
+					<h2 class="mb-4">@lang(' Welcome to Groupe Scolaire Bilingue Privé LAÏC "Les Amis De Nzong & Fondation Candia" ')</h2>
 					<p>@lang('The Bilingual Private School Group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is a unique and innovative school, consisting of a Bilingual Preschool and Primary School as well as an Anglophone Section for a Quality Education for your children.')</p>
 					<p>@lang('Created in September 2016, the Bilingual Private School Group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is located in the Nzong Village in front of the Bilingual High School of Toula - Nzong..')</p>
 					@request('/')
@@ -16,7 +16,7 @@
 					<p>@lang('The quality of the staff: A dynamic, talented and experienced team of people is available for the training and success of your children.')</p>
 					<p>@lang('-The quality of the environment: Recreation is within a secure compound.')</p>
 					<p>@lang('Transportation of students: A staff is in place to transport your children to and from school.')</p>
-					<p>@lang('With our motto "LOVE - WORK - PERSEVERANCE", we emphasize the importance of the children\'s well-being. we focus on the quality of education and the success of the children is our priority.')</p>
+					<p>@lang('With our motto "LOVE-WORK-PERSEVERANCE" ') @lang(',')@lang('we emphasize the importance of the children well-being.')@lang("'") @lang(' We focus on the quality of education and the success of the children is our priority.')</p>
 					<p>@lang('Les Amis de Nzong and Fondation Candia " is a unique school for the development of your children.')</p>
 					@endrequest
 				</div>
@@ -89,7 +89,7 @@
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Certified')</span> @lang('Teachers')</h2>
+				<h2 class="mb-4"><span>@lang('Certified Teachers')</span> </h2>
 				<p>@lang("A dynamic, talented and experienced team of staff is here to take care of your children's education.")</p>
 			</div>
 		</div>
@@ -126,7 +126,7 @@
 	</div>
 </section>
 
-<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(/images/bg_4.jpg);" data-stellar-background-ratio="0.5">
+<section class="ftco-section ftco-counter img" id="section-counter" style="background-image: url(images/bg_4.jpg);" data-stellar-background-ratio="0.5">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section heading-section-black ftco-animate">

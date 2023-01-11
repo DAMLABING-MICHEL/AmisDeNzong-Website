@@ -1,7 +1,7 @@
 @extends('front.app')
 @section('content')
 
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/news-events.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/news-events.jpg')}});">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -34,7 +34,7 @@
           @if(@isset($lattestNews))
           @foreach($lattestNews as $index=>$newsSingle)
           <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url(/images/{{$newsSingle->image->url}});"></a>
+            <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$newsSingle->image->url)}});"></a>
             <div class="text">
               <h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
               <div class="meta">

@@ -54,7 +54,7 @@ Route::controller(PostController::class)->group(function () {
     Route::post('/blog/search-posts','searchPosts'); 
 });
 Route::controller(CommentController::class)->group(function () {
-    Route::post('/blog-single/{slug}','store'); 
+    Route::post('/blog-single/{slug}','store')->name('storeComment'); 
     Route::get('/blog-single/{slug}/comments','comments');
     Route::delete('/blog-single/comments/{comment}','destroy');
 });

@@ -1,11 +1,8 @@
 @extends('front.app')
 @section('content')
-<!-- start subscribe confirmation modal -->
-<x-front.modal :modal="session('modal')" />
-<x-front.unsubscribe-modal :unsubscribe="session('unsubscribe')" />
-<!-- end subscribe confirmation modal -->
+
 <section class="home-slider owl-carousel">
-	<div class="slider-item" style="background-image: url(/images/slide1.jpg);">
+	<div class="slider-item" style="background-image: url(images/slide1.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -16,7 +13,7 @@
 		</div>
 	</div>
 
-	<div class="slider-item" style="background-image: url(/images/slide2.jpg);">
+	<div class="slider-item" style="background-image: url(images/slide2.jpg);">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -97,7 +94,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Latest')</span> @lang('News')</h2>
+				<h2 class="mb-4"><span>@lang('Latest News')</span></h2>
 				<p>@lang('Get informed about the activities of the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by reading our different news')</p>
 			</div>
 		</div>
@@ -112,7 +109,7 @@
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Recent')</span> @lang('Blog')</h2>
+				<h2 class="mb-4"><span>@lang('Recent Blog')</span></h2>
 				<p>@lang('Find articles on several subjects concerning the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" and more')</p>
 			</div>
 		</div>
@@ -127,7 +124,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class=""><span>@lang('Our')</span> @lang('Parteners')</h2>
+				<h2 class=""><span>@lang('Our Parteners')</span></h2>
 			</div>
 		</div>
 		<div class="row justify-content-around">

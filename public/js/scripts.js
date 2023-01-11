@@ -17,88 +17,90 @@ $(document).ready(function () {
         }
     });
     $('#exampleModalLong').modal('toggle')
-    var name = document.forms["register-form"]["name"];
-    var email = document.forms["register-form"]["email"];
-    var password = document.forms["register-form"]["password"];
-    var passwordConfirm = document.forms["register-form"]["password_confirmation"];
-    var submit = document.querySelector('#btn-submit');
-    var errorname = document.getElementById('errorname');
-    var validFields = 0
-    submit.disabled = true
-    name.addEventListener("keyup", function (event) {
-        // var errorname = document.getElementById('errorname');
-        var regname = /^[a-zA-Z]{2,10}$/;
-        var validName = regname.test(name.value);
-        if (name.value == "") {
-            errorname.innerHTML = "you must fill in your name";
-            errorname.style.color = "red";
-            // submit.disabled = true
-        } else if (validName == false && name.value.length < 2) {
-            errorname.innerHTML = "please enter a valid name! minimum 2 characters.";
-            errorname.style.color = "orange";
-            // submit.disabled = false
-        } else if (validName == false && name.value.length >= 10) {
-            errorname.innerHTML = "please enter a valid name! maximum 10 characters.";
-            errorname.style.color = "orange";
-        } else {
-            errorname.innerHTML = "";
-            errorname.style.color = "limegreen";
-            validFields += 1
-        }
-        buttunStatus()
-    });
-    email.addEventListener('keyup' , function () {
-        var regmail = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
-        if (email.value.length == 0) {
-            errorEmail.innerHTML = "you must fill in your e-mail address";
-            errorEmail.style.color = "red";   
-        }
-        else if (regmail.test(email.value) == false) {
-            errorEmail.innerHTML = "invalid e-mail address";
-            errorEmail.style.color = "red";   
-        }
-        else{
-            errorEmail.innerHTML = "";
-            errorEmail.style.color = "limegreen";
-            validFields += 1
-        }
-        buttunStatus()
-    })
-    password.addEventListener('keyup' , function () {
-        if (password.value.length == 0) {
-            errorPassword.innerHTML = "you must fill in your password";
-            errorPassword.style.color = "red";   
-        }
-        else if ( password.value.length >= 8) {
-            errorPassword.innerHTML = "";
-            validFields += 1
-        }
-        else{
-            errorPassword.innerHTML = "please enter a correct password.minimum 8 characters!";
-            errorPassword.style.color = "red";
-        }
-        buttunStatus()
-    })
-    passwordConfirm.addEventListener('keyup' , function () {
-        if (passwordConfirm.value.length == 0 || password.value != passwordConfirm.value) {
-            errorPasswordConfirm.innerHTML = "you must confirm your password";
-            errorPasswordConfirm.style.color = "red";   
-        }
-        else{
-            errorPasswordConfirm.innerHTML = "";
-            validFields += 1
-        }
-        buttunStatus()
-    })
-    function buttunStatus() {
-        if(validFields == 4){
-            submit.disabled = false
-        }
-        if (name.value != "" && email.value != "" && password.value != "" && passwordConfirm.value != "" &&
-            (errorname.innerHTML == "" && errorEmail.innerHTML == "" && errorPassword.innerHTML == "" && errorPasswordConfirm.innerHTML == "")) {
-            submit.disabled = false
-        } else {
-            submit.disabled = true
+    if(!!document.forms["register-form"] == true){
+        var name = document.forms["register-form"]["name"];
+        var email = document.forms["register-form"]["email"];
+        var password = document.forms["register-form"]["password"];
+        var passwordConfirm = document.forms["register-form"]["password_confirmation"];
+        var submit = document.querySelector('#btn-submit');
+        var errorname = document.getElementById('errorname');
+        var validFields = 0
+        submit.disabled = true
+        name.addEventListener("keyup", function (event) {
+            // var errorname = document.getElementById('errorname');
+            var regname = /^[a-zA-Z]{2,10}$/;
+            var validName = regname.test(name.value);
+            if (name.value == "") {
+                errorname.innerHTML = "you must fill in your name";
+                errorname.style.color = "red";
+                // submit.disabled = true
+            } else if (validName == false && name.value.length < 2) {
+                errorname.innerHTML = "please enter a valid name! minimum 2 characters.";
+                errorname.style.color = "orange";
+                // submit.disabled = false
+            } else if (validName == false && name.value.length >= 10) {
+                errorname.innerHTML = "please enter a valid name! maximum 10 characters.";
+                errorname.style.color = "orange";
+            } else {
+                errorname.innerHTML = "";
+                errorname.style.color = "limegreen";
+                validFields += 1
+            }
+            buttunStatus()
+        });
+        email.addEventListener('keyup' , function () {
+            var regmail = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
+            if (email.value.length == 0) {
+                errorEmail.innerHTML = "you must fill in your e-mail address";
+                errorEmail.style.color = "red";   
+            }
+            else if (regmail.test(email.value) == false) {
+                errorEmail.innerHTML = "invalid e-mail address";
+                errorEmail.style.color = "red";   
+            }
+            else{
+                errorEmail.innerHTML = "";
+                errorEmail.style.color = "limegreen";
+                validFields += 1
+            }
+            buttunStatus()
+        })
+        password.addEventListener('keyup' , function () {
+            if (password.value.length == 0) {
+                errorPassword.innerHTML = "you must fill in your password";
+                errorPassword.style.color = "red";   
+            }
+            else if ( password.value.length >= 8) {
+                errorPassword.innerHTML = "";
+                validFields += 1
+            }
+            else{
+                errorPassword.innerHTML = "please enter a correct password.minimum 8 characters!";
+                errorPassword.style.color = "red";
+            }
+            buttunStatus()
+        })
+        passwordConfirm.addEventListener('keyup' , function () {
+            if (passwordConfirm.value.length == 0 || password.value != passwordConfirm.value) {
+                errorPasswordConfirm.innerHTML = "you must confirm your password";
+                errorPasswordConfirm.style.color = "red";   
+            }
+            else{
+                errorPasswordConfirm.innerHTML = "";
+                validFields += 1
+            }
+            buttunStatus()
+        })
+        function buttunStatus() {
+            if(validFields == 4){
+                submit.disabled = false
+            }
+            if (name.value != "" && email.value != "" && password.value != "" && passwordConfirm.value != "" &&
+                (errorname.innerHTML == "" && errorEmail.innerHTML == "" && errorPassword.innerHTML == "" && errorPasswordConfirm.innerHTML == "")) {
+                submit.disabled = false
+            } else {
+                submit.disabled = true
+            }
         }
     }
 });
@@ -118,6 +120,7 @@ $(document).ready(function () {
     const forName = document.getElementById('forName');
     const abort = document.getElementById('abort');
     const commentIcon = document.getElementById('commentIcon');
+    const url = document.getElementById('url')
     // Add comment
     const addComment = async e => {
         e.preventDefault();
@@ -131,7 +134,7 @@ $(document).ready(function () {
         // Icon
         commentIcon.hidden = false;
         // Send request
-        const response = await fetch(`/blog-single/${postSlug.value}`, {
+        const response = await fetch(`${url.value}`, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(datas)
@@ -186,7 +189,7 @@ $(document).ready(function () {
     // Show comments
     const showComments = async () => {
         // Send request
-        const response = await fetch(`/blog-single/${postSlug.value}/comments`, {
+        const response = await fetch(`${this.url.value}/comments`, {
             method: 'GET',
             headers: headers
         });
@@ -241,16 +244,17 @@ $(document).ready(function () {
     // Delete comment
     const deleteComment = async e => {
         var comment = document.getElementById('getComment').value
+        var url = document.getElementById('getUrl')
         e.preventDefault();
         Swal.fire({
-            title: 'Really delete this comment ?',
+            title: 'Really delete this comment ? ',
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Yes",
             cancelButtonText: "No",
             preConfirm: () => {
-                return fetch(`/blog-single/comments/${comment}`, {
+                return fetch(`${url.value}/${comment}`, {
                         method: 'DELETE',
                         headers: headers
                     })
@@ -274,6 +278,7 @@ $(document).ready(function () {
     var emailError = document.getElementById('email-error')
     var submit = document.getElementById('subscribe')
     var subscribing = document.getElementById('subscribing')
+    const newsletterRoute = document.getElementById('newsletter-route')
     const subscribeToNewsletter = async e => {
             submit.hidden = true
             subscribing.hidden = false
@@ -283,7 +288,7 @@ $(document).ready(function () {
             email: email.value
         };
         // Send request
-        const response = await fetch(`/newsletter/`, {
+        const response = await fetch(`${newsletterRoute.value}`, {
             method: 'POST',
             headers: headers,
             body: JSON.stringify(datas)

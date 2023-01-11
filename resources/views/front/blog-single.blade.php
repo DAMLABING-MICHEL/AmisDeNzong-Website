@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url(/images/blog-bg.jpg);">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/blog-bg.jpg')}});">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -64,6 +64,7 @@
           </div>
           <p class="h-text-center" hidden>
             <input type="text" value="{{ $post->slug }}" id="postSlug">
+            <input type="text" value="{{ url('blog-single/'.$post->slug) }}" id="url" hidden>
           </p>
           <!-- END comment-list -->
           @if(Auth::check())
@@ -101,7 +102,7 @@
           <form method="post" action="{{url('/blog/search-posts')}}" class="search-form">
             @csrf
             <div class="form-group">
-              <input type="text" class="form-control" name="search" placeholder="Type a keyword and hit enter">
+              <input type="text" class="form-control" name="search" placeholder="@lang('Type a keyword and hit enter')">
               <span class="icon icon-search"></span>
             </div>
           </form>
@@ -127,7 +128,7 @@
             @if(@isset($lastPosts))
             @foreach($lastPosts as $index=>$post)
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url(/images/{{$post->image->url}});"></a>
+              <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$post->image->url)}});"></a>
               <div class="text">
                 <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">

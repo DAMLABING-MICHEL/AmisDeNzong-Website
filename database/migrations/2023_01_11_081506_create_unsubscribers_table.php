@@ -13,16 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
+        Schema::create('unsubscribers', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->text('description');
-            $table->text('summary');
-            $table->string('venue');
-            $table->date('date');
-            $table->time('start_time');
-            $table->time('end_time');
+            $table->string('email')->unique();
             $table->timestamps();
         });
     }
@@ -34,6 +27,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('unsubscribers');
     }
 };

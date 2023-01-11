@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/teacher-bg.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/teacher-bg.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -26,9 +26,9 @@
 					<div class="staff">
 						<div class="img-wrap d-flex align-items-stretch">
 							@if(@isset($staff->image))
-							<div class="img align-self-stretch" style="background-image: url(/images/{{$staff->image->url}});"></div>
+							<div class="img align-self-stretch" style="background-image: url(images/{{$staff->image->url}});"></div>
 							@else
-							<div class="img align-self-stretch" style="background-image: url(/images/{{$staff->image->url}});"></div>
+							<div class="img align-self-stretch" style="background-image: url(images/{{$staff->image->url}});"></div>
 							@endif
 							<div class="card-img-overlay card-image-description">
 								<div>

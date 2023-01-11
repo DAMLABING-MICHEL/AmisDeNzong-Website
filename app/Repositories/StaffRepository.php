@@ -9,7 +9,11 @@ class StaffRepository
     
     public function findCertifiedTeachers(){
         $this->gradeRepository = new GradeRepository();
-        $certifiedTeachers = Grade::findOrFail($this->gradeRepository->findHighestGrade()->id)->staffs()->get();
+        $grade = $this->gradeRepository->findHighestGrade();
+        $certifiedTeachers = null;
+        if($grade != null){
+            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->get();
+        }
         return $certifiedTeachers;
     }
     

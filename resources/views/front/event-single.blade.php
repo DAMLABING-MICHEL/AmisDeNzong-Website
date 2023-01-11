@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/news-events.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/news-events.jpg')}});">
     <div class="overlay"></div>
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -19,7 +19,7 @@
 
             <div class="col-lg-6 col-sm-8 col-xs-12">
                     @if (!@empty($event->image))
-                    <img alt="Event title here" class="img-responsive event-image" src="/images/{{$event->image->url}}" />
+                    <img alt="Event title here" class="img-responsive event-image" src="{{asset('images/'.$event->image->url)}}" />
                     @endif
                     <div class="single_event_text_single">
                         <h4>{{$event->title}}</h4>
@@ -27,7 +27,7 @@
                         <span><i class="icon icon-clock-o"></i> {{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</span>
                         <span><i class="icon icon-table"></i><strong>{{$event->venue}}</strong></span>
                         <div class="single_event_content">
-                            <p>{{$event->summary}}</p>
+                            <p>{!! $event->summary !!}</p>
                             <h3>Event Description</h3>
                             <p>{!! $event->description !!}</p>
                         </div>

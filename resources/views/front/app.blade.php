@@ -51,6 +51,10 @@
         </div>
     </div>
     @include('front.nav')
+    <!-- start subscribe confirmation modal -->
+        <x-front.modal :modal="session('modal')" />
+        <x-front.unsubscribe-modal :unsubscribe="session('unsubscribe')" />
+    <!-- end subscribe confirmation modal -->
     @yield('content')
 
     @include('front.footer')

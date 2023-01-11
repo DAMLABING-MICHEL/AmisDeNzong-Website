@@ -3,7 +3,7 @@
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
 				<h2 class="mb-4"><span>@lang('Testimonials')</span></h2>
-				<p>@lang('Some testimonies of people who are satisfied with the education of their children in the private Bilingual LAÏC school group "Les Amis De Nzong et Fondation Candia"')</p>
+				<p>@lang(' Some testimonies of people who are satisfied with the education of their children in the private Bilingual LAÏC school group "Les Amis De Nzong et Fondation Candia" ')</p>
 			</div>
 		</div>
 		<div class="row ftco-animate justify-content-center">
@@ -14,7 +14,7 @@
 					<div class="item">
 						<div class="testimony-wrap d-flex">
 							@if(@isset($testimonial->image))
-							<div class="user-img mr-4" style="background-image: url(images/{{$testimonial->image->url}})">
+							<div class="user-img mr-4" style="background-image: url(images/{{$testimonial->image->url}});">
 							</div>
 							@endif
 							<div class="text ml-2 bg-light">

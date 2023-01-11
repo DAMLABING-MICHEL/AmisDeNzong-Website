@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/news-events.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url('images/news-events.jpg');">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -16,7 +16,7 @@
 	<div class="container">
 		<div class="row justify-content-center">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Our')</span> @lang('News')</h2>
+				<h2 class="mb-4"><span>@lang('Our News')</span></h2>
 				<p>@lang('Get informed about the activities of the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by reading our different news')</p>
 			</div>
 		</div>
@@ -25,7 +25,7 @@
 		{{-- end include news-list section --}}
 		<div class="row justify-content-center events-list">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Our')</span> @lang('Events')</h2>
+				<h2 class="mb-4"><span>@lang('Our Events')</span></h2>
 				<p>@lang('Find articles on several subjects concerning the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" and more')</p>
 			</div>
 		</div>
@@ -35,7 +35,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					@if (!@empty($event->image))
-					<div class="block-20 d-flex" id="event-img"style="background-image: url('/images/{{$event->image->url}}');">
+					<div class="block-20 d-flex" id="event-img"style="background-image: url('images/{{$event->image->url}}');">
 						<div class="text-center p-2 event-date d-flex justify-content-center rounded">
 							<div class="p-2" id="event-day"><span class="day text-white">{{ strftime('%d', strtotime($event->date)) }}</span></div>
 							<div class="p-2" id="event-month"><span class="mos text-white">{{ strftime('%b', strtotime($event->date)) }}</span></div>

@@ -17,13 +17,12 @@
             @if(Auth::check())
             <p>
                 @if($comment->depth < config('app.commentsNestedLevel')) 
-                <a href="#" data-name="{{ $comment->user->name }}" data-id="{{ $comment->id }}" class="reply replycomment">Reply</a>&nbsp;
+                <a href="#" data-name="{{ $comment->user->name }}" data-id="{{ $comment->id }}" class="reply replycomment">@lang('Reply')</a>&nbsp;
                 @endif
                 @if(Auth::user()->name == $comment->user->name)
                 <a href="#" class="comment-reply-link deletecomment" style="color:red">
-                    Delete
+                    @lang('Delete')
                 </a>
-                <input type="text" value="{{$comment->id}}" id="getComment" hidden>
                 @endif
                 @endif
             </p>
@@ -31,5 +30,7 @@
         <ul class="children">
             <x-front.comments :comments="$comment->children" />
         </ul>
+        <input type="text" value="{{$comment->id}}" id="getComment" hidden>
+        <input type="text" value="{{url('/blog-single/comments')}}" id="getUrl" hidden>
     </li>
 </ul>

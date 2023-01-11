@@ -1,12 +1,14 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('/images/contact-bg.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/contact-bg.jpg')}});">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
         <h1 class="mb-2 bread">@lang('Contact Us')</h1>
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Contact') <i class="ion-ios-arrow-forward"></i></span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i
+                class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Contact') <i
+              class="ion-ios-arrow-forward"></i></span></p>
       </div>
     </div>
   </div>
@@ -36,7 +38,7 @@
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
           <h3 class="mb-4">@lang('Website')</h3>
-          <p><a href="#">yoursite.com</a></p>
+          <p><a href="#">www.Lesamisdenzong-fondationcandia.com</a></p>
         </div>
       </div>
     </div>
@@ -55,9 +57,10 @@
       <div class="col-md-6 p-4 p-md-5 order-md-last bg-light">
         <!-- CROSS Site Request Forgery Protection -->
         <form method="post" action="{{ route('contact.store') }}">
-        @csrf
+          @csrf
           <div class="form-group">
-            <input type="text" class="form-control  {{ $errors->has('name') ? 'error' : '' }}" placeholder="@lang('Your Name')" name="name" id="name">
+            <input type="text" class="form-control  {{ $errors->has('name') ? 'error' : '' }}"
+              placeholder="@lang('Your Name')" name="name" id="name">
             <!-- Error -->
             @if($errors->has('name'))
             <div class="error">
@@ -66,7 +69,8 @@
             @endif
           </div>
           <div class="form-group">
-            <input type="text" class="form-control {{ $errors->has('email') ? 'error' : '' }}" placeholder="@lang('Your Email')" name="email" id="email">
+            <input type="text" class="form-control {{ $errors->has('email') ? 'error' : '' }}"
+              placeholder="@lang('Your Email')" name="email" id="email">
             <!-- Error -->
             @if($errors->has('email'))
             <div class="error">
@@ -75,7 +79,8 @@
             @endif
           </div>
           <div class="form-group">
-            <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}" placeholder="@lang('Subject')" name="subject" id="subject">
+            <input type="text" class="form-control {{ $errors->has('subject') ? 'error' : '' }}"
+              placeholder="@lang('Subject')" name="subject" id="subject">
             <!-- Error -->
             @if($errors->has('subject'))
             <div class="error">
@@ -84,7 +89,8 @@
             @endif
           </div>
           <div class="form-group">
-            <textarea id="" cols="30" rows="7" class="form-control {{ $errors->has('message') ? 'error' : '' }}" placeholder="Message" name="message" id="message"></textarea>
+            <textarea id="" cols="30" rows="7" class="form-control {{ $errors->has('message') ? 'error' : '' }}"
+              placeholder="Message" name="message" id="message"></textarea>
             <!-- Error -->
             @if($errors->has('message'))
             <div class="error">
@@ -98,7 +104,9 @@
         </form>
       </div>
       <div class="col-md-6 d-flex align-items-stretch">
-        <div id="map"></div>
+        {{-- <div id="map"><iframe
+            src="https://www.google.com/maps/d/embed?mid=16f3D8BpPgQjeFd8ri_uxqz1Yp0iJH2w&ehbc=2E312F" width="640"
+            height="480"></iframe></div> --}}
       </div>
     </div>
   </div>
