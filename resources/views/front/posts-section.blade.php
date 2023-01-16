@@ -12,7 +12,7 @@
                 </div>
             </a>
             @endif
-            <div class="text bg-white p-4">
+            <div class="text p-4">
                 <h3 class="heading"><a href="{{ url('blog-single/'. $post->slug)}}">{{$post->title}}</a></h3>
                 <small class="">@lang('Written on') {{ strftime('%d %B %Y', strtotime($post->created_at)) }} @lang('By') {{$post->user->name}}</small>
                 <p>{!! substr($post->summary,0,100) !!}...</p>

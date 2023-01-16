@@ -5,8 +5,8 @@
     <div class="container">
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
-                <h1 class="mb-2 bread">News & Events</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>News & Events <i class="ion-ios-arrow-forward"></i></span></p>
+                <h1 class="mb-2 bread">@lang('News & Events')</h1>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('News & Events') <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
@@ -28,7 +28,7 @@
                         <span><i class="icon icon-table"></i><strong>{{$event->venue}}</strong></span>
                         <div class="single_event_content">
                             <p>{!! $event->summary !!}</p>
-                            <h3>Event Description</h3>
+                            <h3>@lang('Event Description')</h3>
                             <p>{!! $event->description !!}</p>
                         </div>
                     </div>
@@ -39,34 +39,34 @@
 
             <div class="col-lg-4 col-sm-4 col-xs-12">
                 <div class="event_info border rounded">
-                    <h3 class="p-3 m-2 text-center text-white font-bold event-info-title">Event Informations</h3>
+                    <h3 class="p-3 m-2 text-center text-white font-bold event-info-title">@lang('Event Informations')</h3>
                     <div class="event-list pb-5">
 
                         <div class="d-flex pl-2 pt-4">
                             <span class="p-3 event-icon text-white"><i class="icon icon-calendar"></i></span>
                             <div class="d-flex flex-column">
-                                <span>Event Date</span>
+                                <span>@lang('Event Date')</span>
                                 <span>{{ strftime('%m %b %Y', strtotime($event->date)) }}</span>
                             </div>
                         </div>
                         <div class="d-flex pl-2 pt-4">
                             <span class="p-3 event-icon text-white"><i class="icon icon-clock-o"></i></span>
                             <div class="d-flex flex-column">
-                                <span>Start-End time</span>
+                                <span>@lang('Start-End time')</span>
                                 <span>{{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</span>
                             </div>
                         </div>
                         <div class="d-flex pl-2 pt-4">
                             <span class="p-3 event-icon text-white"><i class="icon icon-phone"></i></span>
                             <div class="d-flex flex-column">
-                                <span>Contact for Details</span>
-                                <span>+237 650 71 83 89 / 693 03 44 72</span>
+                                <span>@lang('Contact for Details')</span>
+                                <span>{{$event->contact}}</span>
                             </div>
                         </div>
                         <div class="d-flex pl-2 pt-4">
                             <span class="p-3 event-icon text-white"><i class="icon icon-map"></i></span>
                             <div class="d-flex flex-column">
-                                <span>Event Venue</span>
+                                <span>@lang('Event Venue')</span>
                                 <span>{{$event->venue}}</span>
                             </div>
                         </div>

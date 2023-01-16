@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('features', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->string('description');
-            $table->timestamps();
+        Schema::table('events', function (Blueprint $table) {
+            $table->string('contact');
         });
     }
 
@@ -28,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('features');
+        Schema::table('events', function (Blueprint $table) {
+            $table->dropColumn('contact');
+        });
     }
 };

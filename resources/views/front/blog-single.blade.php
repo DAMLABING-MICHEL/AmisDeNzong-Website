@@ -6,7 +6,10 @@
     <div class="row no-gutters slider-text align-items-center justify-content-center">
       <div class="col-md-9 ftco-animate text-center">
         <h1 class="mb-2 bread">@lang('Blog Single')</h1>
-        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a href="{{ url('/blog')}}">@lang('Blog') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Blog Single') <i class="ion-ios-arrow-forward"></i></span></p>
+        <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i
+                class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a
+              href="{{ url('/blog')}}">@lang('Blog') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Blog
+            Single') <i class="ion-ios-arrow-forward"></i></span></p>
       </div>
     </div>
   </div>
@@ -24,15 +27,14 @@
         </p>
         {!! $post->content !!}
         <div class="tag-widget post-tag-container mb-5 mt-5">
-          @if(@isset($post))
           <div class="tagcloud">
             @if(@isset($post_tags))
             @foreach($post_tags as $index=>$post_tag)
-            <a href="{{url('/blog/view-posts-by-tags/'.$post_tag->slug)}}" class="tag-cloud-link">{{ $post_tag->title}}</a>
+            <a href="{{url('/blog/view-posts-by-tags/'.$post_tag->slug)}}" class="tag-cloud-link">{{
+              $post_tag->title}}</a>
             @endforeach
             @endif
           </div>
-          @endif
         </div>
 
         <div class="about-author d-flex p-4 bg-light">
@@ -58,7 +60,8 @@
             </div>
             @else
             @if(Auth::guest())
-            <span>@lang('You must be connected to add a comment.') <a href="{{route('login')}}">@lang('login')</a></span>
+            <span>@lang('You must be connected to add a comment.') <a
+                href="{{route('login')}}">@lang('login')</a></span>
             @endif
             @endif
           </div>
@@ -85,7 +88,8 @@
                 <textarea name="message" id="message" cols="30" rows="10" class="form-control"></textarea>
               </div>
               <div class="form-group">
-                <input type="submit" value="Post Comment" id="submit" name="send-comment" class="btn py-3 px-4 btn-primary">
+                <input type="submit" value="Post Comment" id="submit" name="send-comment"
+                  class="btn py-3 px-4 btn-primary">
               </div>
               <p id="commentIcon" class="h-text-center" hidden>
                 <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
@@ -112,11 +116,12 @@
           @if(@isset($categories))
           <ul class="categories">
             @foreach($categories as $index=>$category)
-              @if (count($category->posts()->get()) > 0)
-              <li><a href="{{url('/blog/view-posts-by-categories/'.$category->slug)}}" class="category-link">{{$category->title}}
+            @if (count($category->posts()->get()) > 0)
+            <li><a href="{{url('/blog/view-posts-by-categories/'.$category->slug)}}"
+                class="category-link">{{$category->title}}
                 <span>({{count($category->posts()->get())}})</span>
               </a></li>
-              @endif
+            @endif
             @endforeach
           </ul>
           @endif
@@ -132,9 +137,10 @@
               <div class="text">
                 <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">
-                  <!-- <div><a href="#"><span class="icon-calendar"></span> {{ $post->created_at->format('d-m-y') }}</a></div> -->
-                  <div><a href="#"><span class="icon-calendar"></span> {{ strftime('%m %B %Y', strtotime($post->created_at)) }}</a></div>
-                  <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</</a></div>
+                  <div><a href="#"><span class="icon-calendar"></span> {{ strftime('%m %B %Y',
+                      strtotime($post->created_at)) }}</a></div>
+                  <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</< /a>
+                  </div>
                   @if($post->valid_comments_count)
                   <div><a href="#"><span class="icon-chat"></span> {{$post->valid_comments_count}}</a></div>
                   @endif
@@ -144,21 +150,21 @@
             @endforeach
             @endif
           </div>
-
-          <div class="sidebar-box ftco-animate">
-            <h3>@lang('Tag Cloud')</h3>
-            @if(@isset($tags))
-            <ul class="tagcloud m-0 p-0">
-              @foreach($tags as $index=>$tag)
-                @if (count($tag->posts()->get()) > 0)
-                <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
-                @endif
-              @endforeach
-            </ul>
-            @endif
-          </div>
-        </div><!-- END COL -->
-      </div>
+        </div>
+        <div class="sidebar-box ftco-animate">
+          <h3>@lang('Tag Cloud')</h3>
+          @if(@isset($tags))
+          <ul class="tagcloud m-0 p-0">
+            @foreach($tags as $index=>$tag)
+              @if (count($tag->posts()->get()) > 0)
+              <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
+              @endif
+            @endforeach
+          </ul>
+          @endif
+        </div>
+      </div><!-- END COL -->
     </div>
+  </div>
 </section>
 @endsection

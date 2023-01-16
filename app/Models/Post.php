@@ -5,10 +5,14 @@ namespace App\Models;
 use App\Events\ModelCreated;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Translatable\HasTranslations;
 
 class Post extends Model
 {
     use HasFactory;
+    use HasTranslations;
+
+    public $translatable = ['title','summary','content'];
 
     protected $dispatchesEvents = [
         'created' => ModelCreated::class,

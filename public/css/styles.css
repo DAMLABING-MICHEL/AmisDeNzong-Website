@@ -42,8 +42,6 @@
 
 .portfolio-item {
     /*width:100%;*/
-    display: flex !important;
-    justify-content: center !important;
 }
 
 .portfolio-item .item {

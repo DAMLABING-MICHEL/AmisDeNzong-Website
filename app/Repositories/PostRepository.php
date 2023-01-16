@@ -18,10 +18,9 @@ class PostRepository
         $posts = Post::limit($limit)->select('*')->orderBy('created_at', 'asc')->get();
         for ($i = 0; $i < count($posts); $i++) {
             $posts[$i] = $this->postWithValidComments($posts[$i]);
-        }
+            }
         return $posts;
     }
-    
     public function findPostBySlug($slug){
         $post = Post::with(
             'user:id,name,email',

@@ -13647,7 +13647,7 @@ textarea.form-control {
     opacity: .5;
 }
 
-.tagcloud a {
+.tag-cloud a {
     text-transform: uppercase;
     display: inline-block;
     padding: 4px 10px;
