@@ -37,7 +37,7 @@
                             {{ auth()->user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ url('profile') }}">profile</a>
+                            <a class="dropdown-item" href="{{ url('profile') }}">@lang('Profile')</a>
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST" hidden>
                                     @csrf

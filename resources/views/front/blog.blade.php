@@ -30,7 +30,7 @@
     @endif
     @if(!@isset($message) && !@isset($title))
     <div class="text-center heading-section ftco-animate d-flex justify-content-center posts-list">
-      <h2 class="text-center">Our Posts</h2>
+      <h2 class="text-center">@lang('Our Posts')</h2>
     </div>
     @endif
     @include('front.posts-section')

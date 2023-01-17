@@ -9,8 +9,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <p>thanks for subscribing to our newsletter!</p>
-        <p>we have sent you an email following your subscription</p>
+        <p>@lang('thanks for subscribing to our newsletter!')</p>
+        <p>@lang('we have sent you an email following your subscription')</p>
       </div>
     </div>
   </div>

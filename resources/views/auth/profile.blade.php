@@ -16,30 +16,30 @@
         @method('PUT')
 
         <div class="d-flex row justify-content-center">
-            <div class="">
+            <div class="col-md-4">
                 <!-- Name -->
                 <div class="mt-2">
-                    <label for="name">Name</label>
-                    <input id="name" class="form-control" type="text" name="name" placeholder="Your name" value="{{ old('name', auth()->user()->name) }}" required autofocus>
+                    <label for="name">@lang('Name')</label>
+                    <input id="name" class="form-control" type="text" name="name" placeholder="@lang('Your name')" value="{{ old('name', auth()->user()->name) }}" required autofocus>
                 </div>
 
                 <!-- Email Address -->
                 <div class="mt-4">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email', auth()->user()->email) }}" required placeholder="Your email" aria-describedby="emailHelp" placeholder="Enter email">
+                    <label for="email">@lang('Email')</label>
+                    <input type="email" class="form-control" id="email" name="email" value="{{ old('email', auth()->user()->email) }}" required placeholder="@lang('Your email')" aria-describedby="emailHelp">
                 </div>
             </div>
-            <div class="ml-5">
+            <div class="ml-5 col-md-4">
                 <!-- Password -->
                 <div class="mt-2">
-                    <label for="password">Password (optional)</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Your Password if you want to change it">
+                    <label for="password">@lang('Password (optional)')</label>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="@lang('Your Password if you want to change it')">
                 </div>
 
                 <!-- Confirm Password -->
-                <div class="m-4">
-                    <label for="password_confirmation">Confirm Password</label>
-                    <input type="password_confirmation" class="form-control" id="password" name="password_confirmation" placeholder="Confirm your Password">
+                <div class="mt-4">
+                    <label for="password_confirmation">@lang('Confirm Password')</label>
+                    <input type="password_confirmation" class="form-control" id="password" name="password_confirmation" placeholder="@lang('Confirm your Password')">
                 </div>
 
             </div>

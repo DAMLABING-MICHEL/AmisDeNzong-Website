@@ -30,6 +30,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        setlocale(LC_TIME, config('app.locale'));
         Schema::defaultStringLength(191);
         if (! App::runningInConsole()) {
             $postController = new PostService();

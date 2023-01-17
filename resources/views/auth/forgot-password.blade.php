@@ -10,13 +10,13 @@
                 <x-auth.validation-errors :errors="$errors" />
             </div>
             <div class="d-flex justify-content-center">
-                <p class="">Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.'</p>
+                <p class="">@lang('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.')'</p>
             </div>
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
                 <!-- Email Address -->
                 <x-auth.input-email />
-                <x-auth.submit title="Email Password Reset Link" />
+                <x-auth.submit title="Send" />
             </form>
         </div>
     </div>

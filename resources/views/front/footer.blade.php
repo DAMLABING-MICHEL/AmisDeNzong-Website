@@ -25,7 +25,7 @@
                         <div class="text">
                             <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                             <div class="meta">
-                                <div><a href="#"><span class="icon-calendar"></span> {{ strftime('%d %B %Y', strtotime($post->created_at)) }}</a></div>
+                                <div><a href="#"><span class="icon-calendar"></span> {{ \carbon\carbon::parse($post->created_at)->isoFormat('LL') }}</a></div>
                                 <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</a>
                                 </div>
                                 @if($post->valid_comments_count)
@@ -58,7 +58,7 @@
                     <form method="post" action="{{url('newsletter')}}" class="subscribe-form">
                         @csrf
                         <div class="form-group">
-                            <input type="email" class="form-control mb-2 text-center" name="email" id="email" placeholder="Enter email address">
+                            <input type="email" class="form-control mb-2 text-center" name="email" id="email" placeholder="@lang('Enter email address')">
                             <div>
                                 <p class="text-danger" id="email-error"></p>
                             </div>
@@ -81,7 +81,7 @@
             <div class="col-md-12 text-center">
 
                 <p>
-                    @lang('Copyright') &copy;<script>
+                    @lang('Copyright') &copy;&nbsp;<script> 
                         document.write(new Date().getFullYear());
                     </script> &nbsp; @lang(' All rights reserved')
                 </p>
@@ -112,5 +112,8 @@
 <script src="{{asset('js/jquery.animateNumber.min.js')}}"></script>
 <script src="{{asset('js/scrollax.min.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
-<script src="{{asset('js/scripts.js')}}"></script>
+{{-- <script  type="text/javascript" src="{{asset('js/scripts.js')}}"></script> --}}
+<script>
+    @include('front.scripts')
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>

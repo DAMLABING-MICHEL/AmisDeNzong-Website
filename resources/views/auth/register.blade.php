@@ -6,7 +6,7 @@
          <x-auth.session-status :status="session('status')" />
         <!-- Validation Errors -->
         <x-auth.validation-errors :errors="$errors" />
-        <h3 class="text-center">Register</h3>
+        <h3 class="text-center">@lang('Register')</h3>
     </div>
     <form class="user-form" name="register-form" method="POST" action="{{ route('register') }}">
         <div class="">
@@ -16,8 +16,8 @@
                 <div class="">
                     <!-- Name -->
                     <div class="mt-4 input-register">
-                        <label for="name">Name</label>
-                        <input id="username" class="form-control" type="text" name="name" placeholder="Your name" value="{{ old('name') }}" required autofocus>
+                        <label for="name">@lang('Name')</label>
+                        <input id="username" class="form-control" type="text" name="name" placeholder="@lang('Your name')" value="{{ old('name') }}" required autofocus>
                         <div id="errorname"></div>
                         <!-- Email Address -->
                         <x-auth.input-email />
@@ -28,8 +28,8 @@
                     <x-auth.input-password />
                     <!-- Confirm Password -->
                     <div class="mt-4">
-                        <label for="password_confirmation">Confirm Password</label>
-                        <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Confirm your Password" required>
+                        <label for="password_confirmation">@lang('Confirm Password')</label>
+                        <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="@lang('Confirm your Password')" required>
                         <div id="errorPasswordConfirm"></div>
                     </div>
                 </div>

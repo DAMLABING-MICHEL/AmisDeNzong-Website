@@ -6,7 +6,7 @@
         <div class="row no-gutters slider-text align-items-center justify-content-center">
             <div class="col-md-9 ftco-animate text-center">
                 <h1 class="mb-2 bread">@lang('News & Events')</h1>
-                <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('News & Events') <i class="ion-ios-arrow-forward"></i></span></p>
+                <p class="breadcrumbs"><span class="mr-2"><a href="{{ url('/')}}">@lang('Home') <i class="ion-ios-arrow-forward"></i></a><span class="mr-2"><a href="{{url('/news-events')}}">@lang('News & Events') <i class="ion-ios-arrow-forward"></i></a></span> <span>@lang('Event Single') <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
         </div>
     </div>
@@ -23,7 +23,7 @@
                     @endif
                     <div class="single_event_text_single">
                         <h4>{{$event->title}}</h4>
-                        <span><i class="icon icon-calendar"></i> {{ strftime('%m %b %Y', strtotime($event->date)) }}</span>
+                        <span><i class="icon icon-calendar"></i> {{ (\carbon\carbon::parse($event->date)->isoFormat("LL")) }}</span>
                         <span><i class="icon icon-clock-o"></i> {{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</span>
                         <span><i class="icon icon-table"></i><strong>{{$event->venue}}</strong></span>
                         <div class="single_event_content">
@@ -46,7 +46,7 @@
                             <span class="p-3 event-icon text-white"><i class="icon icon-calendar"></i></span>
                             <div class="d-flex flex-column">
                                 <span>@lang('Event Date')</span>
-                                <span>{{ strftime('%m %b %Y', strtotime($event->date)) }}</span>
+                                <span>{{ (\carbon\carbon::parse($event->date)->isoFormat("LL")) }}</span>
                             </div>
                         </div>
                         <div class="d-flex pl-2 pt-4">

@@ -59,11 +59,11 @@ class PostService
     public function getMessage($categorySlug,$tagSlug){
         if($categorySlug != null){
             $category = $this->categoryRepository->findCategoryBySlug($categorySlug);
-            $message = "posts for category " .$category->title;
+            $message = __("posts for category ") .$category->title;
         }
         else if($tagSlug != null){
             $tag = $this->tagRepository->findTagBySlug($tagSlug);
-            $message = " posts for tag " .$tag->title;
+            $message = __(" posts for tag ") .$tag->title;
         }
         return $message;
     }

@@ -35,11 +35,11 @@ $(document).ready(function () {
                 errorname.style.color = "red";
                 // submit.disabled = true
             } else if (validName == false && name.value.length < 2) {
-                errorname.innerHTML = "please enter a valid name! minimum 2 characters.";
+                errorname.innerHTML = "@lang('please enter a valid name! minimum 2 characters.')";
                 errorname.style.color = "orange";
                 // submit.disabled = false
-            } else if (validName == false && name.value.length >= 10) {
-                errorname.innerHTML = "please enter a valid name! maximum 10 characters.";
+            } else if (validName == false && name.value.length >= 30) {
+                errorname.innerHTML = "@lang('please enter a valid name! maximum 30 characters.')";
                 errorname.style.color = "orange";
             } else {
                 errorname.innerHTML = "";
@@ -51,11 +51,11 @@ $(document).ready(function () {
         email.addEventListener('keyup' , function () {
             var regmail = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/;
             if (email.value.length == 0) {
-                errorEmail.innerHTML = "you must fill in your e-mail address";
+                errorEmail.innerHTML = "@lang('you must fill in your e-mail address')";
                 errorEmail.style.color = "red";   
             }
             else if (regmail.test(email.value) == false) {
-                errorEmail.innerHTML = "invalid e-mail address";
+                errorEmail.innerHTML = "@lang('invalid e-mail address')";
                 errorEmail.style.color = "red";   
             }
             else{
@@ -67,7 +67,7 @@ $(document).ready(function () {
         })
         password.addEventListener('keyup' , function () {
             if (password.value.length == 0) {
-                errorPassword.innerHTML = "you must fill in your password";
+                errorPassword.innerHTML = "@lang('you must fill in your password')";
                 errorPassword.style.color = "red";   
             }
             else if ( password.value.length >= 8) {
@@ -75,14 +75,14 @@ $(document).ready(function () {
                 validFields += 1
             }
             else{
-                errorPassword.innerHTML = "please enter a correct password.minimum 8 characters!";
+                errorPassword.innerHTML = "@lang('please enter a correct password.minimum 8 characters!')";
                 errorPassword.style.color = "red";
             }
             buttunStatus()
         })
         passwordConfirm.addEventListener('keyup' , function () {
             if (passwordConfirm.value.length == 0 || password.value != passwordConfirm.value) {
-                errorPasswordConfirm.innerHTML = "you must confirm your password";
+                errorPasswordConfirm.innerHTML = "@lang('you must confirm your password')";
                 errorPasswordConfirm.style.color = "red";   
             }
             else{
@@ -148,9 +148,9 @@ $(document).ready(function () {
             purge();
             if (data == 'ok') {
                 showComments();
-                showAlert('infos', 'success', 'Your comment has been saved');
+                showAlert('infos', 'success', '@lang('Your comment has been saved')');
             } else {
-                showAlert('info', 'Thanks for your comment. It will appear when an administrator has validated it. Once you are validated your other comments immediately appear.');
+                showAlert('info', '@lang('Thanks for your comment. It will appear when an administrator has validated it. Once you are validated your other comments immediately appear.')');
             }
         } else {
             if (response.status == 422) {
@@ -198,7 +198,6 @@ $(document).ready(function () {
         document.getElementById('commentsList').innerHTML = data.html;
         // if(Auth::check())
         // 	document.getElementById('respond').hidden = false;
-        // @endif
     }
     // Reply to comment
     const replyToComment = e => {
@@ -299,7 +298,7 @@ $(document).ready(function () {
         // Manage response
         if (response.ok) {
             if (data == 'subscribe') {
-                window.alert('You need to confirm your subscription, please check your email:' + email.value)
+                window.alert('@lang('You need to confirm your subscription, please check your email:')' +email.value)
                 submit.hidden = false
                 subscribing.hidden = true
             } else {

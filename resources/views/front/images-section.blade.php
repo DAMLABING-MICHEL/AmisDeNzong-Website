@@ -1,8 +1,7 @@
 <div class="d-flex justify-content-center">
     <div class="col-md-8 text-center heading-section ftco-animate">
         <h2 class="mb-4"><span>@lang('Our Gallery')</span></h2>
-        <p>@lang('Learn more about the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by
-            exploring our Image Gallery')</p>
+        <p>@lang('Learn more about the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" by exploring our Image Gallery')</p>
         <div class="portfolio-menu mt-2 mb-4">
             <ul>
                 <li class="btn btn-outline-danger active" data-filter="*">@lang('All')</li>

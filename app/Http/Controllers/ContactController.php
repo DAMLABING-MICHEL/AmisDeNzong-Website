@@ -37,7 +37,7 @@ class ContactController extends Controller
                 $message->from($request->email);
                 $message->to('sylviadamlabing@gmail.com', 'Admin')->subject($request->get('subject'));
             });
-            return back()->with('success', 'We have received your message and would like to thank you for writing to us.');
+            return back()->with('success', __('We have received your message and would like to thank you for writing to us.'));
         } catch (\Throwable $th) {
             echo('connection failed!');
         }
