@@ -26,7 +26,6 @@
 		<div class="row justify-content-center events-list">
 			<div class="col-md-8 text-center heading-section ftco-animate">
 				<h2 class="mb-4"><span>@lang('Our Events')</span></h2>
-				<p>@lang('Find articles on several subjects concerning the Private Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" and more')</p>
 			</div>
 		</div>
 		<div class="row justify-content-center">
@@ -46,7 +45,7 @@
 						<h3 class="heading"><a href="{{route('event',$event->id)}}">{{$event->title}}</a></h3>
 						<div class="d-flex">
 							<p class="mb-0"><span class="icon icon-calendar event-grid-icon"></span> {{ \carbon\carbon::parse($event->date)->isoFormat('LL') }}</p>
-							<p class="mb-0 ml-3"><span class="icon icon-clock-o event-grid-icon"></span> {{ (\carbon\carbon::parse($event->start_time)->isoFormat("h:mm A")) }}-{{ $event->end_time->format('h:i A') }}</p>
+							<p class="mb-0 ml-3"><span class="icon icon-clock-o event-grid-icon"></span> {{ (\carbon\carbon::parse($event->start_time)->isoFormat("HH:mm A")) }}-{{ $event->end_time->format('h:i A') }}</p>
 							<p class="mb-0 ml-3"><span class="icon icon-table event-grid-icon"></span> {{ $event->venue}}</p>
 						</div>
 						<p>{!! substr($event->summary,0,100) !!}...</p>

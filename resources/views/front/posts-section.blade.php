@@ -7,7 +7,7 @@
             <a href="{{ url('blog-single/'. $post->slug)}}" class="block-20 d-flex align-items-end" style="background-image: url({{asset('images/'.$post->image->url) }});">
                 <div class="meta-date text-center p-2">
                     <span class="day">{{ strftime('%d', strtotime($post->created_at)) }} </span>
-                    <span class="mos">{{  strftime('%B', strtotime( \carbon\carbon::parse($post->created_at)->isoFormat('LL') )) }}</span>
+                    <span class="mos">{{ \carbon\carbon::parse($post->created_at)->isoFormat('MMMM')  }}</span>
                     <span class="yr">{{ strftime('%Y', strtotime($post->created_at)) }}</span>
                 </div>
             </a>

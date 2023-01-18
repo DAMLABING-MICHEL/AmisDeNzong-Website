@@ -103,10 +103,12 @@
           </div>
         </form>
       </div>
+      <div class="col-md-12">
+        <h1>@lang('Location map')</h1>
+      </div>
       <div class="col-md-6 d-flex align-items-stretch">
-        {{-- <div id="map"><iframe
-            src="https://www.google.com/maps/d/embed?mid=16f3D8BpPgQjeFd8ri_uxqz1Yp0iJH2w&ehbc=2E312F" width="640"
-            height="480"></iframe></div> --}}
+        <div id="map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3971.672530384141!2d10.067748199999999!3d5.4665553!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xc1e880724f995de4!2sGroupe%20Scolaire%20Bilingue%20Priv%C3%A9%20LA%C3%8FC%20%22LES%20AMIS%20DE%20NZONG%20%26%20FONDATION%20CANDIA%22!5e0!3m2!1sfr!2scm!4v1673970859000!5m2!1sfr!2scm" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
       </div>
     </div>
   </div>

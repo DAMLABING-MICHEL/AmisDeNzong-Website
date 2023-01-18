@@ -8,10 +8,9 @@
         <div class="comment-body">
             <h3>{{ $comment->user->name}}</h3>
             <div class="meta mb-2">
-            <span class="test-uppercase">{{ strftime('%B,', strtotime($comment->created_at)) }}</span>
-            <span> {{ strftime('%m', strtotime($comment->created_at)) }} </span> 
-            <span> {{ strftime('%Y', strtotime($comment->created_at)) }} </span> 
-            <span> at {{ $comment->created_at->format('h:i:s A') }} </span>
+            <span class="test-uppercase">
+            <span>{{ \carbon\carbon::parse($comment->created_at)->isoFormat('LL') }}</span>
+            <span> @lang('at ') {{ $comment->created_at->format('h:i:s A') }} </span>
             </div>
             <p>{{ $comment->content}} </p>
             @if(Auth::check())
