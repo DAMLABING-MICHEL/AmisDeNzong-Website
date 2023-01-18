@@ -6,9 +6,10 @@ use App\Models\Number;
 use App\Services\PostService;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Illuminate\Support\Facades\View as FacadesView;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -29,7 +30,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        require_once app_path("helpers.php");
         setlocale(LC_TIME, config('app.locale'));
         Schema::defaultStringLength(191);
         if (! App::runningInConsole()) {
@@ -39,8 +40,13 @@ class AppServiceProvider extends ServiceProvider
                 return request()->is($url);
             });
             $numbers = Number::all();
-            FacadesView::share('latestPosts', $latestPosts);
-            FacadesView::share('numbers',$numbers);
+            View::share('latestPosts', $latestPosts);
+            View::share('numbers',$numbers);
+            
+            View::composer('back.layout', function ($view) {
+                $title = config('titles.' . Route::currentRouteName());
+                $view->with(compact('title'));
+            });
         }
     }
 }

@@ -27,9 +27,11 @@
         "spatie/laravel-permission": "^5.7",
         "spatie/laravel-translatable": "^6.2",
         "spatie/mailcoach-sdk-php": "^1.0",
-        "statickidz/php-google-translate-free": "^1.2"
+        "statickidz/php-google-translate-free": "^1.2",
+        "yajra/laravel-datatables": "^9.0"
     },
     "require-dev": {
+        "barryvdh/laravel-ide-helper": "^2.12",
         "bestmomo/laravel5-artisan-language": "^0.3.3",
         "fakerphp/faker": "^1.9.1",
         "laravel-lang/lang": "^12.7",

@@ -3,9 +3,10 @@
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\Back\PostController as BackPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
-use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LocalizationController;
@@ -13,10 +14,7 @@ use App\Http\Controllers\NewsEventsController;
 use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StaffController;
-use App\Http\Controllers\TestimonialController;
-use App\Models\Testimonial;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,7 +32,7 @@ use Illuminate\Support\Facades\Route;
 Route::controller(StaffController::class)->group(function () {
     Route::get('staff', 'staff');
 });
-Route::get('/',[IndexController::class,'index']);
+Route::get('/',[IndexController::class,'index'])->name('home');
 Route::controller(ImageController::class)->group(function () {
     Route::get('/gallery','getImages'); 
 });
@@ -48,7 +46,7 @@ Route::controller(NewsEventsController::class)->group(function () {
 });
 Route::controller(PostController::class)->group(function () {
     Route::get('/blog','getPosts'); 
-    Route::get('blog-single/{slug}','getPost');
+    Route::get('blog-single/{slug}','getPost')->name('posts.display');
     Route::get('/blog/view-posts-by-categories/{slug}','getPostsByCategorySlug'); 
     Route::get('/blog/view-posts-by-tags/{slug}','getPostsByTagSlug'); 
     Route::post('/blog/search-posts','searchPosts'); 
@@ -85,4 +83,16 @@ Route::middleware(['auth', 'password.confirm'])->group(function () {
 Route::get('newsletter.confirm/{email}',[NewsLetterController::class,'store']);
 Route::get('newsletter.unsubscribe/{email}',[NewsLetterController::class,'unsubscribe']);
 Route::post('newsletter',[NewsletterController::class,'newsletter']);
+
+// admin routes
+Route::prefix('admin')->group(function () {
+    Route::middleware('redac')->group(function () {
+        Route::name('admin')->get('/', [AdminController::class, 'index']);
+        Route::name('purge')->put('purge/{model}', [AdminController::class, 'purge']);
+        Route::resource('posts', BackPostController::class)->except('show');
+    });
+    Route::middleware('admin')->group(function () {
+        Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);
+    });
+});
 require __DIR__.'/auth.php';

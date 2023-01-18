@@ -15,7 +15,7 @@ class PostRepository
         $this->tagRepository = new TagRepository();
     }
     public function findPosts($limit){
-        $posts = Post::limit($limit)->select('*')->orderBy('created_at', 'asc')->get();
+        $posts = Post::limit($limit)->select('*')->whereActive(true)->orderBy('created_at', 'asc')->get();
         for ($i = 0; $i < count($posts); $i++) {
             $posts[$i] = $this->postWithValidComments($posts[$i]);
             }
@@ -27,6 +27,7 @@ class PostRepository
             'tags:id,title,slug',
             'category:title,slug'
         )
+        ->whereActive(true)
         ->withCount('validComments')
         ->whereSlug($slug)
         ->firstOrFail();
@@ -34,7 +35,7 @@ class PostRepository
     }
     
     public function findLatestPosts($limit){
-        $lastPosts = Post::limit($limit)->select('*')->withCount('validComments')->orderBy('created_at', 'asc')->get();
+        $lastPosts = Post::limit($limit)->select('*')->whereActive(true)->withCount('validComments')->orderBy('created_at', 'asc')->get();
         return $lastPosts;
     }
     
@@ -46,14 +47,14 @@ class PostRepository
     public function findPostsByCategorySlug($slug)
     {
         $category = $this->categoryRepository->findCategoryBySlug($slug);
-        $posts = Category::find($category->id)->posts()->get();
+        $posts = Category::find($category->id)->posts()->whereActive(true)->get();
         return $posts;
     }
     
     public function findPostsByTagSlug($slug)
     {
         $tag = $this->tagRepository->findTagBySlug($slug);
-        $posts = Tag::find($tag->id)->posts()->get();
+        $posts = Tag::find($tag->id)->posts()->whereActive(true)->get();
         return $posts;
     }
 
@@ -61,7 +62,7 @@ class PostRepository
     {
         $posts = Post::where('title', 'like', "%$search%")
             ->orWhere('summary', 'like', "%$search%")
-            ->orWhere('content', 'like', "%$search%")->get();
+            ->orWhere('content', 'like', "%$search%")->whereActive(true)->get();
             return $posts;
     }
 }
