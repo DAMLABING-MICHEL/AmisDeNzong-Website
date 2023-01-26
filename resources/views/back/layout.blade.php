@@ -12,6 +12,7 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/3.0.5/css/adminlte.min.css" />
   @yield('css')
+  @FilemanagerScript
 </head>
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">

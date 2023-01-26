@@ -29,6 +29,9 @@ class PostsDataTable extends DataTable
             ->editColumn('categories', function ($post) {
                 return $this->getCategory($post);
             })
+            ->editColumn('title', function ($post) {
+                return $this->getTitle($post);
+            })
             ->editColumn('created_at', function ($post) {
                 return $this->getDate($post);
             })
@@ -96,8 +99,15 @@ class PostsDataTable extends DataTable
 
     protected function getCategory($post)
     {
-            $html = '';
-            $html .= $post->category . '<br>';
+        $html = '';
+        $html .= $post->category->title;
+
+        return $html;
+    }
+    protected function getTitle($post)
+    {
+        $html = '';
+        $html .= $post->title;
 
         return $html;
     }
@@ -116,15 +126,16 @@ class PostsDataTable extends DataTable
         return $query->select(
             'posts.id',
             'slug',
-            'title',
+            'posts.title',
             'active',
             'posts.created_at',
             'posts.updated_at',
-            'user_id'
+            'user_id',
+            'category_id'
         )
             ->with(
                 'user:id,name',
-                'category:title'
+                'category:id,title'
             )
             ->withCount('comments');
     }

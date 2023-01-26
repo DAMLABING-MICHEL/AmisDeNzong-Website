@@ -16,9 +16,10 @@ class ModelCreatedNotification extends Notification
      *
      * @return void
      */
-    public function __construct()
+     public $post;
+    public function __construct($post)
     {
-        //
+        $this->post = $post;
     }
 
     /**
@@ -29,7 +30,7 @@ class ModelCreatedNotification extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
     // public function via($notifiable)
     // {
@@ -58,7 +59,7 @@ class ModelCreatedNotification extends Notification
     public function toArray($notifiable)
     {
         return [
-            //
+            'title' => $this->post['title']
         ];
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Providers;
-
+Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;

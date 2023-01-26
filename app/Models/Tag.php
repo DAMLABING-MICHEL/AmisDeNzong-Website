@@ -11,11 +11,10 @@ class Tag extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['title'];
+    public $translatable = ['title','slug'];
     
     protected $fillable = [
         'title',
-        'description',
         'slug',
     ];
     public function posts(){

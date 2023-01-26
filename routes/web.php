@@ -15,7 +15,9 @@ use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StaffController;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use UniSharp\LaravelFilemanager\Lfm;
 
 /*
 |--------------------------------------------------------------------------
@@ -84,12 +86,16 @@ Route::get('newsletter.confirm/{email}',[NewsLetterController::class,'store']);
 Route::get('newsletter.unsubscribe/{email}',[NewsLetterController::class,'unsubscribe']);
 Route::post('newsletter',[NewsletterController::class,'newsletter']);
 
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => 'auth'], function () {
+    Lfm::routes();
+});
 // admin routes
 Route::prefix('admin')->group(function () {
     Route::middleware('redac')->group(function () {
         Route::name('admin')->get('/', [AdminController::class, 'index']);
         Route::name('purge')->put('purge/{model}', [AdminController::class, 'purge']);
-        Route::resource('posts', BackPostController::class)->except('show');
+        Route::resource('posts', BackPostController::class)->except('show','create');
+        Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
     });
     Route::middleware('admin')->group(function () {
         Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);

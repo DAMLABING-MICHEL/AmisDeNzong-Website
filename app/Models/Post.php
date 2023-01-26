@@ -30,7 +30,6 @@ class Post extends Model
         'meta_keywords', 
         'active',
     ];
-
     public function image()
     {
         return $this->hasOne(Image::class);
@@ -48,7 +47,7 @@ class Post extends Model
 
     public function category()
     {
-        return $this->belongsTo(category::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function comments()

@@ -4,7 +4,7 @@
     <div class="col-md-6 col-lg-4 ftco-animate">
         <div class="blog-entry">
             @if (!@empty($post->image))
-            <a href="{{ url('blog-single/'. $post->slug)}}" class="block-20 d-flex align-items-end" style="background-image: url({{asset('images/'.$post->image->url) }});">
+            <a href="{{ url('blog-single/'.$post->slug)}}" class="block-20 d-flex align-items-end" style="background-image: url({{asset('images/'.$post->image->url) }});">
                 <div class="meta-date text-center p-2">
                     <span class="day">{{ strftime('%d', strtotime($post->created_at)) }} </span>
                     <span class="mos">{{ \carbon\carbon::parse($post->created_at)->isoFormat('MMMM')  }}</span>

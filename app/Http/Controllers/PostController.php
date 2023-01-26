@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Middleware\Post;
 use App\Services\CategoryService;
 use App\Services\PostService;
 use App\Services\TagService;
