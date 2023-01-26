@@ -2,11 +2,13 @@
 
 namespace App\Repositories;
 
+use App\Http\Requests\ImageRequest;
 use App\Models\Category;
 use App\Models\Image;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Notifications\ModelCreatedNotification;
+use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
 class PostRepository
@@ -126,15 +128,19 @@ class PostRepository
             'content' =>  ["en"=>$request->content_en,"fr"=>$request->content_fr,"it"=>$request->content_it]
         ]);
         $post->update($request->all());
-        $this->saveImage($post,$request);
+        $this->updateImage($post,$request);
         $this->saveTags($post, $request);
     }
     protected function saveImage($post,$request){
-        Image::UpdateOrCreate([
-            'title' => '',
-            'url' => basename($request->image),
-            'post_id' => $post->id
-        ]);
+        $imageRepository = new ImageRepository();
+        $url = basename($request->image);
+        $imageRepository->store(null,$url,$post,null,null,null,null,null);
+    }
+    protected function updateImage($post,$request){
+        $imageRepository = new ImageRepository();
+        $url = basename($request->image);
+        $imageId = basename($request->imageId);
+        $imageRepository->update($imageId,null,$url,$post,null,null,null,null,null);
     }
     protected function saveTags($post, $request)
     {

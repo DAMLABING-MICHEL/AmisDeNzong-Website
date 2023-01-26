@@ -23,7 +23,7 @@
         <h2 class="mb-3">#{{$post->id}}. {{$post->title}}</h2>
         <p>{!! $post->summary !!}</p>
         <p>
-          <img src="{{asset('images/'.$post->image->url)}}" alt="" class="img-fluid">
+          <img src="{{ getImage($post) }}" alt="" class="img-fluid">
         </p>
         {!! $post->content !!}
         <div class="tag-widget post-tag-container mb-5 mt-5">
@@ -133,7 +133,7 @@
             @if(@isset($lastPosts))
             @foreach($lastPosts as $index=>$post)
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$post->image->url)}});"></a>
+              <a class="blog-img mr-4" style="background-image: url({{ getImage($post) }});"></a>
               <div class="text">
                 <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">

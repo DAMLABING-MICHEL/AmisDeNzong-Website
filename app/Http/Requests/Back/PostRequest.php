@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Back;
 
+use App\Models\Image;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\Slug;
 

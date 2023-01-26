@@ -90,7 +90,6 @@
                     :outline="false"
                     title='Category'
                     :required="true">
-                    {{ $post->category->id }}
                     <x-back.input
                         name='category'
                         input='select'
@@ -104,7 +103,7 @@
                     title='Tags'>
                     <x-back.input
                         name='tags'
-                        :value="isset($post) ? implode(',', $post->tags->pluck('tag')->toArray()) : ''"
+                        :value="isset($post) ? implode(',', $post->tags->pluck('title')->toArray()) : ''"
                         input='text'>
                     </x-back.input>
                 </x-back.card>
@@ -137,6 +136,7 @@
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white" class="btn btn-outline-secondary" type="button">Button</a>
                       </div>
                       <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="image" value="{{ old('image', isset($post) ? getImage($post) : '') }}" required>                    
+                      <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="imageId" value="{{ old('image', isset($post) ? getImageId($post) : '') }}" required hidden>                    
                       @if ($errors->has('image'))
                           <div class="invalid-feedback">
                               {{ $errors->first('image') }}

@@ -9,8 +9,16 @@ if (!function_exists('getImage')) {
     {   
         $url = "storage/photos/{$post->user->id}";
         if($thumb) $url .= '/thumbs';
-        return asset("{$url}/{$post->image}");
+        return asset("{$url}/{$post->image->url}");
     }
+}
+if (!function_exists('getImageId')) {
+  function getImageId($post, $thumb = false)
+  {   
+      $url = "storage/photos/{$post->user->id}";
+      if($thumb) $url .= '/thumbs';
+      return asset("{$url}/{$post->image->id}");
+  }
 }
 
 if (!function_exists('currentRoute')) {

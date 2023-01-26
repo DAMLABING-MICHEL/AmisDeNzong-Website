@@ -20,7 +20,7 @@
                     @foreach($latestPosts as $index=>$post)
                     <div class="block-21 mb-4 d-flex">
                         @if (!@empty($post->image))
-                        <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$post->image->url)}});"></a>
+                        <a class="blog-img mr-4" style="background-image: url({{ getImage($post) }});"></a>
                         @endif
                         <div class="text">
                             <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
