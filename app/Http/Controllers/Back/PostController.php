@@ -17,6 +17,10 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct() {
+        $this->authorizeResource(Post::class, 'post');
+    }
+    
     public function index(PostsDataTable $dataTable)
     {
         return $dataTable->render('back.shared.index');
@@ -103,6 +107,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+        $post->delete();
+
+        return response()->json();
     }
 }

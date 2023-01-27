@@ -100,6 +100,7 @@ class PostRepository
             'content' =>  ["en"=>$request->content_en,"fr"=>$request->content_fr,"it"=>$request->content_it]
         ]);
         $post = $request->user()->posts()->create($request->all());
+        $post = new Post();
         $this->saveImage($post,$request);
         $this->saveTags($post, $request);
         $post->notify(new ModelCreatedNotification($post));
@@ -129,7 +130,7 @@ class PostRepository
         ]);
         $post->update($request->all());
         $this->updateImage($post,$request);
-        $this->saveTags($post, $request);
+        $this->updateTags($post, $request);
     }
     protected function saveImage($post,$request){
         $imageRepository = new ImageRepository();
@@ -146,16 +147,52 @@ class PostRepository
     {
         // Tags
         $tags_id = [];
-        if ($request->tags) {
-            $tags = explode(',', $request->tags);
-            foreach ($tags as $tag) {
+            if ($request->tags_en || $request->tags_fr || $request->tags_it) {
+                $tags_en = explode(',', $request->tags_en);
+                $tags_fr = explode(',', $request->tags_fr);
+                $tags_it = explode(',', $request->tags_it);
+                $tag_en = null;
+                $tag_fr = null;
+                $tag_it = null;
+                foreach ($tags_fr as $tag) {
+                    $tag_fr = $tag;
+                   echo($tag_fr .": ");
+                }
+                die();
+                foreach ($tags_it as $tag) {
+                    $tag_it = $tag;
+                }
+                foreach ($tags_en as $tag) {
+                    $tag_en = $tag;
+                }
                 $tag_ref = Tag::firstOrCreate([
-                    'title' => ucfirst($tag),
-                    'slug' => Str::slug($tag),
+                    'title' => ["en"=>ucfirst($tag_en),"fr"=>ucfirst($tag_fr),"it"=>ucfirst($tag_it)],
+                    'slug' => Str::slug($tag_en),
                 ]);
                 $tags_id[] = $tag_ref->id;
             }
-        }
         $post->tags()->sync($tags_id);
+    }
+    
+    protected function updateTags($post, $request)
+    {
+        // Tags
+        $tags_id = [];
+            if ($request->tags_en) {
+                $tags_en = explode(',', $request->tags_en);
+                $tags_fr = explode(',', $request->tags_fr);
+                $tags_it = explode(',', $request->tags_it);
+                foreach ($tags_en as $tag_en) {
+                    $tag_ref = Tag::find($request->tagsId_en);
+                    foreach ($tags_fr as $tag_fr) {
+                        foreach ($tags_it as $tag_it) {
+                            $tag_ref->update([
+                                'title' => ["en"=>ucfirst($tag_en),"fr"=>ucfirst($tag_fr),"it"=>ucfirst($tag_it)],
+                                'slug' => Str::slug($tag_en),
+                            ]);
+                        }
+                    }
+                }
+            }
     }
 }

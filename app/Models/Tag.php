@@ -11,7 +11,7 @@ class Tag extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['title','slug'];
+    public $translatable = ['title'];
     
     protected $fillable = [
         'title',

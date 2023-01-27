@@ -97,16 +97,23 @@
                         :options="$categories">
                     </x-back.input>
                 </x-back.card>
-                <x-back.card
-                    type='danger'
-                    :outline="false"
-                    title='Tags'>
-                    <x-back.input
-                        name='tags'
-                        :value="isset($post) ? implode(',', $post->tags->pluck('title')->toArray()) : ''"
-                        input='text'>
-                    </x-back.input>
-                </x-back.card>
+              @foreach (config('app.locales') as $locale )
+              <x-back.card
+              type='danger'
+              :outline="false"
+              title='Tags_{{ $locale }}'>
+              <x-back.input
+                  name='tags_{{ $locale }}'
+                  :value="isset($post) ? implode(',', $post->tags->pluck('title')->toArray()) : ''"
+                  input='text'>
+              </x-back.input>
+              {{-- <x-back.input
+              name='tagsId_{{ $locale }}'
+              :value="isset($post) ? implode(',', $post->tags->pluck('id')->toArray()) : ''"
+              input='hidden'>
+          </x-back.input> --}}
+          </x-back.card>
+              @endforeach
 
                 <x-back.card
                     type='success'
@@ -136,7 +143,7 @@
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white" class="btn btn-outline-secondary" type="button">Button</a>
                       </div>
                       <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="image" value="{{ old('image', isset($post) ? getImage($post) : '') }}" required>                    
-                      <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="imageId" value="{{ old('image', isset($post) ? getImageId($post) : '') }}" required hidden>                    
+                      <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text" name="imageId" value="{{ old('image', isset($post) ? getImageId($post) : '') }}" hidden>                    
                       @if ($errors->has('image'))
                           <div class="invalid-feedback">
                               {{ $errors->first('image') }}
