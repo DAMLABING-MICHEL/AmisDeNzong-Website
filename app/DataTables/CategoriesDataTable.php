@@ -23,6 +23,9 @@ class CategoriesDataTable extends DataTable
             ->editColumn('posts_count', function ($category) {
                 return $this->badge($category->posts_count, 'secondary');
             })
+            ->editColumn('title', function ($category) {
+                return $category->title;
+            })
             ->editColumn('action', function ($category) {
                 return $this->button(
                           'categories.edit', 
@@ -88,8 +91,8 @@ class CategoriesDataTable extends DataTable
      *
      * @return string
      */
-    protected function filename()
-    {
-        return 'Categories_' . date('YmdHis');
-    }
+    // protected function filename()
+    // {
+    //     return 'Categories_' . date('YmdHis');
+    // }
 }

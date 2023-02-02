@@ -12,12 +12,13 @@ class ResourceController extends Controller
     protected $formRequest;
     protected $singular;
     protected $model;
+    protected $repository;
 
     public function __construct()
     {
         if (!app()->runningInConsole()) {
 
-            $segment = getUrlSegment(request()->url(), 2); // categories ou newcategories
+            $segment = getUrlSegment(request()->url(), 4); // categories ou newcategories
 
             if (substr($segment, 0, 3) === 'new') {
                 $segment = substr($segment, 3);
@@ -32,6 +33,7 @@ class ResourceController extends Controller
             $this->dataTable = 'App\DataTables\\' . ucfirst($name) . 'sDataTable';
             $this->view = 'back.' . $name . 's.form';
             $this->formRequest = 'App\Http\Requests\Back\\' . $model . 'Request';
+            $this->repository = 'App\Repositories\\' . $model . 'Repository';
         }
     }
     public function index()
@@ -47,7 +49,8 @@ class ResourceController extends Controller
     public function store()
     {
         $request = app()->make($this->formRequest);
-
+        $repository = app()->make($this->repository);
+        $repository->addData($request);
         app()->make($this->model)->create($request->all());
 
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully created.')]);
@@ -63,7 +66,8 @@ class ResourceController extends Controller
     public function update($id)
     {
         $request = app()->make($this->formRequest);
-
+        $repository = app()->make($this->repository);
+        $repository->addData($request);
         app()->make($this->model)->find($id)->update($request->all());
 
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully updated.')]);

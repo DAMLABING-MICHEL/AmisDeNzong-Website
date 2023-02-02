@@ -158,15 +158,3 @@
 
 @include('back.shared.editorScript')
 @endsection
-<script>
-    (() => {
-
-   
-    const errorAlert = () => Swal.fire({
-        icon: 'error',
-        title: 'Whoops!',
-        text: 'Something went wrong'
-    });
-    
-})()
-</script>
