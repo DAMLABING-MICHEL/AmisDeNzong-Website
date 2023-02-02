@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Back\PostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Repositories\PostRepository;
 use Illuminate\Http\Request;
 
@@ -46,7 +47,8 @@ class PostController extends Controller
         }
 
         $categories = Category::all()->pluck('title', 'id');
-        return view('back.posts.form', compact('post', 'categories'));
+        $tags = Tag::all()->pluck('title', 'id');
+        return view('back.posts.form', compact('post', 'categories','tags'));
     }
 
     /**
@@ -82,7 +84,8 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all()->pluck('title', 'id');
-        return view('back.posts.form', compact('post', 'categories'));
+        $tags = Tag::all()->pluck('title', 'id');
+        return view('back.posts.form', compact('post', 'categories','tags'));
     }
 
     /**

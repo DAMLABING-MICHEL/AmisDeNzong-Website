@@ -1,8 +1,46 @@
 <script src="https://cdn.ckeditor.com/4.15.1/standard/ckeditor.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-
-    $(function() {
+  function sendData()
+{
+  // create new tag
+  const headers = {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    }
+    var tag_en = document.getElementById('tag-en')
+    var tag_fr = document.getElementById('tag-fr')
+    var tag_it = document.getElementById('tag-it')
+    var tagError = document.getElementById('tagError')
+    const tagRoute = document.getElementById('tag-route')
+   
+ $.ajax({
+		type: 'post',
+		url: tagRoute.value,
+		headers: headers,
+		data: {
+		  tag_en: tag_en.value,
+		  tag_fr: tag_fr.value,
+		  tag_it: tag_it.value,
+		}
+	}).done((data) => {
+                  window.alert(data.status)
+                  $('.alert').show('slow');
+            })
+            .fail((data) => {
+                if(data.status == 422) {
+                    $.each(data.responseJSON.errors, function (i, error) {
+                        $('form')
+                            .find('[name="' + i + '"]')
+                            .addClass('input-invalid')
+                            .next()
+                            .append(error[0]);
+                    });
+                }
+            });
+  return false;
+}
+  $(function() {
 
         $.fn.filemanager = function(type, options) {
           type = type || 'file';
@@ -50,5 +88,4 @@
       CKEDITOR.replace('content_en', { customConfig: '{{ asset('js/ckeditor.js') }}' });
       CKEDITOR.replace('content_fr', { customConfig: '{{ asset('js/ckeditor.js') }}' });
       CKEDITOR.replace('content_it', { customConfig: '{{ asset('js/ckeditor.js') }}' });
-
 </script>

@@ -25,9 +25,7 @@
 				<div class="col-md-6 col-lg-3 ftco-animate">
 					<div class="staff">
 						<div class="img-wrap d-flex align-items-stretch">
-							@if(@isset($staff->image))
-							<div class="img align-self-stretch" style="background-image: url(images/{{$staff->image->url}});"></div>
-							@else
+							@if(@isset($staff->image) && !@empty($staff->image))
 							<div class="img align-self-stretch" style="background-image: url(images/{{$staff->image->url}});"></div>
 							@endif
 							<div class="card-img-overlay card-image-description">

@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\PostController as BackPostController;
+use App\Http\Controllers\Back\ResourceController;
+use App\Http\Controllers\Back\TagController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImageController;
@@ -96,9 +98,11 @@ Route::prefix('admin')->group(function () {
         Route::name('purge')->put('purge/{model}', [AdminController::class, 'purge']);
         Route::resource('posts', BackPostController::class)->except('show','create');
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
+        Route::resource('tags', TagController::class);
     });
     Route::middleware('admin')->group(function () {
         Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);
+        Route::resource('categories', ResourceController::class)->except(['show']);
     });
 });
 require __DIR__.'/auth.php';

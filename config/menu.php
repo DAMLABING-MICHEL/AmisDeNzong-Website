@@ -33,4 +33,43 @@ return [
             ],
         ],
     ],
+    
+    'Categories' => [
+        'icon' => 'list',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All categories',
+                'role'  => 'admin',
+                'route' => 'categories.index',
+            ],
+            [
+                'name'  => 'Add',
+                'role'  => 'admin',
+                'route' => 'categories.create',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'categories.edit',
+            ],
+        ],
+    ],
+    
+    'Staff' => [
+        'icon' => '',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Staff list',
+                'role'  => 'admin',
+                'route' => 'posts.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'posts.create',
+            ],
+        ]
+    ]
 ];
