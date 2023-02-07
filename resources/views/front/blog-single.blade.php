@@ -23,7 +23,7 @@
         <h2 class="mb-3">#{{$post->id}}. {{$post->title}}</h2>
         <p>{!! $post->summary !!}</p>
         <p>
-          <img src="{{ getImage($post, true) }}" alt="" class="img-fluid">
+          <img src="{{ getImage($post) }}" alt="" class="img-fluid">
         </p>
         {!! $post->content !!}
         <div class="tag-widget post-tag-container mb-5 mt-5">

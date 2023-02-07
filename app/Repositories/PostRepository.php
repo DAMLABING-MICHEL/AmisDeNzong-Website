@@ -128,19 +128,23 @@ class PostRepository
             'content' =>  ["en"=>$request->content_en,"fr"=>$request->content_fr,"it"=>$request->content_it]
         ]);
         $post->update($request->all());
-        $this->updateImage($post,$request);
+        $this->updateImage($request);
         $this->saveTags($post, $request);
     }
     protected function saveImage($post,$request){
         $imageRepository = new ImageRepository();
-        $url = basename($request->image);
+        $url_path = parse_url($request->image, PHP_URL_PATH);
+        $url_segments = explode('/storage', $url_path);
+        $url = $url_segments[1];
         $imageRepository->store(null,$url,$post,null,null,null,null,null);
     }
-    protected function updateImage($post,$request){
+    protected function updateImage($request){
         $imageRepository = new ImageRepository();
-        $url = basename($request->image);
+        $url_path = parse_url($request->image, PHP_URL_PATH);
+        $url_segments = explode("/storage", $url_path);
+        $url = $url_segments[1];
         $imageId = basename($request->imageId);
-        $imageRepository->update($imageId,null,$url,$post,null,null,null,null,null);
+        $imageRepository->update($imageId,null,$url);
     }
     protected function saveTags($post, $request)
     {

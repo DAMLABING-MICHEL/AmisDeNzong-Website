@@ -18,8 +18,8 @@
     @foreach ($rubrics as $rubric)
     @foreach ($rubric->images()->get() as $image)
     <div class="item {{$rubric->title}} col-lg-3 col-md-4 col-6 col-sm">
-        <a href="images/{{$image->url}}" class="fancylight popup-btn" data-fancybox-group="light">
-            <img class="img-fluid" id="gallery-img" src="images/{{$image->url}}" alt="">
+        <a href="{{ getImage($image,false,true)}}" class="fancylight popup-btn" data-fancybox-group="light">
+            <img class="img-fluid" id="gallery-img" src="{{getImage($image,false,true)}}" alt="">
         </a>
     </div>
     @endforeach

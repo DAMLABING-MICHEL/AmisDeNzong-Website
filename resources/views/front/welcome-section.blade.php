@@ -100,7 +100,7 @@
 				<div class="staff">
 					<div class="img-wrap d-flex align-items-stretch">
 						@if(!@empty($certifiedTeacher->image))
-						<div class="img align-self-stretch" id="teacher-img" style="background-image: url(images/{{$certifiedTeacher->image->url}});"></div>
+						<div class="img align-self-stretch" id="teacher-img" style="background-image: url( {{ getImage($certifiedTeacher)}} );"></div>
 						@endif
 						<div class="card-img-overlay card-image-description">
 							<div>

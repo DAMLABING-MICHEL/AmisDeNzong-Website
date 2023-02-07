@@ -26,7 +26,7 @@
 					<div class="staff">
 						<div class="img-wrap d-flex align-items-stretch">
 							@if(@isset($staff->image) && !@empty($staff->image))
-							<div class="img align-self-stretch" style="background-image: url(images/{{$staff->image->url}});"></div>
+							<div class="img align-self-stretch" style="background-image: url({{getImage($staff)}});"></div>
 							@endif
 							<div class="card-img-overlay card-image-description">
 								<div>

@@ -19,9 +19,11 @@ class Event extends Model
         'title',
         'summary',
         'description',
+        'date',
         'start_time', 
         'end_time', 
         'venue',
+        'contact'
     ];
     
     public function image(){

@@ -13,6 +13,7 @@ class ResourceController extends Controller
     protected $singular;
     protected $model;
     protected $repository;
+    protected $values = [];
 
     public function __construct()
     {
@@ -43,33 +44,48 @@ class ResourceController extends Controller
 
     public function create()
     {
-        return view($this->view);
+            $repository = app()->make($this->repository);
+            if (method_exists($repository,'getRelationShipData')) {
+                $this->values = $repository->getRelationShipData();
+            }
+        return view($this->view,$this->values);
     }
 
     public function store()
     {
         $request = app()->make($this->formRequest);
         $repository = app()->make($this->repository);
-        $repository->addData($request);
-        app()->make($this->model)->create($request->all());
-
+            if (method_exists($repository,'addData')) {
+                $repository->addData($request);
+            }
+        $element = app()->make($this->model)->create($request->all());
+            if (method_exists($repository,'saveImage')) {
+                $repository->saveImage($element, $request);
+            }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully created.')]);
     }
 
     public function edit($id)
     {
         $element = app()->make($this->model)->find($id);
-
-        return view($this->view, [$this->singular => $element]);
+        $repository = app()->make($this->repository);
+        if (method_exists($repository,'getRelationShipData')) {
+            $this->values = $repository->getRelationShipData();
+        }
+        return view($this->view, [$this->singular => $element],$this->values);
     }
 
     public function update($id)
     {
         $request = app()->make($this->formRequest);
         $repository = app()->make($this->repository);
-        $repository->addData($request);
+        if (method_exists($repository,'addData')) {
+            $repository->addData($request);
+        }
         app()->make($this->model)->find($id)->update($request->all());
-
+        if (method_exists($repository,'UpdateImage')) {
+            $repository->UpdateImage($id, $request);
+        }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully updated.')]);
     }
 

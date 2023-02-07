@@ -4,6 +4,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Back\AdminController;
+use App\Http\Controllers\Back\NewsController;
 use App\Http\Controllers\Back\PostController as BackPostController;
 use App\Http\Controllers\Back\ResourceController;
 use App\Http\Controllers\Back\TagController;
@@ -103,6 +104,10 @@ Route::prefix('admin')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);
         Route::resource('categories', ResourceController::class)->except(['show']);
+        Route::resource('staff', ResourceController::class)->except(['show']);
+        Route::resource('images', ResourceController::class)->except(['show']);
+        Route::resource('news', NewsController::class)->except(['show']);
+        Route::resource('events', ResourceController::class)->except(['show']);
     });
 });
 require __DIR__.'/auth.php';

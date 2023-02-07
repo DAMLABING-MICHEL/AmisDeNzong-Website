@@ -57,19 +57,70 @@ return [
     ],
     
     'Staff' => [
-        'icon' => '',
+        'icon' => 'users',
         'role'   => 'admin',
         'children' => [
             [
                 'name'  => 'Staff list',
                 'role'  => 'admin',
-                'route' => 'posts.index',
+                'route' => 'staff.index',
             ],
             [
                 'name'  => 'add',
                 'role'  => 'admin',
-                'route' => 'posts.create',
+                'route' => 'staff.create',
             ],
         ]
-    ]
+        ],
+    
+    'Gallery' => [
+        'icon' => 'images',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All Images',
+                'role'  => 'admin',
+                'route' => 'images.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'images.create',
+            ],
+        ]
+        ],
+    
+    'News' => [
+        'icon' => 'newspaper',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All News',
+                'role'  => 'admin',
+                'route' => 'news.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'news.create',
+            ],
+        ]
+        ],
+        
+        'Events' => [
+            'icon' => 'calendar',
+            'role'   => 'admin',
+            'children' => [
+                [
+                    'name'  => 'All Events',
+                    'role'  => 'admin',
+                    'route' => 'events.index',
+                ],
+                [
+                    'name'  => 'add',
+                    'role'  => 'admin',
+                    'route' => 'events.create',
+                ],
+            ]
+        ]
 ];

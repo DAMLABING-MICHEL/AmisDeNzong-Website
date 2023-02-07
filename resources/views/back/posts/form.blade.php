@@ -33,7 +33,7 @@
                     </div>
                     @endforeach
                     <div class="modal-footer">
-                        <button type="submit" name="create-tag">submit</button>
+                        <button type="submit" class="btn btn-primary" name="create-tag">submit</button>
                         <input type="text" value="{{ route('tags.store') }}" id="tag-route" hidden>
                     </div>
                 </form>
@@ -124,7 +124,7 @@
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="imageId" value="{{ old('image', isset($post) ? getImageId($post, true) : '') }}" hidden>
+                        name="imageId" value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
                     @if ($errors->has('image'))
                     <div class="invalid-feedback">
                         {{ $errors->first('image') }}

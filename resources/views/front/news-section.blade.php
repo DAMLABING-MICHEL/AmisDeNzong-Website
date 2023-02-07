@@ -4,7 +4,7 @@
     <div class="col-md-6 col-lg-4 ftco-animate">
         <div class="blog-entry">
             @if(!@empty($newsSingle->image))
-            <a href="{{url('news-single/'.$newsSingle->id)}}" class="block-20 d-flex align-items-end" style="background-image: url('images/{{$newsSingle->image->url}}');">
+            <a href="{{url('news-single/'.$newsSingle->id)}}" class="block-20 d-flex align-items-end" style="background-image: url('{{ getImage($newsSingle)}}');">
             @endif
             </a>
             <div class="text bg-white p-4">

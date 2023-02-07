@@ -3,6 +3,7 @@
 namespace App\DataTables;
 
 use App\Models\Category;
+use PhpParser\Node\Expr\Cast\String_;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Services\DataTable;
 
@@ -91,8 +92,8 @@ class CategoriesDataTable extends DataTable
      *
      * @return string
      */
-    // protected function filename()
-    // {
-    //     return 'Categories_' . date('YmdHis');
-    // }
+    protected function filename(): string
+    {
+        return 'Categories_' . date('YmdHis');
+    }
 }

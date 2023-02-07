@@ -2,23 +2,21 @@
 
 // use Illuminate\Routing\Route;
 
+use App\Models\Image;
 use Illuminate\Support\Facades\Route;
 
 if (!function_exists('getImage')) {
-    function getImage($post, $thumb = false)
-    {   
-        $url = "storage/photos/{$post->user->id}";
-        if($thumb) $url .= '/thumbs';
-        return asset("{$url}/{$post->image->url}");
+    function getImage($element, $thumb = false,$gallery = false)
+    {  
+        $url = "storage";
+        // if($thumb) $url .= '/thumbs';
+        if ($element->image != null) {
+          return asset("{$url}/{$element->image->url}");
+        }
+        if ($gallery) {
+          return asset("{$url}/{$element->url}");
+         }
     }
-}
-if (!function_exists('getImageId')) {
-  function getImageId($post, $thumb = false)
-  {   
-      $url = "storage/photos/{$post->user->id}";
-      if($thumb) $url .= '/thumbs';
-      return asset("{$url}/{$post->image->id}");
-  }
 }
 
 if (!function_exists('currentRoute')) {

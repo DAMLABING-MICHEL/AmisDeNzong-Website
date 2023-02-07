@@ -9,7 +9,6 @@ use App\Models\Category;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Repositories\PostRepository;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -34,21 +33,7 @@ class PostController extends Controller
      */
     public function create($id = null)
     {
-        $post = null;
-        if ($id) {
-            $post = Post::findOrFail($id);
-            if ($post->user_id === auth()->id()) {
-                $post->title .= ' (2)';
-                $post->slug .= '-2';
-                $post->active = false;
-            } else {
-                $post = null;
-            }
-        }
-
-        $categories = Category::all()->pluck('title', 'id');
-        $tags = Tag::all()->pluck('title', 'id');
-        return view('back.posts.form', compact('post', 'categories','tags'));
+        return view('back.news.form');
     }
 
     /**

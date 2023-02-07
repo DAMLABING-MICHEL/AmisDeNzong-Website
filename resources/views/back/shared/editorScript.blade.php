@@ -13,7 +13,6 @@
     var tag_it = document.getElementById('tag-it')
     var tagError = document.getElementById('tagError')
     const tagRoute = document.getElementById('tag-route')
-   
  $.ajax({
 		type: 'post',
 		url: tagRoute.value,
@@ -23,8 +22,8 @@
 		  tag_fr: tag_fr.value,
 		  tag_it: tag_it.value,
 		}
-	}).done((data) => {
-                  window.alert(data.status)
+	})
+	.done((data) => {
                   $('.alert').show('slow');
             })
             .fail((data) => {
@@ -38,7 +37,7 @@
                     });
                 }
             });
-  return false;
+  return false
 }
   $(function() {
 

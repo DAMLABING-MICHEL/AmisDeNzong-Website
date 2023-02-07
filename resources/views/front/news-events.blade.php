@@ -34,7 +34,7 @@
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">
 					@if (!@empty($event->image))
-					<div class="block-20 d-flex" id="event-img"style="background-image: url('images/{{$event->image->url}}');">
+					<div class="block-20 d-flex" id="event-img"style="background-image: url('{{ getImage($event) }}');">
 						<div class="text-center p-2 event-date d-flex justify-content-center rounded">
 							<div class="p-2" id="event-day"><span class="day text-white">{{ strftime('%d', strtotime($event->date)) }}</span></div>
 							<div class="p-2" id="event-month"><span class="mos text-white">{{ strftime('%b', strtotime($event->date)) }}</span></div>

@@ -19,7 +19,7 @@
 
             <div class="col-lg-6 col-sm-8 col-xs-12">
                     @if (!@empty($event->image))
-                    <img alt="Event title here" class="img-responsive event-image" src="{{asset('images/'.$event->image->url)}}" />
+                    <img alt="Event title here" class="img-responsive event-image" src="{{ getImage($event) }}" />
                     @endif
                     <div class="single_event_text_single">
                         <h4>{{$event->title}}</h4>

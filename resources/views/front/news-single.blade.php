@@ -21,9 +21,9 @@
         <h2 class="mb-3">#{{$newsSingle->id}}. {{$newsSingle->title}}</h2>
         <p>{!! $newsSingle->summary !!}</p>
         <p>
-          <img src="{{asset('images/'.$newsSingle->image->url)}}" alt="" class="img-fluid news-image">
+          <img src="{{ getImage($newsSingle) }}" alt="" class="img-fluid news-image">
         </p>
-        <p>{{$newsSingle->content}}</p>
+        <p>{!! $newsSingle->content !!}</p>
         @endif
       </div> <!-- .col-md-8 -->
 
@@ -34,7 +34,7 @@
           @if(@isset($lattestNews))
           @foreach($lattestNews as $index=>$newsSingle)
           <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url({{asset('images/' .$newsSingle->image->url)}});"></a>
+            <a class="blog-img mr-4" style="background-image: url({{ getImage($newsSingle) }});"></a>
             <div class="text">
               <h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
               <div class="meta">
