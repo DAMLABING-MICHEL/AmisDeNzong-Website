@@ -58,19 +58,19 @@
             </x-back.card>
             @endforeach
             <x-back.card type='primary' title='Date'>
-                <input name='date' class="form-control" :value="isset($event) ? $event->date : ''" type='date'
+                <input name='date' class="form-control" value="{{ old('date', isset($event) ? $event->date : '') }}" type='date'
                     required>
             </x-back.card>
             <x-back.card type='primary' title='Start Time'>
-                <input name='start_time' class="form-control" :value="isset($event) ? $event->start_time : ''" type='time'
+                <input name='start_time' class="form-control" value="{{ old('start_time', isset($event) ? $event->start_time : '') }}" type='time'
                     required>
             </x-back.card>
             <x-back.card type='primary' title='End Time'>
-                <input name='end_time' class="form-control" :value="isset($event) ? $event->end_time : ''" type='time'
+                <input name='end_time' class="form-control" value="{{ old('end_time', isset($event) ? $event->end_time : '') }}" type='time'
                     required>
             </x-back.card>
             <x-back.card type='primary' title='Contact for details'>
-                <input name='contact' class="form-control" :value="isset($event) ? $event->contact : ''" type='text'
+                <input name='contact' class="form-control" value="{{ old('contact', isset($event) ? $event->contact : '') }}" type='text'
                     required>
             </x-back.card>
             <x-back.card type='primary' :outline="false" title='Image'>

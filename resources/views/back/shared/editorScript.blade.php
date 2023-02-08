@@ -14,6 +14,7 @@
     var tagError = document.getElementById('tagError')
     const tagRoute = document.getElementById('tag-route')
  $.ajax({
+    dataType: "json",
 		type: 'post',
 		url: tagRoute.value,
 		headers: headers,
@@ -24,6 +25,7 @@
 		}
 	})
 	.done((data) => {
+	              console.log('data' + data);
                   $('.alert').show('slow');
             })
             .fail((data) => {

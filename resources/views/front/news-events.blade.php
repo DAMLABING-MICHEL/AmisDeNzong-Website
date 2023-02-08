@@ -44,8 +44,8 @@
 					<div class="text bg-white p-4">
 						<h3 class="heading"><a href="{{route('event',$event->id)}}">{{$event->title}}</a></h3>
 						<div class="d-flex">
-							<p class="mb-0"><span class="icon icon-calendar event-grid-icon"></span> {{ \carbon\carbon::parse($event->date)->isoFormat('LL') }}</p>
-							<p class="mb-0 ml-3"><span class="icon icon-clock-o event-grid-icon"></span> {{ (\carbon\carbon::parse($event->start_time)->isoFormat("HH:mm A")) }}-{{ $event->end_time->format('h:i A') }}</p>
+							<p class="mb-0"><span class="icon icon-calendar event-grid-icon"></span> {{ (\carbon\carbon::parse($event->date)->isoFormat("LL")) }}</p>
+							<p class="mb-0 ml-3"><span class="icon icon-clock-o event-grid-icon"></span> {{ \carbon\carbon::parse($event->start_time)->format('h:i A') }} - {{  \carbon\carbon::parse($event->end_time)->format('h:i A') }}</p>
 							<p class="mb-0 ml-3"><span class="icon icon-table event-grid-icon"></span> {{ $event->venue}}</p>
 						</div>
 						<p>{!! substr($event->summary,0,100) !!}...</p>

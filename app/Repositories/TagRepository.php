@@ -34,13 +34,14 @@ class TagRepository
             }
         }
         if ($tag == null) {
-            Tag::create([
+            $tag1 = Tag::create([
                 'title' => ["en" => ucfirst($tag_en), "fr" => ucfirst($tag_fr), "it" => ucfirst($tag_it)],
                 'slug' => Str::slug($tag_en),
             ]);
-            return response()->json('ok');
+            $response = response()->json($tag1);
         } else {
-            return response()->json('message');
+            $response = response()->json('message');
         }
+        return $response;
     }
 }

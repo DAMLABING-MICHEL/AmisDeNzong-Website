@@ -24,7 +24,7 @@
                     <div class="single_event_text_single">
                         <h4>{{$event->title}}</h4>
                         <span><i class="icon icon-calendar"></i> {{ (\carbon\carbon::parse($event->date)->isoFormat("LL")) }}</span>
-                        <span><i class="icon icon-clock-o"></i> {{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</span>
+                        <span><i class="icon icon-clock-o"></i> {{ \carbon\carbon::parse($event->start_time)->format('h:i A') }} - {{ \carbon\carbon::parse($event->end_time)->format('h:i A') }}</span>
                         <span><i class="icon icon-table"></i><strong>{{$event->venue}}</strong></span>
                         <div class="single_event_content">
                             <p>{!! $event->summary !!}</p>
@@ -53,7 +53,7 @@
                             <span class="p-3 event-icon text-white"><i class="icon icon-clock-o"></i></span>
                             <div class="d-flex flex-column">
                                 <span>@lang('Start-End time')</span>
-                                <span>{{ $event->start_time->format('h:i A') }}-{{ $event->end_time->format('h:i A') }}</span>
+                                <span>{{ \carbon\carbon::parse($event->start_time)->format('h:i A') }} - {{ \carbon\carbon::parse($event->end_time)->format('h:i A') }}</span>
                             </div>
                         </div>
                         <div class="d-flex pl-2 pt-4">
@@ -67,7 +67,7 @@
                             <span class="p-3 event-icon text-white"><i class="icon icon-map"></i></span>
                             <div class="d-flex flex-column">
                                 <span>@lang('Event Venue')</span>
-                                <span>{{$event->venue}}</span>
+                                <span>{{ $event->venue }}</span>
                             </div>
                         </div>
                     </div>

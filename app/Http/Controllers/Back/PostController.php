@@ -33,7 +33,9 @@ class PostController extends Controller
      */
     public function create($id = null)
     {
-        return view('back.news.form');
+        $categories = Category::all()->pluck('title', 'id');
+        $tags = Tag::all()->pluck('title', 'id');
+        return view('back.posts.form',compact('categories','tags'));
     }
 
     /**

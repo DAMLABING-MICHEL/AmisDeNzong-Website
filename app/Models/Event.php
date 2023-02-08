@@ -13,7 +13,7 @@ class Event extends Model
 
     public $translatable = ['title','summary','description','venue'];
     
-    protected $dates = ['start_time','end_time'];
+    // protected $dates = ['start_time','end_time'];
     
     protected $fillable = [
         'title',
