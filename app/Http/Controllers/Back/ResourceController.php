@@ -44,24 +44,24 @@ class ResourceController extends Controller
 
     public function create()
     {
-            $repository = app()->make($this->repository);
-            if (method_exists($repository,'getRelationShipData')) {
-                $this->values = $repository->getRelationShipData();
-            }
-        return view($this->view,$this->values);
+        $repository = app()->make($this->repository);
+        if (method_exists($repository, 'getRelationShipData')) {
+            $this->values = $repository->getRelationShipData();
+        }
+        return view($this->view, $this->values);
     }
 
     public function store()
     {
         $request = app()->make($this->formRequest);
         $repository = app()->make($this->repository);
-            if (method_exists($repository,'addData')) {
-                $repository->addData($request);
-            }
+        if (method_exists($repository, 'addData')) {
+            $repository->addData($request);
+        }
         $element = app()->make($this->model)->create($request->all());
-            if (method_exists($repository,'saveImage')) {
-                $repository->saveImage($element, $request);
-            }
+        if (method_exists($repository, 'saveImage')) {
+            $repository->saveImage($element, $request);
+        }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully created.')]);
     }
 
@@ -69,22 +69,22 @@ class ResourceController extends Controller
     {
         $element = app()->make($this->model)->find($id);
         $repository = app()->make($this->repository);
-        if (method_exists($repository,'getRelationShipData')) {
+        if (method_exists($repository, 'getRelationShipData')) {
             $this->values = $repository->getRelationShipData();
         }
-        return view($this->view, [$this->singular => $element],$this->values);
+        return view($this->view, [$this->singular => $element], $this->values);
     }
 
     public function update($id)
     {
         $request = app()->make($this->formRequest);
         $repository = app()->make($this->repository);
-        if (method_exists($repository,'addData')) {
+        if (method_exists($repository, 'addData')) {
             $repository->addData($request);
         }
         app()->make($this->model)->find($id)->update($request->all());
-        if (method_exists($repository,'UpdateImage')) {
-            $repository->UpdateImage($id, $request);
+        if (method_exists($repository, 'updateImage')) {
+            $repository->updateImage($request);
         }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully updated.')]);
     }

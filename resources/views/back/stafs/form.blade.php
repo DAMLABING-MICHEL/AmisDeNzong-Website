@@ -89,8 +89,8 @@
             <x-back.card type='primary' :outline="false" title='Image'>
 
                 <div id="holder" class="text-center" style="margin-bottom:15px;">
-                    @isset($post)
-                    <img style="width:100%;" src="{{ getImage($post, true) }}" alt="">
+                    @isset($staff)
+                    <img style="width:100%;" src="{{ getImage($staff, true) }}" alt="">
                     @endisset
                 </div>
 

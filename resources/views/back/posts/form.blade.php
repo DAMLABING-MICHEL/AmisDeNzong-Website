@@ -23,7 +23,7 @@
                 <span>The tag has been successfuly created</span>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('tags.store') }}" onsubmit="return sendData();" id="tag-form">
+                <form method="post" action="#" id="tag-form">
                     @csrf
                     @foreach (config('app.locales') as $locale )
                     <div class="form-group">
@@ -34,7 +34,7 @@
                     @endforeach
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary" name="create-tag">submit</button>
-                        <input type="text" value="{{ route('tags.store') }}" id="tag-route" hidden>
+                        <input type="text" value="{{ route('tags.addTag') }}" id="tag-route" hidden>
                     </div>
                 </form>
             </div>
@@ -63,19 +63,19 @@
 
             @foreach ( config('app.locales') as $locale )
             <x-back.card type='primary' title='Title_{{ $locale }}'>
-                <x-back.input name='title_{{ $locale }}' :value="isset($post) ? $post->title : ''" input='text'
+                <x-back.input name='title_{{ $locale }}' :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>
             </x-back.card>
 
             <x-back.card type='primary' title='Summary_{{ $locale }}'>
-                <x-back.input name='summary_{{ $locale }}' :value="isset($post) ? $post->summary : ''" input='textarea'
+                <x-back.input name='summary_{{ $locale }}' :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
             </x-back.card>
 
             <x-back.card type='primary' title='Content_{{ $locale }}'>
-                <x-back.input name='content_{{ $locale }}' :value="isset($post) ? $post->content : ''" input='textarea'
+                <x-back.input name='content_{{ $locale }}' :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea'
                     rows=10 :required="true">
                 </x-back.input>
             </x-back.card>
@@ -124,7 +124,8 @@
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="imageId" value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
+                        name="imageId"
+                        value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
                     @if ($errors->has('image'))
                     <div class="invalid-feedback">
                         {{ $errors->first('image') }}
@@ -155,6 +156,77 @@
 @endsection
 
 @section('js')
+<script>
+    (() => {
 
+// Variables
+const headers = {
+    'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+    'Content-Type': 'application/json',
+    'Accept': 'application/json'
+}
+var tag_en = document.getElementById('tag-en')
+    var tag_fr = document.getElementById('tag-fr')
+    var tag_it = document.getElementById('tag-it')
+    var tagError = document.getElementById('tagError')
+    const tagRoute = document.getElementById('tag-route')
+
+// Delete 
+const createTag = async e => {              
+    e.preventDefault();
+    const datas = {
+        tag_en: tag_en.value,
+		  tag_fr: tag_fr.value,
+		  tag_it: tag_it.value,
+        };
+        const response = await fetch(`${tagRoute.value}`, { 
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(datas)
+         })
+                  // Wait for response
+        const data = await response.json();
+        const errorAlert = () => Swal.fire({
+        icon: 'error',
+        title: 'Whoops!',
+        text: 'Something went wrong'
+    });
+        // Manage response
+        if (response.ok) {
+            $('.alert').show('slow');
+        } else {
+            if (response.status == 422) {
+                console.log(data)
+                $.each(data.errors, function (i, error) {
+                    $('form')
+                        .find('[name="' + i + '"]')
+                        .addClass('input-invalid')
+                        .next()
+                        .append(error[0]);
+                });
+            } else {
+                errorAlert();
+            }
+        }
+}
+// Listener wrapper
+const wrapper = (selector, type, callback, condition = 'true', capture = false) => {
+    const element = document.querySelector(selector);
+    if(element) {
+        document.querySelector(selector).addEventListener(type, e => { 
+            if(eval(condition)) {
+                callback(e);
+            }
+        }, capture);
+    }
+};
+
+// Set listeners
+window.addEventListener('DOMContentLoaded', () => {
+    wrapper('#tag-form', 'submit', createTag);
+});
+
+})()
+</script>
 @include('back.shared.editorScript')
 @endsection

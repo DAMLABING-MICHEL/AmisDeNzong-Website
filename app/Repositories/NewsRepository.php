@@ -5,6 +5,12 @@ use App\Models\News;
 
 class NewsRepository
 {
+    public $imageRepository;
+    
+    public function __construct()
+    {
+        $this->imageRepository = new ImageRepository();
+    }
     public function findNews($limit){
         if ($limit != null) {
             $news = News::limit(3)->select('*')->orderBy('created_at', 'asc')->get();
@@ -61,19 +67,10 @@ class NewsRepository
         $this->updateImage($request);
     }
     protected function saveImage($news,$request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode('/storage', $url_path);
-        $url = $url_segments[1];
-        $imageRepository->store(null,$url,null,null,$news,null,null,null);
+        $this->imageRepository->store($request,null,null,$news,null,null,null);
     }
     
     protected function updateImage($request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode("/storage", $url_path);
-        $url = $url_segments[1];
-        $imageId = basename($request->imageId);
-        $imageRepository->update($imageId,null,$url);
+        $this->imageRepository->update($request);
     }
 }

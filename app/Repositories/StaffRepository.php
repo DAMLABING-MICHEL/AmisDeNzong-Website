@@ -7,7 +7,12 @@ use App\Models\Grade;
 class StaffRepository
 {
     protected $gradeRepository;
+    public $imageRepository;
     
+    public function __construct()
+    {
+        $this->imageRepository = new ImageRepository();
+    }
     public function findCertifiedTeachers(){
         $this->gradeRepository = new GradeRepository();
         $grade = $this->gradeRepository->findHighestGrade();
@@ -50,19 +55,10 @@ class StaffRepository
     }
     
     public function saveImage($staff,$request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode('/storage', $url_path);
-        $url = $url_segments[1];
-        $imageRepository->store(null,$url,null,null,null,null,$staff,null);
+        $this->imageRepository->store($request,null,null,null,null,$staff,null);
     }
     public function updateImage($request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode("/storage", $url_path);
-        $url = $url_segments[1];
-        $imageId = $request->imageId;
-        $imageRepository->update($imageId,null,$url);
+        $this->imageRepository->update($request);
     }
     public function getRelationShipData(){
         $features = Feature::all()->pluck('title', 'id');

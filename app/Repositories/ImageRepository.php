@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories;
 
 use App\Models\Image;
@@ -6,20 +7,23 @@ use App\Models\Rubric;
 
 class ImageRepository
 {
-    public function findImagesByRubricId($id,$limit){
-        if($limit != null)
+    public function findImagesByRubricId($id, $limit)
+    {
+        if ($limit != null)
             $images = Rubric::find($id)->images()->limit($limit)->get();
         else
-        $images = Rubric::find($id)->images()->get();
+            $images = Rubric::find($id)->images()->get();
         return $images;
     }
-    
-    public function getRelationShipData(){
+
+    public function getRelationShipData()
+    {
         $rubrics = Rubric::all()->pluck('title', 'id');
         return compact(['rubrics']);
     }
-    
-    public function addData($request){
+
+    public function addData($request)
+    {
         $request->validate([
             'title_en' => 'required|max:255',
             'title_fr' => 'required|max:255',
@@ -28,41 +32,51 @@ class ImageRepository
         $rubrics = Rubric::all();
         $rubric = null;
         foreach ($rubrics as  $r) {
-            if($r->title == $request->rubric){
+            if ($r->title == $request->rubric) {
                 $rubric = $r;
             }
         }
-        $url_path = parse_url($request->url, PHP_URL_PATH);
-        $url_segments = explode('/storage', $url_path);
-        $url = $url_segments[1];
+        $url = $this->getImageUrl($request);
         $request->merge([
             'url' => $url,
             'rubric_id' => $rubric->id,
-            'title' => ['en'=>$request->title_en,'fr'=>$request->title_fr,'it'=>$request->title_it,],
+            'title' => ['en' => $request->title_en, 'fr' => $request->title_fr, 'it' => $request->title_it,],
         ]);
     }
-    
-    public function store($title,$url,$post,$rubric,$news,$event,$staff,$testimonial){
-            $image =  Image::create([
-                'title' => $title,
-                'url' => $url,
-                'post_id' => ($post != null) ? $post->id :null,
-                'rubric_id' => ($rubric != null) ? $rubric->id :null,
-                'news_id' => ($news != null) ? $news->id :null,
-                'event_id' => ($event != null) ? $event->id :null,
-                'staff_id' => ($staff != null) ? $staff->id :null,
-                'testimonial_id' => ($testimonial != null) ? $testimonial->id :null
-            ]);
-       
+
+    public function store($request, $post, $rubric, $news, $event, $staff, $testimonial)
+    {
+        $url = $this->getImageUrl($request);
+        $image =  Image::create([
+            'title' => ($request->title) ? $request->title : null,
+            'url' => $url,
+            'post_id' => ($post != null) ? $post->id : null,
+            'rubric_id' => ($rubric != null) ? $rubric->id : null,
+            'news_id' => ($news != null) ? $news->id : null,
+            'event_id' => ($event != null) ? $event->id : null,
+            'staff_id' => ($staff != null) ? $staff->id : null,
+            'testimonial_id' => ($testimonial != null) ? $testimonial->id : null
+        ]);
+
         return $image;
     }
-    public function update($imageId,$title,$url){
+    public function update($request)
+    {
+        $url = $this->getImageUrl($request);
+        $imageId = $request->imageId;
         $image = Image::find($imageId);
         $image->update([
-            'title' => $title,
+            'title' => ($request->title) ? $request->title : null,
             'url' => $url,
         ]);
-   
-    return $image;
-}
+
+        return $image;
+    }
+    
+    public function getImageUrl($request){
+        $url_path = parse_url($request->image, PHP_URL_PATH);
+        $url_segments = explode("/storage", $url_path);
+        $url = $url_segments[1];
+        return $url;
+    }
 }

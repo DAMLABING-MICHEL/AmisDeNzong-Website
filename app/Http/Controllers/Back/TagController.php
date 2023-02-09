@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\Back;
 
+use App\DataTables\TagsDataTable;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\TagRequest;
+use App\Http\Requests\Back\TagRequest;
 use App\Models\Tag;
 use App\Repositories\TagRepository;
-use Illuminate\Http\Request as HttpRequest;
-use Illuminate\Support\Facades\Request;
-use Illuminate\Support\Facades\Session;
 
 class TagController extends Controller
 {
@@ -17,9 +15,9 @@ class TagController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TagsDataTable $dataTable)
     {
-        //
+        return $dataTable->render('back.shared.index');
     }
 
     /**
@@ -29,7 +27,7 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('back.tags.form');
     }
 
     /**
@@ -40,8 +38,12 @@ class TagController extends Controller
      */
     public function store(TagRequest $request, TagRepository $repository){
         $repository->store($request);
+        return back()->with('ok', __('The tag has been successfully created'));
     }
-
+    public function addTag(TagRequest $request, TagRepository $repository){
+        $repository->store($request);
+        return response()->json("ok");
+    }
     /**
      * Display the specified resource.
      *
@@ -61,7 +63,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('back.tags.form',compact('tag'));
     }
 
     /**
@@ -71,9 +73,11 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tag $tag)
+    public function update(TagRequest $request, Tag $tag,TagRepository $repository)
     {
-        //
+        $repository->update($tag, $request);
+
+        return back()->with('ok', __('The tag has been successfully updated'));
     }
 
     /**
@@ -84,6 +88,8 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+
+        return response()->json();
     }
 }

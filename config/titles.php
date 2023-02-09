@@ -14,4 +14,16 @@ return [
         'create' => 'Category Creation',
         'edit'   => 'Category Edit',
     ],
+    
+    'users' => [
+        'index'    => 'Users',
+        'edit'     => 'User Edit',
+        'indexnew' => 'New Users',
+    ],
+    
+    'comments' => [
+        'index'  => 'Comments',
+        'indexnew' => 'New Comments',
+        'edit'   => 'Comment Edit',
+    ],
 ];

@@ -8,7 +8,6 @@ use Illuminate\Support\Str;
 
 class TagRepository
 {
-
     public function findTags()
     {
         $tags = Tag::all();
@@ -20,7 +19,25 @@ class TagRepository
         $tag = Tag::where('slug', $slug)->get()->first();
         return $tag;
     }
-
+    public function addData($request){
+        $tag_en = $request->tag_en;
+        $tag_fr = $request->tag_fr;
+        $tag_it = $request->tag_it;
+        $tags = Tag::all();
+        $tag = null;
+        foreach ($tags as  $t) {
+            if ($t->title == $tag_en || $t->title == $tag_fr || $t->title == $tag_it) {
+                $tag = $t;
+            }
+        }
+        if ($tag == null) {
+            dd($request->title);
+            $request->merge([
+                'title' => ["en" => ucfirst($tag_en), "fr" => ucfirst($tag_fr), "it" => ucfirst($tag_it)],
+                'slug' => Str::slug($tag_en),
+            ]);
+        }
+    }
     public function store($request)
     {
         $tag_en = $request->tag_en;
@@ -34,14 +51,21 @@ class TagRepository
             }
         }
         if ($tag == null) {
-            $tag1 = Tag::create([
+            Tag::create([
                 'title' => ["en" => ucfirst($tag_en), "fr" => ucfirst($tag_fr), "it" => ucfirst($tag_it)],
                 'slug' => Str::slug($tag_en),
             ]);
-            $response = response()->json($tag1);
-        } else {
-            $response = response()->json('message');
         }
-        return $response;
+    }
+
+    public function update($tag, $request)
+    {
+        $tag_en = $request->tag_en;
+        $tag_fr = $request->tag_fr;
+        $tag_it = $request->tag_it;
+        $tag->update([
+            'title' => ["en" => ucfirst($tag_en), "fr" => ucfirst($tag_fr), "it" => ucfirst($tag_it)],
+            'slug' => Str::slug($tag_en),
+        ]);
     }
 }

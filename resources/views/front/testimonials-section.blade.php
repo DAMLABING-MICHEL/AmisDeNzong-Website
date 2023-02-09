@@ -14,7 +14,7 @@
 					<div class="item">
 						<div class="testimony-wrap d-flex">
 							@if(@isset($testimonial->image))
-							<div class="user-img mr-4" style="background-image: url(images/{{$testimonial->image->url}});">
+							<div class="user-img mr-4" style="background-image: url({{ getImage($testimonial) }});">
 							</div>
 							@endif
 							<div class="text ml-2 bg-light">

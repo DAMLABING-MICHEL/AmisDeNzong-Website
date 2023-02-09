@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\NewsController;
 use App\Http\Controllers\Back\PostController as BackPostController;
 use App\Http\Controllers\Back\ResourceController;
 use App\Http\Controllers\Back\TagController;
+use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ImageController;
@@ -62,7 +63,7 @@ Route::controller(CommentController::class)->group(function () {
     Route::delete('/blog-single/comments/{comment}','destroy');
 });
 Route::controller(AboutController::class)->group(function () {
-    Route::get('/about','index');
+    Route::get('/about','index')->name('about');
 });
 
 Route::name('page')->get('page/{page:slug}', PageController::class);
@@ -99,7 +100,11 @@ Route::prefix('admin')->group(function () {
         Route::name('purge')->put('purge/{model}', [AdminController::class, 'purge']);
         Route::resource('posts', BackPostController::class)->except('show','create');
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
-        Route::resource('tags', TagController::class);
+        Route::name('tags.addTag')->post('addTag', [TagController::class, 'addTag']);
+        Route::resource('tags', TagController::class)->except(['show']);
+          // Comments
+          Route::resource('comments', ResourceController::class)->except(['show', 'create', 'store']);
+          Route::name('comments.indexnew')->get('newcomments', [ResourceController::class, 'index']); 
     });
     Route::middleware('admin')->group(function () {
         Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);
@@ -108,6 +113,10 @@ Route::prefix('admin')->group(function () {
         Route::resource('images', ResourceController::class)->except(['show']);
         Route::resource('news', NewsController::class)->except(['show']);
         Route::resource('events', ResourceController::class)->except(['show']);
+        Route::resource('testimonials', ResourceController::class)->except(['show']);
+         // Users
+         Route::resource('users', UserController::class)->except(['show', 'create', 'store']);;
+         Route::name('users.indexnew')->get('newusers', [ResourceController::class, 'index']);
     });
 });
 require __DIR__.'/auth.php';

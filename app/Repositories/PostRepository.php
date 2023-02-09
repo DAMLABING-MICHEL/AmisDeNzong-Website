@@ -2,23 +2,21 @@
 
 namespace App\Repositories;
 
-use App\Http\Requests\ImageRequest;
 use App\Models\Category;
-use App\Models\Image;
 use App\Models\Post;
 use App\Models\Tag;
 use App\Notifications\ModelCreatedNotification;
-use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class PostRepository
 {
+    public $imageRepository;
     protected $categoryRepository;
     protected $tagRepository;
     public function __construct()
     {
         $this->categoryRepository = new CategoryRepository();
         $this->tagRepository = new TagRepository();
+        $this->imageRepository = new ImageRepository();
     }
     public function findPosts($limit)
     {
@@ -132,19 +130,10 @@ class PostRepository
         $this->saveTags($post, $request);
     }
     protected function saveImage($post,$request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode('/storage', $url_path);
-        $url = $url_segments[1];
-        $imageRepository->store(null,$url,$post,null,null,null,null,null);
+        $this->imageRepository->store($request,$post,null,null,null,null,null);
     }
     protected function updateImage($request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode("/storage", $url_path);
-        $url = $url_segments[1];
-        $imageId = basename($request->imageId);
-        $imageRepository->update($imageId,null,$url);
+        $this->imageRepository->update($request);
     }
     protected function saveTags($post, $request)
     {

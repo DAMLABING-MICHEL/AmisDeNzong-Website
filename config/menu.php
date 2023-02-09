@@ -56,6 +56,68 @@ return [
         ],
     ],
     
+    'Tags' => [
+        'icon' => 'tags',
+        'role'   => 'redac',
+        'children' => [
+            [
+                'name'  => 'All tags',
+                'role'  => 'admin',
+                'route' => 'tags.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'tags.create',
+            ],
+        ]
+    ],
+    
+    'Users' => [
+        'icon' => 'user',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All users',
+                'role'  => 'admin',
+                'route' => 'users.index',
+            ],
+            [
+                'name'  => 'New users',
+                'role'  => 'admin',
+                'route' => 'users.indexnew',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'admin',
+                'route' => 'users.edit',
+            ],
+        ],
+    ],
+    
+    'Comments' => [
+        'icon' => 'comment',
+        'role'   => 'redac',
+        'children' => [
+            [
+                'name'  => 'All comments',
+                'role'  => 'redac',
+                'route' => 'comments.index',
+            ],
+            [
+                'name'  => 'New comments',
+                'role'  => 'redac',
+                'route' => 'comments.indexnew',
+            ],
+            [
+                'name'  => 'fake',
+                'role'  => 'redac',
+                'route' => 'comments.edit',
+            ],
+        ],
+    ],
+    
+
     'Staff' => [
         'icon' => 'users',
         'role'   => 'admin',
@@ -71,8 +133,8 @@ return [
                 'route' => 'staff.create',
             ],
         ]
-        ],
-    
+    ],
+
     'Gallery' => [
         'icon' => 'images',
         'role'   => 'admin',
@@ -88,8 +150,8 @@ return [
                 'route' => 'images.create',
             ],
         ]
-        ],
-    
+    ],
+
     'News' => [
         'icon' => 'newspaper',
         'role'   => 'admin',
@@ -105,22 +167,41 @@ return [
                 'route' => 'news.create',
             ],
         ]
-        ],
-        
-        'Events' => [
-            'icon' => 'calendar',
-            'role'   => 'admin',
-            'children' => [
-                [
-                    'name'  => 'All Events',
-                    'role'  => 'admin',
-                    'route' => 'events.index',
-                ],
-                [
-                    'name'  => 'add',
-                    'role'  => 'admin',
-                    'route' => 'events.create',
-                ],
-            ]
+    ],
+
+    'Events' => [
+        'icon' => 'calendar',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All Events',
+                'role'  => 'admin',
+                'route' => 'events.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'events.create',
+            ],
         ]
+    ],
+
+
+    'Testimonials' => [
+        'icon' => 'quote-left',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All testimonials',
+                'role'  => 'admin',
+                'route' => 'testimonials.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'testimonials.create',
+            ],
+        ]
+    ],
+    
 ];

@@ -6,7 +6,13 @@ use App\Models\Event;
 
 class EventRepository
 {
-
+    public $imageRepository;
+    
+    public function __construct()
+    {
+        $this->imageRepository = new ImageRepository();
+    }
+    
     public function findEvents()
     {
         $events = Event::all();
@@ -47,20 +53,10 @@ class EventRepository
 
     public function saveImage($event, $request)
     {
-
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode('/storage', $url_path);
-        $url = $url_segments[1];
-        $imageRepository->store(null, $url, null, null, null, $event, null, null);
+        $this->imageRepository->store($request, null, null, null, $event, null, null);
     }
     
-    public function updateImage($event,$request){
-        $imageRepository = new ImageRepository();
-        $url_path = parse_url($request->image, PHP_URL_PATH);
-        $url_segments = explode("/storage", $url_path);
-        $url = $url_segments[1];
-        $imageId = $request->imageId;
-        $imageRepository->update($imageId,null,$url);
+    public function updateImage($request){
+        $this->imageRepository->update($request);
     }
 }
