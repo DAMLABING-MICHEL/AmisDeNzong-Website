@@ -15,6 +15,12 @@ return [
         'edit'   => 'Category Edit',
     ],
     
+    'tags' => [
+        'index'  => 'Tags',
+        'create' => 'Tag Creation',
+        'edit'   => 'Tag Edit',
+    ],
+    
     'users' => [
         'index'    => 'Users',
         'edit'     => 'User Edit',
@@ -30,5 +36,30 @@ return [
     'contacts' => [
         'index'  => 'Contacts',
         'indexnew' => 'New Contacts',
+    ],
+    'staff' => [
+        'index'  => 'Staff',
+        'create' => 'Staff Creation',
+        'edit'   => 'staff Edit',
+    ],
+    'images' => [
+        'index'  => 'Gallery',
+        'create' => 'Image Creation',
+        'edit'   => 'Image Edit',
+    ],
+    'news' => [
+        'index'  => 'News',
+        'create' => 'News Creation',
+        'edit'   => 'News Edit',
+    ],
+    'events' => [
+        'index'  => 'Events',
+        'create' => 'Event Creation',
+        'edit'   => 'Event Edit',
+    ],
+    'testimonials' => [
+        'index'  => 'Testimonials',
+        'create' => 'Testimonial Creation',
+        'edit'   => 'Testimonial Edit',
     ],
 ];

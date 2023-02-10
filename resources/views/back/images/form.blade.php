@@ -24,7 +24,7 @@
             <x-back.card type='info' :outline="true" title=''>
                 @foreach (config('app.locales') as $locale )
                 <x-back.input title='Title_{{ $locale }}' name='title_{{ $locale }}'
-                    :value="isset($image) ? $image->getTranslation('title',$locale) : ''" input='text' :required="true">
+                    :value="isset($image) && !empty($image->getTranslation('title',$locale)) ? $image->getTranslation('title',$locale) : ''" input='text' :required="true">
                 </x-back.input>
                 @endforeach
                 <x-back.card type='primary' :outline="false" title='Image_url'>
@@ -53,7 +53,7 @@
                     </div>
                 </x-back.card>
                 <x-back.card type='primary' title='Feature'>
-                    <x-back.input name='rubric' :value="isset($image) ? $image->rubric->title : ''" input='select'
+                    <x-back.input name='rubric' :value="isset($image) && $image->rubric ? $image->rubric->title : ''" input='select'
                         :options="$rubrics" :required="true">
                     </x-back.input>
                 </x-back.card>

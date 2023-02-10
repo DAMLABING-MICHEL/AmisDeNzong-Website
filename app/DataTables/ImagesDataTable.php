@@ -24,6 +24,7 @@ class ImagesDataTable extends DataTable
      */
     public function dataTable(QueryBuilder $query): EloquentDataTable
     {
+        
         return datatables()
         ->eloquent($query)
         ->editColumn('title', function ($image) {
@@ -41,20 +42,20 @@ class ImagesDataTable extends DataTable
             }
         })
         ->editColumn('action', function ($image) {
-            return $this->button(
-                      'images.edit', 
-                      $image->id, 
-                      'warning', 
-                      __('Edit'), 
-                      'edit'
-                  ). $this->button(
-                      'images.destroy', 
-                      $image->id, 
-                      'danger', 
-                      __('Delete'), 
-                      'trash-alt', 
-                      __('Really delete this image?')
-                  );
+                return $this->button(
+                    'images.edit', 
+                    $image->id, 
+                    'warning', 
+                    __('Edit'), 
+                    'edit'
+                ). $this->button(
+                    'images.destroy', 
+                    $image->id, 
+                    'danger', 
+                    __('Delete'), 
+                    'trash-alt', 
+                    __('Really delete this image?')
+                );
         })
         ->rawColumns(['url','action']);
     }
@@ -65,19 +66,18 @@ class ImagesDataTable extends DataTable
      * @param \App\Models\Image $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Image $model): QueryBuilder
+    public function query(Image $image): QueryBuilder
     {
-        return $model->select(
+       return $image->select(
             'images.id',
             'images.title',
             'images.url',
             'images.created_at',
             'images.updated_at',
             'rubric_id'
-        )
-            ->with(
+        )->with(
                 'rubric:id,title,description'
-            );
+            )->where('rubric_id', '>', 0);
     }
 
     /**
