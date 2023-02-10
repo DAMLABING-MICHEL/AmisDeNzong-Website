@@ -117,6 +117,9 @@ Route::prefix('admin')->group(function () {
          // Users
          Route::resource('users', UserController::class)->except(['show', 'create', 'store']);;
          Route::name('users.indexnew')->get('newusers', [ResourceController::class, 'index']);
+                // Contacts
+        Route::resource('contacts', ResourceController::class)->only(['index', 'destroy']);
+        Route::name('contacts.indexnew')->get('newcontacts', [ResourceController::class, 'index']);
     });
 });
 require __DIR__.'/auth.php';

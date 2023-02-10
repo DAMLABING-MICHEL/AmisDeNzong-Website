@@ -2,36 +2,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/speakingurl/14.0.1/speakingurl.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-// create new tag
-  function sendData()
-{
-  const headers = {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-    }
-    var tag_en = document.getElementById('tag-en')
-    var tag_fr = document.getElementById('tag-fr')
-    var tag_it = document.getElementById('tag-it')
-    var tagError = document.getElementById('tagError')
-    const tagRoute = document.getElementById('tag-route')
- $.ajax({
-    headers: headers,
-    url: tagRoute.value,
-    type: 'post',
-    data: {
-		  tag_en: tag_en.value,
-		  tag_fr: tag_fr.value,
-		  tag_it: tag_it.value,
-		},
-    // dataType: "json",
-    success: function (response, textStatus, xhr) {
-      console.log(response)
-    },
-    error: function (response, textStatus, xhr) {
-      console.log(response)
-    },
-	})
-  return false
-}
   $(function() {
 
         $.fn.filemanager = function(type, options) {
