@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Notifications\ModelCreatedNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
@@ -24,7 +25,8 @@ class ContactController extends Controller
             'message' => 'required'
          ]);
         //  Store data in database
-        Contact::create($request->all());
+       $contact = Contact::create($request->all());
+       $contact->notify(new ModelCreatedNotification($contact));
         // 
            //  Send mail to admin
         try {

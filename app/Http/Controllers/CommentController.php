@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CommentRequest;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Notifications\ModelCreatedNotification;
 use App\Services\CommentService;
 
 class CommentController extends Controller
@@ -28,8 +29,9 @@ class CommentController extends Controller
         ];
         $request->has('commentId') ?
             Comment::findOrFail($request->commentId)->children()->create($data) :
-            Comment::create($data);
+          $comment = Comment::create($data);
         $commenter = $request->user();
+        $comment->notify(new ModelCreatedNotification($comment));
         return response()->json($commenter->valid ? 'ok' : 'invalid');
     }
 

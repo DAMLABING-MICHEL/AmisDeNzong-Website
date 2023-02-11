@@ -41,8 +41,8 @@ class TagController extends Controller
         return back()->with('ok', __('The tag has been successfully created'));
     }
     public function addTag(TagRequest $request, TagRepository $repository){
-        $repository->store($request);
-        return response()->json("ok");
+       $result = $repository->store($request);
+            return response()->json(''.$result);
     }
     /**
      * Display the specified resource.

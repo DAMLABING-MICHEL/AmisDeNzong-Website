@@ -53,7 +53,6 @@
 
     <div class="row">
         <div class="col-md-8">
-
             <x-back.validation-errors :errors="$errors" />
 
             @if(session('ok'))
@@ -63,20 +62,22 @@
 
             @foreach ( config('app.locales') as $locale )
             <x-back.card type='primary' title='Title_{{ $locale }}'>
-                <x-back.input name='title_{{ $locale }}' :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text'
-                    :required="true">
+                <x-back.input name='title_{{ $locale }}'
+                    :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text' :required="true">
                 </x-back.input>
             </x-back.card>
 
             <x-back.card type='primary' title='Summary_{{ $locale }}'>
-                <x-back.input name='summary_{{ $locale }}' :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
+                <x-back.input name='summary_{{ $locale }}'
+                    :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
             </x-back.card>
 
             <x-back.card type='primary' title='Content_{{ $locale }}'>
-                <x-back.input name='content_{{ $locale }}' :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea'
-                    rows=10 :required="true">
+                <x-back.input name='content_{{ $locale }}'
+                    :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea' rows=10
+                    :required="true">
                 </x-back.input>
             </x-back.card>
             @endforeach
@@ -97,9 +98,17 @@
                 </x-back.input>
             </x-back.card>
             <x-back.card type='danger' :outline="false" title='Tags'>
-                <x-back.input name='tags' :values="isset($post) ? $post->tags : collect()" input='selectMultiple'
-                    :options="$tags">
-                </x-back.input>
+                <select multiple
+                    class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags[]"
+                    id="tags">
+                    @foreach($tags as $id => $title)
+                    <option value="{{ $id }}" {{ old('tags') ? (in_array($id, old('tags')) ? 'selected' : '' ) :
+                        ((isset($post) ? $post->tags : collect())->contains('id', $id) ? 'selected' : '') }}>
+                        {{ $title }}
+                    </option>
+                    @endforeach
+                </select>
+                <input type="hidden" value="{{ App::getLocale() }}" id="locale">
                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add new
                     Tag</button>
             </x-back.card>
@@ -165,10 +174,12 @@ const headers = {
     'Content-Type': 'application/json',
     'Accept': 'application/json'
 }
-var tag_en = document.getElementById('tag-en')
+    var tag_en = document.getElementById('tag-en')
     var tag_fr = document.getElementById('tag-fr')
     var tag_it = document.getElementById('tag-it')
     var tagError = document.getElementById('tagError')
+    var tagList = document.getElementById('tags')
+    var locale = document.getElementById('locale')
     const tagRoute = document.getElementById('tag-route')
 
 // Delete 
@@ -192,8 +203,15 @@ const createTag = async e => {
         text: 'Something went wrong'
     });
         // Manage response
+        var newTag = null
         if (response.ok) {
-            $('.alert').show('slow');
+            tag_ref = JSON.parse(data)
+            if (tag_ref.message != null) {
+                window.alert(tag_ref.message)
+            }else{
+                tagList.innerHTML = '<option value="'+tag_ref.id +'">'+tag_ref.title[locale.value] +'</option>' + tagList.innerHTML
+                $('.alert').show('slow');
+            }
         } else {
             if (response.status == 422) {
                 console.log(data)

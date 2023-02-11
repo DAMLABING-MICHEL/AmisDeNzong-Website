@@ -44,18 +44,24 @@ class TagRepository
         $tag_fr = $request->tag_fr;
         $tag_it = $request->tag_it;
         $tags = Tag::all();
-        $tag = null;
+        $tag = [];
+        $message = ["The tag is already present in the list"];
         foreach ($tags as  $t) {
             if ($t->title == $tag_en || $t->title == $tag_fr || $t->title == $tag_it) {
                 $tag = $t;
             }
         }
         if ($tag == null) {
-            Tag::create([
+           $tag = Tag::create([
                 'title' => ["en" => ucfirst($tag_en), "fr" => ucfirst($tag_fr), "it" => ucfirst($tag_it)],
                 'slug' => Str::slug($tag_en),
             ]);
+            $tag['message'] = null;
         }
+        else{
+            $tag['message'] = $message;
+        }
+        return $tag;
     }
 
     public function update($tag, $request)

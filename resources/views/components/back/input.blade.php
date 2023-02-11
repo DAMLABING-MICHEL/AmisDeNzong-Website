@@ -46,7 +46,7 @@
             @if($required) required @endif 
             class="form-control{{ $errors->has($name) ? ' is-invalid' : '' }}" 
             name="{{ $name }}" 
-            id="{{ $name }}">
+            id="selecttag">
             @foreach($options as $option)
                 <option 
                     value="{{ $option }}"
