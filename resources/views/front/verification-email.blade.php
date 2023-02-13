@@ -1,4 +1,4 @@
-<h1>Email Verification Mail</h1>
+<h1>@lang('Email Verification Mail')</h1>
   
-Please verify your email with bellow link: 
-<a href="{{ route('user.verify', $token) }}">Verify Email</a>
+@lang('Please verify your email with bellow link: ')
+<a href="{{ route('user.verify', $token) }}">@lang('Verify Email')</a>

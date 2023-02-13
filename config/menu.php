@@ -259,7 +259,7 @@ return [
         'role'   => 'admin',
         'children' => [
             [
-                'name'  => 'All testimonials',
+                'name'  => 'All newsletters',
                 'role'  => 'admin',
                 'route' => 'testimonials.index',
             ],
@@ -271,4 +271,21 @@ return [
         ]
     ],
     
+    
+    'Subscribers' => [
+        'icon' => 'envelope-open-text',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'Subscriber list',
+                'role'  => 'admin',
+                'route' => 'subscribers.index',
+            ],
+            [
+                'name'  => 'New Subscribers',
+                'role'  => 'admin',
+                'route' => 'subscribers.indexnew',
+            ],
+        ]
+    ],
 ];

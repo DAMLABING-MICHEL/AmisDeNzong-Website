@@ -8,7 +8,7 @@
                 <x-auth.session-status :status="session('status')" />
                 <!-- Validation Errors -->
                 <x-auth.validation-errors :errors="$errors" />
-                <h3 class="text-center mt-2">Password reset</h3>
+                <h3 class="text-center mt-2">@lang('Password reset')</h3>
             </div>
             <form class="" method="POST" action="{{ route('password.store') }}">
                 @csrf
@@ -21,13 +21,13 @@
                 <x-auth.input-password />
                 <!-- Confirm Password -->
                 <div class="mt-4">
-                    <label for="password_confirmation">Confirm Password</label>
+                    <label for="password_confirmation">@lang('Confirm Password')</label>
                     <input id="password_confirmation" class="form-control" type="password" name="password_confirmation" placeholder="Confirm your Password" required>
                 </div>
                 <!-- Remember Me -->
                 <label class="">
                     <input id="remember_me" type="checkbox" name="remember_me" {{ old('remember_me') ? 'checked' : '' }}>
-                    <span class="label-text">Remember me</span>
+                    <span class="label-text">@lang('Remember me')</span>
                 </label>
                 <x-auth.submit title="Reset Password" />
             </form>

@@ -1,8 +1,8 @@
-<h2>Hello</h2> <br><br>
-You have got an email from : {{ $name }} <br><br>
-User details: <br><br>
-Name: {{ $name }} <br>
-Email: {{ $email }} <br>
-Subject: {{ $subject }} <br>
-Message: {{ $user_query }} <br><br>
-Thanks
+<h2>@lang('messages.welcome')</h2> <br><br>
+@lang('You have got an email from') : {{ $name }} <br><br>
+@lang('User details'): <br><br>
+@lang('Name'): {{ $name }} <br>
+@lang('Email'): {{ $email }} <br>
+@lang('Subject'): {{ $subject }} <br>
+@lang('Message'): {{ $user_query }} <br><br>
+@lang('Thanks')

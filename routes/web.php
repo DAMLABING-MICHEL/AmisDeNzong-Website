@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Back\AdminController;
 use App\Http\Controllers\Back\NewsController;
+use App\Http\Controllers\Back\NewsletterController as BackNewsletterController;
 use App\Http\Controllers\Back\PostController as BackPostController;
 use App\Http\Controllers\Back\ResourceController;
 use App\Http\Controllers\Back\TagController;
@@ -123,6 +124,10 @@ Route::prefix('admin')->group(function () {
                 // Contacts
         Route::resource('contacts', ResourceController::class)->only(['index', 'destroy']);
         Route::name('contacts.indexnew')->get('newcontacts', [ResourceController::class, 'index']);
+        
+        //newsletter
+        Route::resource('subscribers', BackNewsletterController::class)->only(['index', 'destroy']);
+        Route::name('subscribers.indexnew')->get('newssubscribers', [BackNewsletterController::class, 'index']);
     });
 });
 require __DIR__.'/auth.php';

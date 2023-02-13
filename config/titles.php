@@ -77,4 +77,8 @@ return [
         'create' => 'Testimonial Creation',
         'edit'   => 'Testimonial Edit',
     ],
+    'subscribers' => [
+        'index'  => 'subscribers',
+        'indexnew' => 'New Subscribers',
+    ],
 ];

@@ -30,7 +30,7 @@
                     title=''>
                     @foreach (config('app.locales') as $locale )
                     <x-back.input
-                    title='Title_{{ $locale }}'
+                    title='Title {{ $locale }} of the category'
                     name='title_{{ $locale }}'
                     :value="isset($category) ? $category->title : ''"
                     input='text'

@@ -3,19 +3,21 @@
 namespace App\Http\Controllers\Back;
 
 use App\Http\Controllers\Controller;
-use App\Models\{ User, Post, Comment, Contact };
+use App\Models\{ User, Post, Comment, Contact, Newsletter};
 use Illuminate\Support\Facades\DB;
+use Spatie\MailcoachSdk\Resources\Subscriber;
 
 class AdminController extends Controller
 {
-    public function index(Post $post, User $user, Comment $comment, Contact $contact)
+    public function index(Post $post, User $user, Comment $comment, Contact $contact, Newsletter $subscribers)
     {
         $users = isRole('admin') ? $this->getUnreads($user) : null;
         $contacts = isRole('admin') ? $this->getUnreads($contact) : null;
         $posts = isRole('admin') ? $this->getUnreads($post) : null;
+        $subscribers = isRole('admin') ? $this->getUnreads($subscribers) : null;
 
         $comments = $this->getUnreads($comment, isRole('redac'));
-        return view('back.index', compact('posts','users', 'contacts', 'comments'));
+        return view('back.index', compact('posts','users', 'contacts', 'comments','subscribers'));
     }
 
     protected function getUnreads($model, $redac = null)

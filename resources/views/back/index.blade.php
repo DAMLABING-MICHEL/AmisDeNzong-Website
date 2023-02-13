@@ -42,7 +42,16 @@
             model='comment'>
           </x-back.box>
         @endif 
-
+        
+        @if(@isset($subscribers))
+          <x-back.box
+            type='warning'
+            :number='$subscribers'
+            title='New Subscribers'
+            route='subscribers.indexnew'
+            model='Newsletter'>
+          </x-back.box>
+        @endif 
       </div>      
   </div>
 @endsection

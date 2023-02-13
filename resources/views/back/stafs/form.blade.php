@@ -57,7 +57,7 @@
             </x-back.card>
 
             @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Description_{{ $locale }}'>
+            <x-back.card type='primary' title='Description {{ $locale }} of the staff'>
                 <x-back.input name='description_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('description',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
@@ -69,7 +69,7 @@
         </div>
         <div class="col-md-4">
             @foreach (config("app.locales") as $locale)
-            <x-back.card type='primary' title='Position_{{ $locale }}'>
+            <x-back.card type='primary' title='Position {{ $locale }} of the staff'>
                 <x-back.input name='position_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('position',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>

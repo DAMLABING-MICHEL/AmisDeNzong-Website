@@ -36,12 +36,12 @@
                 </x-back.input>
             </x-back.card>
             @foreach (config('app.locales') as $locale)
-              <x-back.card type='primary' title='Feature {{ $locale }} of testifying'>
+              <x-back.card type='primary' title='Feature {{ $locale }} of testimonial'>
                 <x-back.input name='feature_{{ $locale }}' :value="isset($testimonial) ? $testimonial->getTranslation('feature',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>
               </x-back.card>
-              <x-back.card type='primary' title='Content {{ $locale }} of testifying'>
+              <x-back.card type='primary' title='Content {{ $locale }} of testimonial'>
                 <x-back.input name='testimonial_content_{{ $locale }}' :value="isset($testimonial) ? $testimonial->getTranslation('content',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>

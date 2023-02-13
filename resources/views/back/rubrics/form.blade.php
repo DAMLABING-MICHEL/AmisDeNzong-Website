@@ -23,7 +23,7 @@
 
             <x-back.card type='info' :outline="true" title=''>
                 @foreach (config('app.locales') as $locale)
-                <x-back.input title='Title {{ $locale }} of the rubric' name='title_{{ $locale }}' :value="isset($rubric) ? $rubric->title : ''"
+                <x-back.input title='Title {{ $locale }} of the rubric' name='title_{{ $locale }}' :value="isset($rubric) ? $rubric->getTranslation('title',$locale) : ''"
                     input='text' :required="true">
                 </x-back.input>
                 @endforeach

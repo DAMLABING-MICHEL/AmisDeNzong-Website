@@ -30,17 +30,17 @@
             </x-back.alert>
             @endif
             @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Title_{{ $locale }}'>
+            <x-back.card type='primary' title='Title {{ $locale }} of the event'>
                 <x-back.input name='title_{{ $locale }}' :value="isset($event) ? $event->getTranslation('title',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>
             </x-back.card>
-            <x-back.card type='primary' title='Summary_{{ $locale }}'>
+            <x-back.card type='primary' title='Summary {{ $locale }} of the event'>
                 <x-back.input name='summary_{{ $locale }}' :value="isset($event) ? $event->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
             </x-back.card>
-            <x-back.card type='primary' title='Content_{{ $locale }}'>
+            <x-back.card type='primary' title='Content {{ $locale }} of the event'>
                 <x-back.input name='description_{{ $locale }}' :value="isset($event) ? $event->getTranslation('description',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
@@ -51,7 +51,7 @@
         </div>
         <div class="col-md-4">
             @foreach (config("app.locales") as $locale)
-            <x-back.card type='primary' title='Venue_{{ $locale }}'>
+            <x-back.card type='primary' title='Venue {{ $locale }} of the event'>
                 <x-back.input name='venue_{{ $locale }}' :value="isset($event) ? $event->getTranslation('venue',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>

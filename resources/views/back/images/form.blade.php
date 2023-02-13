@@ -23,12 +23,11 @@
 
             <x-back.card type='info' :outline="true" title=''>
                 @foreach (config('app.locales') as $locale )
-                <x-back.input title='Title_{{ $locale }}' name='title_{{ $locale }}'
+                <x-back.input title='Title {{ $locale }} of the image' name='title_{{ $locale }}'
                     :value="isset($image) && !empty($image->getTranslation('title',$locale)) ? $image->getTranslation('title',$locale) : ''" input='text' :required="true">
                 </x-back.input>
                 @endforeach
-                <x-back.card type='primary' :outline="false" title='Image_url'>
-
+                <x-back.card type='primary' :outline="false" title='url of the image'>
                     <div id="holder" class="text-center" style="margin-bottom:15px;">
                         @isset($image)
                         <img style="width:100%;" src="{{ getImage($image, false,true) }}" alt="">

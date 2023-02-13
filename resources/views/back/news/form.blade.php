@@ -30,17 +30,17 @@
             </x-back.alert>
             @endif
             @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Title_{{ $locale }}'>
+            <x-back.card type='primary' title='Title {{ $locale }} of the news'>
                 <x-back.input name='title_{{ $locale }}' :value="isset($news) ? $news->getTranslation('title',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>
             </x-back.card>
-            <x-back.card type='primary' title='Summary_{{ $locale }}'>
+            <x-back.card type='primary' title='Summary {{ $locale }} of the news'>
                 <x-back.input name='summary_{{ $locale }}' :value="isset($news) ? $news->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
             </x-back.card>
-            <x-back.card type='primary' title='Content_{{ $locale }}'>
+            <x-back.card type='primary' title='Content {{ $locale }} of the news'>
                 <x-back.input name='content_{{ $locale }}' :value="isset($news) ? $news->getTranslation('content',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>

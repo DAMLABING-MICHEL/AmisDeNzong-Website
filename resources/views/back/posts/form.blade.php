@@ -25,15 +25,15 @@
             <div class="modal-body">
                 <form method="post" action="#" id="tag-form">
                     @csrf
-                    @foreach (config('app.locales') as $locale )
+                    @foreach (config("app.locales") as $locale )
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label">Title_{{ $locale }}</label>
+                        <label for="recipient-name" class="col-form-label"> @lang('Title') {{ $locale }} @lang('of the tag') </label>
                         <input type="text" class="form-control" name="tag_{{ $locale }}" id='tag-{{ $locale }}'>
                         <span id="tagError" style="color: red"></span>
                     </div>
                     @endforeach
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="create-tag">submit</button>
+                        <button type="submit" class="btn btn-primary" name="create-tag">@lang("submit")</button>
                         <input type="text" value="{{ route('tags.addTag') }}" id="tag-route" hidden>
                     </div>
                 </form>
@@ -61,20 +61,20 @@
             @endif
 
             @foreach ( config('app.locales') as $locale )
-            <x-back.card type='primary' title='Title_{{ $locale }}'>
+            <x-back.card type='primary' title="Title {{ $locale }} of the post">
                 <x-back.input name='title_{{ $locale }}'
                     :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text' :required="true">
                 </x-back.input>
             </x-back.card>
 
-            <x-back.card type='primary' title='Summary_{{ $locale }}'>
+            <x-back.card type='primary' title='Summary {{ $locale }} of the post'>
                 <x-back.input name='summary_{{ $locale }}'
                     :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
             </x-back.card>
 
-            <x-back.card type='primary' title='Content_{{ $locale }}'>
+            <x-back.card type='primary' title='Content {{ $locale }} of the post'>
                 <x-back.input name='content_{{ $locale }}'
                     :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea' rows=10
                     :required="true">
