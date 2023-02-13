@@ -5,6 +5,7 @@ namespace App\Http\Requests\Back;
 use App\Models\Staff;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class StaffRequest extends FormRequest
 {
@@ -28,7 +29,7 @@ class StaffRequest extends FormRequest
         return [
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.Staff::class],
+            'email' => ['email', 'max:255', Rule::unique('staff','email')->ignore($this->staff)],
         ];
     }
 }

@@ -3,9 +3,8 @@
 namespace App\Http\Requests\Back;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
-class ImageRequest extends FormRequest
+class RubricRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,7 +13,7 @@ class ImageRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::check();
+        return true;
     }
 
     /**
@@ -25,7 +24,7 @@ class ImageRequest extends FormRequest
     public function rules()
     {
         return [
-            'image' => 'required|max:255',
+            //
         ];
     }
 }

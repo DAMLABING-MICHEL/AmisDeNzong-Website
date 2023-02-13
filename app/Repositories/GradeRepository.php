@@ -9,4 +9,10 @@ class GradeRepository
         $highestGrade = Grade::where('hight_grade', true)->get()->first();
         return $highestGrade;
     }
+    
+    public function addData($request){
+        $request->merge([
+            'hight_grade' => $request->has('hight_grade')
+        ]);
+    }
 }

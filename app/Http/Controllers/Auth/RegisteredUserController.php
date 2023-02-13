@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Notifications\ModelCreatedNotification;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -46,6 +47,7 @@ class RegisteredUserController extends Controller
             'password' => Hash::make($request->password),
             'token' => $token,
         ]);
+        $user->notify(new ModelCreatedNotification($user));
         event(new Registered($user));
         try {
             Mail::send('front.verification-email', ['token' => $token], function($message) use($request){

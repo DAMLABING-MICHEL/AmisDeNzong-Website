@@ -40,7 +40,7 @@
                                 class="btn btn-outline-secondary" type="button">Button</a>
                         </div>
                         <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
-                            type="text" name="url"
+                            type="text" name="image"
                             value="{{ old('image', isset($image) ? getImage($image,false, true) : '') }}" required>
                         <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                             name="imageId" value="{{ old('image', isset($image) && !empty($image) ? $image->id : '') }}"
@@ -52,7 +52,7 @@
                         @endif
                     </div>
                 </x-back.card>
-                <x-back.card type='primary' title='Feature'>
+                <x-back.card type='primary' title='Rubric'>
                     <x-back.input name='rubric' :value="isset($image) && $image->rubric ? $image->rubric->title : ''" input='select'
                         :options="$rubrics" :required="true">
                     </x-back.input>

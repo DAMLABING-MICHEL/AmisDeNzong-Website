@@ -48,7 +48,7 @@
                         title='Description'
                         name='description'
                         :value="isset($category) ? $category->description : ''"
-                        input='text'
+                        input='textarea'
                         :required="false">
                     </x-back.input>
                 </x-back.card>

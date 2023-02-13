@@ -42,10 +42,25 @@ return [
         'create' => 'Staff Creation',
         'edit'   => 'staff Edit',
     ],
+    'grades' => [
+        'index'  => 'Grades',
+        'create' => 'Grade Creation',
+        'edit'   => 'Grade Edit',
+    ],
+    'features' => [
+        'index'  => 'Features',
+        'create' => 'Feature Creation',
+        'edit'   => 'Feature Edit',
+    ],
     'images' => [
         'index'  => 'Gallery',
         'create' => 'Image Creation',
         'edit'   => 'Image Edit',
+    ],
+    'rubrics' => [
+        'index'  => 'Rubrics',
+        'create' => 'Rubric Creation',
+        'edit'   => 'Rubric Edit',
     ],
     'news' => [
         'index'  => 'News',

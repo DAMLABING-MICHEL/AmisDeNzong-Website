@@ -18,7 +18,7 @@ class StaffRepository
         $grade = $this->gradeRepository->findHighestGrade();
         $certifiedTeachers = null;
         if($grade != null){
-            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->get();
+            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->limit(4)->get();
         }
         return $certifiedTeachers;
     }

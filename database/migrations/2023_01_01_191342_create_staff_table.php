@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('firstName');
             $table->string('gender');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('position');
             $table->text('description');
             $table->foreignId('feature_id')->constrained();

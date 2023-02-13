@@ -101,7 +101,6 @@ Route::prefix('admin')->group(function () {
         Route::resource('posts', BackPostController::class)->except('show','create');
         Route::name('posts.create')->get('posts/create/{id?}', [BackPostController::class, 'create']);
         Route::name('tags.addTag')->post('addTag', [TagController::class, 'addTag']);
-        Route::resource('tags', TagController::class)->except(['show']);
           // Comments
           Route::resource('comments', ResourceController::class)->except(['show', 'create', 'store']);
           Route::name('comments.indexnew')->get('newcomments', [ResourceController::class, 'index']); 
@@ -109,8 +108,12 @@ Route::prefix('admin')->group(function () {
     Route::middleware('admin')->group(function () {
         Route::name('posts.indexnew')->get('newposts', [BackPostController::class, 'index']);
         Route::resource('categories', ResourceController::class)->except(['show']);
+        Route::resource('tags', TagController::class)->except(['show']);
         Route::resource('staff', ResourceController::class)->except(['show']);
+        Route::resource('grades', ResourceController::class)->except(['show']);
+        Route::resource('features', ResourceController::class)->except(['show']);
         Route::resource('images', ResourceController::class)->except(['show']);
+        Route::resource('rubrics', ResourceController::class)->except(['show']);
         Route::resource('news', NewsController::class)->except(['show']);
         Route::resource('events', ResourceController::class)->except(['show']);
         Route::resource('testimonials', ResourceController::class)->except(['show']);

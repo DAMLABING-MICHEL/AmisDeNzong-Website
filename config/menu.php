@@ -58,7 +58,7 @@ return [
     
     'Tags' => [
         'icon' => 'tags',
-        'role'   => 'redac',
+        'role'   => 'admin',
         'children' => [
             [
                 'name'  => 'All tags',
@@ -150,6 +150,40 @@ return [
             ],
         ]
     ],
+    
+    'Grades' => [
+        'icon' => 'graduation-cap',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All grades',
+                'role'  => 'admin',
+                'route' => 'grades.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'grades.create',
+            ],
+        ]
+    ],
+    
+    'Features' => [
+        'icon' => 'star',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All features',
+                'role'  => 'admin',
+                'route' => 'features.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'features.create',
+            ],
+        ]
+    ],
 
     'Gallery' => [
         'icon' => 'images',
@@ -164,6 +198,23 @@ return [
                 'name'  => 'add',
                 'role'  => 'admin',
                 'route' => 'images.create',
+            ],
+        ]
+    ],
+    
+    'Rubrics' => [
+        'icon' => 'envelope',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All Rubrics',
+                'role'  => 'admin',
+                'route' => 'rubrics.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'rubrics.create',
             ],
         ]
     ],
