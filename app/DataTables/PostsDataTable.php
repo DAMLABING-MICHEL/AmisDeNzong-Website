@@ -63,13 +63,13 @@ class PostsDataTable extends DataTable
                 );
 
                 if ($post->user_id === auth()->id()) {
-                    $buttons .= $this->button(
-                        'posts.create',
-                        $post->id,
-                        'info',
-                        __('Clone'),
-                        'clone'
-                    );
+                    // $buttons .= $this->button(
+                    //     'posts.create',
+                    //     $post->id,
+                    //     'info',
+                    //     __('Clone'),
+                    //     'clone'
+                    // );
                 }
 
                 return $buttons . $this->button(
