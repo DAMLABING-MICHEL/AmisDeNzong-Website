@@ -29,23 +29,20 @@
             <x-back.alert type='success' title="{!! session('ok') !!}">
             </x-back.alert>
             @endif
-            @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Title {{ $locale }} of the news'>
-                <x-back.input name='title_{{ $locale }}' :value="isset($news) ? $news->getTranslation('title',$locale) : ''" input='text'
+           
+            <x-back.card type='primary' title=''>
+                @foreach (config('app.locales') as $locale)
+                <x-back.input title='Title {{ $locale }} of the news' name='title_{{ $locale }}' :value="isset($news) ? $news->getTranslation('title',$locale) : ''" input='text'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Summary {{ $locale }} of the news'>
-                <x-back.input name='summary_{{ $locale }}' :value="isset($news) ? $news->getTranslation('summary',$locale) : ''" input='textarea'
+                <x-back.input title='Summary {{ $locale }} of the news' name='summary_{{ $locale }}' :value="isset($news) ? $news->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Content {{ $locale }} of the news'>
-                <x-back.input name='content_{{ $locale }}' :value="isset($news) ? $news->getTranslation('content',$locale) : ''" input='textarea'
+                <x-back.input  title='Content {{ $locale }} of the news' name='content_{{ $locale }}' :value="isset($news) ? $news->getTranslation('content',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
+                @endforeach
             </x-back.card>
-            @endforeach
             <x-back.card type='primary' :outline="false" title='Image'>
 
                 <div id="holder" class="text-center" style="margin-bottom:15px;">
@@ -57,7 +54,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white"
-                            class="btn btn-outline-secondary" type="button">Button</a>
+                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i> @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($news) ? getImage($news) : '') }}" required>
@@ -85,4 +82,18 @@
 @section('js')
 
 @include('back.shared.editorScript')
+<script>
+(() =>{
+    $('form').submit(function (event) {
+        if ($(this).hasClass('submitted')) {
+            event.preventDefault();
+        }
+        else {
+            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+            $(this).addClass('submitted');
+            document.getElementById("submit").disabled = true;
+        }
+});  
+})
+</script>
 @endsection

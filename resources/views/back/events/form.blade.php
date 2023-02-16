@@ -29,49 +29,53 @@
             <x-back.alert type='success' title="{!! session('ok') !!}">
             </x-back.alert>
             @endif
-            @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Title {{ $locale }} of the event'>
-                <x-back.input name='title_{{ $locale }}' :value="isset($event) ? $event->getTranslation('title',$locale) : ''" input='text'
+           
+            <x-back.card type='primary' title=''>
+                @foreach (config('app.locales') as $locale)
+                <x-back.input title='Title {{ $locale }} of the event' name='title_{{ $locale }}'
+                    :value="isset($event) ? $event->getTranslation('title',$locale) : ''" input='text' :required="true">
+                </x-back.input>
+                <x-back.input title='Summary {{ $locale }} of the event' name='summary_{{ $locale }}'
+                    :value="isset($event) ? $event->getTranslation('summary',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Summary {{ $locale }} of the event'>
-                <x-back.input name='summary_{{ $locale }}' :value="isset($event) ? $event->getTranslation('summary',$locale) : ''" input='textarea'
+                <x-back.input title='Content {{ $locale }} of the event' name='description_{{ $locale }}'
+                    :value="isset($event) ? $event->getTranslation('description',$locale) : ''" input='textarea'
                     :required="true">
                 </x-back.input>
+                @endforeach
             </x-back.card>
-            <x-back.card type='primary' title='Content {{ $locale }} of the event'>
-                <x-back.input name='description_{{ $locale }}' :value="isset($event) ? $event->getTranslation('description',$locale) : ''" input='textarea'
-                    :required="true">
-                </x-back.input>
-            </x-back.card>
-            @endforeach
+            
             <button type="submit" class="btn btn-primary">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
-            @foreach (config("app.locales") as $locale)
-            <x-back.card type='primary' title='Venue {{ $locale }} of the event'>
-                <x-back.input name='venue_{{ $locale }}' :value="isset($event) ? $event->getTranslation('venue',$locale) : ''" input='text'
-                    :required="true">
+            <x-back.card type='primary' title=''>
+                @foreach (config("app.locales") as $locale)
+                <x-back.input title='Venue {{ $locale }} of the event' name='venue_{{ $locale }}'
+                    :value="isset($event) ? $event->getTranslation('venue',$locale) : ''" input='text' :required="true">
                 </x-back.input>
-            </x-back.card>
-            @endforeach
-            <x-back.card type='primary' title='Date'>
-                <input name='date' class="form-control" value="{{ old('date', isset($event) ? $event->date : '') }}" type='date'
-                    required>
-            </x-back.card>
-            <x-back.card type='primary' title='Start Time'>
-                <input name='start_time' class="form-control" value="{{ old('start_time', isset($event) ? $event->start_time : '') }}" type='time'
-                    required>
-            </x-back.card>
-            <x-back.card type='primary' title='End Time'>
-                <input name='end_time' class="form-control" value="{{ old('end_time', isset($event) ? $event->end_time : '') }}" type='time'
-                    required>
-            </x-back.card>
-            <x-back.card type='primary' title='Contact for details'>
-                <input name='contact' class="form-control" value="{{ old('contact', isset($event) ? $event->contact : '') }}" type='text'
-                    required>
+                @endforeach
+                <div class="form-group">
+                    <label for="date">@lang('Date')</label>
+                    <input title='Date' name='date' class="form-control"
+                        value="{{ old('date', isset($event) ? $event->date : '') }}" type='date' required>
+                </div>
+                <div class="form-group">
+                    <label for="start-time">@lang('Start time')</label>
+                    <input title='Start Time' name='start_time' class="form-control"
+                        value="{{ old('start_time', isset($event) ? $event->start_time : '') }}" type='time' required>
+                </div>
+                <div class="form-group">
+                    <label for="end-time">@lang('End time')</label>
+                    <input title='End Time' name='end_time' class="form-control"
+                        value="{{ old('end_time', isset($event) ? $event->end_time : '') }}" type='time' required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">@lang('Contact')</label>
+                    <input name='contact' class="form-control"
+                        value="{{ old('contact', isset($event) ? $event->contact : '') }}" type='text' required>
+                </div>
             </x-back.card>
             <x-back.card type='primary' :outline="false" title='Image'>
 
@@ -89,7 +93,9 @@
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($event) ? getImage($event) : '') }}" required>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="imageId" value="{{ old('image', isset($event) && !empty($event->image) ? $event->image->id : '') }}" hidden>
+                        name="imageId"
+                        value="{{ old('image', isset($event) && !empty($event->image) ? $event->image->id : '') }}"
+                        hidden>
                     @if ($errors->has('image'))
                     <div class="invalid-feedback">
                         {{ $errors->first('image') }}
@@ -110,4 +116,19 @@
 @section('js')
 
 @include('back.shared.editorScript')
+
+<script>
+    (() =>{
+        $('form').submit(function (event) {
+            if ($(this).hasClass('submitted')) {
+                event.preventDefault();
+            }
+            else {
+                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+                $(this).addClass('submitted');
+                document.getElementById("submit").disabled = true;
+            }
+    });  
+    })
+    </script>
 @endsection

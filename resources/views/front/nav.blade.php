@@ -55,12 +55,12 @@
                             {{ auth()->user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="{{ url('profile') }}">@lang('Profile')</a>
+                            <a class="dropdown-item" href="{{ url('profile') }}"  id="profile-link">@lang('Profile')</a>
                             <li class="nav-item">
                                 <form action="{{ route('logout') }}" method="POST" hidden>
                                     @csrf
                                 </form>
-                                <a href="{{ route('logout') }}" class="dropdown-item"
+                                <a href="{{ route('logout') }}" class="dropdown-item" id="logout-link"
                                     onclick="event.preventDefault(); this.previousElementSibling.submit();"><span>@lang('Logout')</span></a>
                             </li>
                         </div>

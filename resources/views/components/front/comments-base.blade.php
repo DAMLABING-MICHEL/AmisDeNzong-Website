@@ -16,15 +16,15 @@
             @if(Auth::check())
             <p>
                 @if($comment->depth < config('app.commentsNestedLevel')) 
-                <a href="#" data-name="{{ $comment->user->name }}" data-id="{{ $comment->id }}" class="reply replycomment">@lang('Reply')</a>&nbsp;
+                <a href="#" data-name="{{ $comment->user->name }}" data-id="{{ $comment->id }}" class="replycomment">@lang('Reply')</a>&nbsp;
                 @endif
                 @if(Auth::user()->name == $comment->user->name)
-                <a href="#" class="comment-reply-link deletecomment" style="color:red">
+                <a href="#" class="deletecomment" style="color:red">
                     @lang('Delete')
                 </a>
                 @endif
-                @endif
             </p>
+            @endif
         </div>
         <ul class="children">
             <x-front.comments :comments="$comment->children" />

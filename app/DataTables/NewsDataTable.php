@@ -38,7 +38,8 @@ class NewsDataTable extends DataTable
                     'warning',
                     __('Edit'),
                     'edit'
-                ) . $this->button(
+                ).'&nbsp;&nbsp;' 
+                . $this->button(
                     'news-single',
                     $news->id,
                     'success',
@@ -46,7 +47,8 @@ class NewsDataTable extends DataTable
                     'eye',
                     '',
                     '_blank'
-                ) . $this->button(
+                ).'&nbsp;&nbsp;' 
+                . $this->button(
                     'news.destroy',
                     $news->id,
                     'danger',

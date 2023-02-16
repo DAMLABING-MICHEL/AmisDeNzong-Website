@@ -41,7 +41,8 @@ class GradesDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ). $this->button(
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'grades.destroy', 
                           $grade->id, 
                           'danger', 

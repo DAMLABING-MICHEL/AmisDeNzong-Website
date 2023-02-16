@@ -39,6 +39,7 @@ return [
     ],
     'staff' => [
         'index'  => 'Staff',
+        'indexnew'  => 'New staff',
         'create' => 'Staff Creation',
         'edit'   => 'staff Edit',
     ],
@@ -48,9 +49,9 @@ return [
         'edit'   => 'Grade Edit',
     ],
     'features' => [
-        'index'  => 'Features',
-        'create' => 'Feature Creation',
-        'edit'   => 'Feature Edit',
+        'index'  => 'Occupations',
+        'create' => 'Occupation Creation',
+        'edit'   => 'Occupation Edit',
     ],
     'images' => [
         'index'  => 'Gallery',

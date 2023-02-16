@@ -31,7 +31,8 @@ class UsersDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ). $this->button(
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'users.destroy', 
                           $user->id, 
                           'danger', 

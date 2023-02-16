@@ -25,6 +25,7 @@ class StaffRepository
     
     public function addData($request){
         $request->validate([
+            'image' => ['required', 'string', 'max:255'],
             'description_en' => 'required|max:255',
             'description_fr' => 'required|max:255',
             'description_it' => 'required|max:255',

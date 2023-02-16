@@ -214,7 +214,6 @@ const createTag = async e => {
             }
         } else {
             if (response.status == 422) {
-                console.log(data)
                 $.each(data.errors, function (i, error) {
                     $('form')
                         .find('[name="' + i + '"]')
@@ -243,6 +242,15 @@ const wrapper = (selector, type, callback, condition = 'true', capture = false) 
 window.addEventListener('DOMContentLoaded', () => {
     wrapper('#tag-form', 'submit', createTag);
 });
+$('form').submit(function (event) {
+        if ($(this).hasClass('submitted')) {
+            event.preventDefault();
+        }
+        else {
+            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+            $(this).addClass('submitted');
+        }
+    });
 
 })()
 </script>

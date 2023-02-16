@@ -13715,7 +13715,7 @@ textarea.form-control {
     color: #ccc;
 }
 
-.comment-list li .comment-body .reply {
+/* .comment-list li .comment-body .reply{
     padding: 5px 10px;
     background: #e6e6e6;
     color: #000000;
@@ -13726,10 +13726,10 @@ textarea.form-control {
     border-radius: 4px;
 }
 
-.comment-list li .comment-body .reply:hover {
+.comment-list li .comment-body .reply:hover{
     color: #fff;
-    background: black;
-}
+    background-color: rgb(99, 8, 8);
+} */
 
 .search-form {
     background: #fafafa;

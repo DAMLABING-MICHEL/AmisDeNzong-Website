@@ -46,8 +46,9 @@ class StafsDataTable extends DataTable
                           $staff->id, 
                           'warning', 
                           __('Edit'), 
-                          'edit'
-                      ). $this->button(
+                          'edit' 
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'staff.destroy', 
                           $staff->id, 
                           'danger', 

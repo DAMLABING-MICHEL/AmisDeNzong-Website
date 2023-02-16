@@ -38,7 +38,8 @@ class TestimonialsDataTable extends DataTable
                 'warning',
                 __('Edit'),
                 'edit'
-            ) . $this->button(
+            ).'&nbsp;&nbsp;' 
+            . $this->button(
                 'about',
                 $testimonial->id,
                 'success',
@@ -46,7 +47,8 @@ class TestimonialsDataTable extends DataTable
                 'eye',
                 '',
                 '_blank'
-            ) . $this->button(
+            ).'&nbsp;&nbsp;' 
+            . $this->button(
                 'testimonials.destroy',
                 $testimonial->id,
                 'danger',

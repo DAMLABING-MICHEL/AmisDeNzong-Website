@@ -17,6 +17,15 @@ class TestimonialRepository
        return $testimonials;
     }
     
+    public function store($request){
+        $testimonial = Testimonial::create([
+            'name' => auth()->user()->name,
+            'feature' => $request->occupation,
+            'content' => $request->content,
+        ]);
+        return $testimonial;   
+    }
+    
     public function addData($request)
     {
         $request->validate([

@@ -1,7 +1,10 @@
-.nav {
+.nav{
     background-color: rgb(99, 8, 8);
 }
-
+#lang-link:hover,#profile-link:hover,#logout-link:hover,#submit{
+    color: white;
+    background-color: rgb(99, 8, 8);
+}
 .logo {
     width: 30%;
     height: 30%;
@@ -39,7 +42,21 @@
     -o-transition: all 05s ease;
     transition: all .5s ease;
 }
+.testify,.comment-list li .comment-body .replycomment,.deletecomment,.updateTestimony,.deleteTestimony{
+    padding: 5px 10px;
+    background: #e6e6e6;
+    color: #000000;
+    text-transform: uppercase;
+    font-size: 11px;
+    letter-spacing: .1em;
+    font-weight: 400;
+    border-radius: 4px;
+}
 
+.testify:hover,.comment-list li .comment-body .replycomment:hover,.deletecomment:hover{
+    color: #fff;
+    background-color: rgb(99, 8, 8);
+}
 .portfolio-item {
     /*width:100%;*/
 }

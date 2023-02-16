@@ -48,7 +48,9 @@ class ImagesDataTable extends DataTable
                     'warning', 
                     __('Edit'), 
                     'edit'
-                ). $this->button(
+                ).
+                '&nbsp;&nbsp;'
+                .$this->button(
                     'images.destroy', 
                     $image->id, 
                     'danger', 

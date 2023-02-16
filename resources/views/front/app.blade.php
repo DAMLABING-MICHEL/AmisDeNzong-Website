@@ -37,7 +37,7 @@
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink78">
                                     @foreach(config('app.locales') as $locale)
                                     @if($locale != session('lang'))
-                                    <a class="dropdown-item" href="{{ url('locale/'.$locale) }}">
+                                    <a class="dropdown-item" href="{{ url('locale/'.$locale) }}" id="lang-link">
                                         {{ $locale }}
                                     </a>
                                     @endif

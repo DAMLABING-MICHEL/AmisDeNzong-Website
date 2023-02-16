@@ -31,7 +31,8 @@ class CommentsDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ).  $this->button(
+                      ).'&nbsp;&nbsp;'
+                      .  $this->button(
                           'comments.destroy', 
                           $comment->id, 
                           'danger', 

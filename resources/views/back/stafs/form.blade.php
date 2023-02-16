@@ -30,65 +30,47 @@
             </x-back.alert>
             @endif
 
-            <x-back.card type='primary' title='Last Name'>
-                <x-back.input name='lastName' :value="isset($staff) ? $staff->lastName : ''" input='text'
+            <x-back.card type='primary' title=''>
+                <x-back.input title='Last Name' name='lastName' :value="isset($staff) ? $staff->lastName : ''" input='text'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='First Name'>
-                <x-back.input name='firstName' :value="isset($staff) ? $staff->firstName : ''" input='text'
+                <x-back.input title='First Name' name='firstName' :value="isset($staff) ? $staff->firstName : ''" input='text'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Gender'>
-                <x-back.input name='gender' :value="isset($staff) ? $staff->gender : ''" input='select' :options="['Male','Female']"
+                <x-back.input title='Gender' name='gender' :value="isset($staff) ? $staff->gender : ''" input='select' :options="['Male','Female']"
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Phone'>
-                <x-back.input name='phone' :value="isset($staff) ? $staff->phone : ''" input='text'
+                <x-back.input title='Phone' name='phone' :value="isset($staff) ? $staff->phone : ''" input='text'
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Email'>
-                <x-back.input name='email' :value="isset($staff) ? $staff->email : ''" input='text'
+                <x-back.input title='Email' name='email' :value="isset($staff) ? $staff->email : ''" input='text'
                     :required="true">
                 </x-back.input>
+                @foreach (config('app.locales') as $locale)
+                    <x-back.input title='Description {{ $locale }} of the staff' name='description_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('description',$locale) : ''" input='textarea'
+                        :required="true">
+                    </x-back.input>
+                @endforeach
             </x-back.card>
-
-            @foreach (config('app.locales') as $locale)
-            <x-back.card type='primary' title='Description {{ $locale }} of the staff'>
-                <x-back.input name='description_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('description',$locale) : ''" input='textarea'
-                    :required="true">
-                </x-back.input>
-            </x-back.card>
-            @endforeach
             
             <button type="submit" class="btn btn-primary">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
-            @foreach (config("app.locales") as $locale)
-            <x-back.card type='primary' title='Position {{ $locale }} of the staff'>
-                <x-back.input name='position_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('position',$locale) : ''" input='text'
+            <x-back.card type='primary' title=''>
+                @foreach (config("app.locales") as $locale)
+                <x-back.input title='taught class {{ $locale }} of the staff' name='position_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('position',$locale) : ''" input='text'
+                    :required="false">
+                </x-back.input>
+                @endforeach
+                <x-back.input title='Feature' name='feature' :value="isset($staff) ? $staff->feature->title : ''" input='select' :options="$features"
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            @endforeach
-            <x-back.card type='primary' title='Feature'>
-                <x-back.input name='feature' :value="isset($staff) ? $staff->feature->title : ''" input='select' :options="$features"
+                <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
                     :required="true">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='primary' title='Grade'>
-                <x-back.input name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
-                    :required="true">
-                </x-back.input>
-            </x-back.card>
-            
             <x-back.card type='primary' :outline="false" title='Image'>
-
-                <div id="holder" class="text-center" style="margin-bottom:15px;">
+                <div id="holder" title='Image' class="text-center" style="margin-bottom:15px;">
                     @isset($staff)
                     <img style="width:100%;" src="{{ getImage($staff, true) }}" alt="">
                     @endisset
@@ -97,7 +79,7 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white"
-                            class="btn btn-outline-secondary" type="button">Button</a>
+                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i>  @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($staff) ? getImage($staff, true) : '') }}" required>
@@ -109,8 +91,7 @@
                     </div>
                     @endif
                 </div>
-
-
+            </x-back.card>
             </x-back.card>
         </div>
 
@@ -123,4 +104,19 @@
 @section('js')
 
 @include('back.shared.editorScript')
+
+<script>
+    (() =>{
+        $('form').submit(function (event) {
+            if ($(this).hasClass('submitted')) {
+                event.preventDefault();
+            }
+            else {
+                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+                $(this).addClass('submitted');
+                document.getElementById("submit").disabled = true;
+            }
+    });  
+    })
+    </script>
 @endsection

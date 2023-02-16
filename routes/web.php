@@ -8,6 +8,7 @@ use App\Http\Controllers\Back\NewsController;
 use App\Http\Controllers\Back\NewsletterController as BackNewsletterController;
 use App\Http\Controllers\Back\PostController as BackPostController;
 use App\Http\Controllers\Back\ResourceController;
+use App\Http\Controllers\Back\StaffController as BackStaffController;
 use App\Http\Controllers\Back\TagController;
 use App\Http\Controllers\Back\UserController;
 use App\Http\Controllers\CommentController;
@@ -20,6 +21,7 @@ use App\Http\Controllers\NewsLetterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\StaffController;
+use App\Http\Controllers\TestimonialController;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
 use UniSharp\LaravelFilemanager\Lfm;
@@ -40,6 +42,9 @@ Route::controller(StaffController::class)->group(function () {
     Route::get('staff', 'staff');
 });
 Route::get('/',[IndexController::class,'index'])->name('home');
+Route::post('testimonials',[TestimonialController::class,'store'])->name('testimonial.store');
+Route::put('testimonials',[TestimonialController::class,'update'])->name('testimonial.update');
+Route::delete('testimonials/{testimonial}',[TestimonialController::class,'destroy'])->name('testimonial.delete');
 Route::controller(ImageController::class)->group(function () {
     Route::get('/gallery','getImages'); 
 });
@@ -111,6 +116,7 @@ Route::prefix('admin')->group(function () {
         Route::resource('categories', ResourceController::class)->except(['show']);
         Route::resource('tags', TagController::class)->except(['show']);
         Route::resource('staff', ResourceController::class)->except(['show']);
+        Route::name('staff.indexnew')->get('newstaff', [BackStaffController::class, 'index']);
         Route::resource('grades', ResourceController::class)->except(['show']);
         Route::resource('features', ResourceController::class)->except(['show']);
         Route::resource('images', ResourceController::class)->except(['show']);

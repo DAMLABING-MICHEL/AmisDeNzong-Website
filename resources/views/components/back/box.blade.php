@@ -1,16 +1,22 @@
 @props([
   'type',
-  'number',
   'title',
+  'number',
   'route',
   'model',
+  'newtitle',
+  'newnumber',
 ])
 
 <div class="col-lg-3 col-6">
-  <div class="small-box bg-{{ $type }}">
+  <div class="small-box" id="{{ $type }}">
     <div class="inner">
-      <h3>{{ $number }}</h3>
-      <p>@lang($title)</p>
+      <h4 class="text-white">{{ __($title )}} : <span class="badge badge-light"> {{ $number }}</span></h4>
+      <hr>
+      @if(@isset($newtitle) && @isset($newnumber))
+      <h5 class="text-white">{{ __($newtitle) }} : {{ __($newnumber) }}</h5>
+      @endif
+      <p></p>
     </div>
     <div class="icon">
       <i class="ion ion-bag"></i>
@@ -19,7 +25,7 @@
     <form action="{{ route('purge', $model) }}" method="POST">
       @csrf
       @method('PUT')
-      <button type="submit" class="btn btn-{{ $type }} btn-block text-warning">@lang('Purge')</button>
+      <button type="submit" class="btn btn-{{ $type }} btn-block text-primary">@lang('Purge')</button>
     </form>
   </div>
 </div>

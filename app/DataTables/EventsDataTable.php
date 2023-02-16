@@ -38,7 +38,8 @@ class EventsDataTable extends DataTable
                 'warning',
                 __('Edit'),
                 'edit'
-            ) . $this->button(
+            ).'&nbsp;&nbsp;'
+            . $this->button(
                 'event',
                 $event->id,
                 'success',
@@ -46,7 +47,8 @@ class EventsDataTable extends DataTable
                 'eye',
                 '',
                 '_blank'
-            ) . $this->button(
+            ).'&nbsp;&nbsp;' 
+            . $this->button(
                 'events.destroy',
                 $event->id,
                 'danger',

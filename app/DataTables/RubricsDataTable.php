@@ -38,7 +38,8 @@ class RubricsDataTable extends DataTable
                       'warning', 
                       __('Edit'), 
                       'edit'
-                  ). $this->button(
+                  ).'&nbsp;&nbsp;'
+                  . $this->button(
                       'rubrics.destroy', 
                       $rubric->id, 
                       'danger', 

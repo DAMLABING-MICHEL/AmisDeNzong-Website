@@ -34,7 +34,8 @@ class CategoriesDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ). $this->button(
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'categories.destroy', 
                           $category->id, 
                           'danger', 

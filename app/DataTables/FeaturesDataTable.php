@@ -38,7 +38,8 @@ class FeaturesDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ). $this->button(
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'features.destroy', 
                           $feature->id, 
                           'danger', 

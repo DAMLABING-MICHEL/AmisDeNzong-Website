@@ -144,6 +144,11 @@ return [
                 'route' => 'staff.index',
             ],
             [
+                'name'  => 'New staff',
+                'role'  => 'admin',
+                'route' => 'staff.indexnew',
+            ],
+            [
                 'name'  => 'add',
                 'role'  => 'admin',
                 'route' => 'staff.create',
@@ -168,12 +173,12 @@ return [
         ]
     ],
     
-    'Features' => [
+    'Occupations' => [
         'icon' => 'star',
         'role'   => 'admin',
         'children' => [
             [
-                'name'  => 'All features',
+                'name'  => 'All Occupations',
                 'role'  => 'admin',
                 'route' => 'features.index',
             ],
@@ -259,14 +264,9 @@ return [
         'role'   => 'admin',
         'children' => [
             [
-                'name'  => 'All newsletters',
+                'name'  => 'All testimonials',
                 'role'  => 'admin',
                 'route' => 'testimonials.index',
-            ],
-            [
-                'name'  => 'add',
-                'role'  => 'admin',
-                'route' => 'testimonials.create',
             ],
         ]
     ],

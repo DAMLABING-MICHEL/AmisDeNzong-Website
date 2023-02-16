@@ -36,7 +36,8 @@ class TagsDataTable extends DataTable
                           'warning', 
                           __('Edit'), 
                           'edit'
-                      ). $this->button(
+                      ).'&nbsp;&nbsp;'
+                      . $this->button(
                           'tags.destroy', 
                           $tag->id, 
                           'danger', 

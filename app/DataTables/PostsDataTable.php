@@ -5,12 +5,7 @@ namespace App\DataTables;
 use App\Models\Post;
 use Illuminate\Database\Eloquent\Builder as QueryBuilder;
 use Illuminate\Support\Facades\Route;
-use Yajra\DataTables\EloquentDataTable;
-use Yajra\DataTables\Html\Builder as HtmlBuilder;
-use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
-use Yajra\DataTables\Html\Editor\Editor;
-use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
 
 class PostsDataTable extends DataTable
@@ -48,8 +43,8 @@ class PostsDataTable extends DataTable
                     'eye',
                     '',
                     '_blank'
-                );
-
+                ).'&nbsp;&nbsp;';
+                    
                 if (Route::currentRouteName() === 'posts.indexnew') {
                     return $buttons;
                 }
@@ -60,7 +55,7 @@ class PostsDataTable extends DataTable
                     'warning',
                     __('Edit'),
                     'edit'
-                );
+                ).'&nbsp;&nbsp;';
 
                 if ($post->user_id === auth()->id()) {
                     // $buttons .= $this->button(
