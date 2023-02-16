@@ -11,12 +11,13 @@ class Testimonial extends Model
     use HasFactory;
     use HasTranslations;
 
-    public $translatable = ['feature','content'];
+    public $translatable = ['content'];
     
     protected $fillable = [
         'name',
-        'feature',
         'content',
+        'rating',
+        'status',
     ];
     public function image(){
         return $this->hasOne(Image::class);

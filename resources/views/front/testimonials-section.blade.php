@@ -24,7 +24,6 @@
 								</span>
 								<p>{{$testimonial->content}}</p>
 								<p class="name">{{$testimonial->name}}</p>
-								<span class="position">{{$testimonial->feature}}</span>
 							</div>
 						</div>
 					</div>

@@ -63,11 +63,24 @@
     <button class="open-button" onclick="openForm()">@lang('Leave an review')</button>
 
     <div class="chat-popup" id="myForm">
-      <form action="/action_page.php" class="form-container">
+      <form action="#" class="form-container" id="review-form">
         <h4>@lang('Add testimonial')</h4>
-    
+        <div class="col">
+            <div class="rate">
+               <input type="radio" id="star5" class="rate" name="rating" value="5"/>
+               <label for="star5" title="Excellent">5 stars</label>
+               <input type="radio" id="star4" class="rate" name="rating" value="4"/>
+               <label for="star4" title="Good">4 stars</label>
+               <input type="radio" id="star3" class="rate" name="rating" value="3"/>
+               <label for="star3" title="Ok">3 stars</label>
+               <input type="radio" id="star2" class="rate" name="rating" value="2">
+               <label for="star2" title="Poor">2 stars</label>
+               <input type="radio" id="star1" class="rate" name="rating" value="1"/>
+               <label for="star1" title="Bad">1 star</label>
+            </div>
+         </div>
         <label for="msg"><b>@lang('Message (optional)')</b></label>
-        <textarea placeholder="Type message.." name="msg" required></textarea>
+        <textarea placeholder="Type message.." name="content"></textarea>
     
         <button type="submit" class="btn">@lang('Send')</button>
         <button type="button" class="btn cancel" onclick="closeForm()">@lang('Close')</button>
@@ -75,6 +88,59 @@
     </div> 
     @endif
     <script>
+    (() => {
+        var rating = document.forms["review-form"]["rating"]
+        const storeReview = async e => {              
+    e.preventDefault();
+    window.alert(rating.value)
+    const datas = {
+    };
+	
+        // const response = await fetch(`{{ route('testimonial.store') }}`, { 
+        //     method: 'POST',
+        //     headers: headers,
+        //     body: JSON.stringify(datas)
+        //  })
+        // const data = await response.json();
+        // const showAlert = (icon, title, text) => Swal.fire({
+        // icon: icon,
+        // title: title,
+        // text: text,
+        // });
+        // const errorAlert = () => Swal.fire({
+        // icon: 'error',
+        // title: 'Whoops!',
+        // text: 'Something went wrong'
+        // });
+        // if (response.ok) {
+        // } else {
+        //     if (response.status == 422) {
+        //         $.each(data.errors, function (i, error) {
+        //             $('form')
+        //                 .find('[name="' + i + '"]')
+        //                 .addClass('input-invalid')
+        //                 .next()
+        //                 .append(error[0]);
+        //         });
+        //     } else {
+        //         errorAlert();
+        //     }
+        // }
+}
+        const wrapper = (selector, type, callback, condition = 'true', capture = false) => {
+	    const element = document.querySelector(selector);
+	    if(element) {
+	        document.querySelector(selector).addEventListener(type, e => { 
+	            if(eval(condition)) {
+	                callback(e);
+	            }
+	        }, capture);
+	    }
+	};
+	window.addEventListener('DOMContentLoaded', () => {
+        wrapper('#review-form', 'submit', storeReview);
+    })
+    })()
     function openForm() {
       document.getElementById("myForm").style.display = "block";
     }
