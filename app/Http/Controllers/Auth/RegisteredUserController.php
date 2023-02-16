@@ -38,14 +38,21 @@ class RegisteredUserController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'avatar' => ['image'],
         ]);
 
         $token = Str::random(64);
+        $avatarName = "IMG_20220118_120938.jpg";
+        if($request->hasfile('avatar')){
+            $avatarName = time().'.'.request()->avatar->getClientOriginalExtension();
+            request()->avatar->move(public_path('avatars'), $avatarName);
+        }
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'token' => $token,
+            'avatar' => $avatarName ?? NULL,
         ]);
         $user->notify(new ModelCreatedNotification($user));
         event(new Registered($user));

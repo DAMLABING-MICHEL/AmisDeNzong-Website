@@ -18,6 +18,13 @@ if (!function_exists('getImage')) {
          }
     }
 }
+if (!function_exists('getAvatar')) {
+  function getAvatar($user)
+  {  
+      $url = "avatars";
+        return asset("{$url}/{$user->avatar}");
+  }
+}
 
 if (!function_exists('currentRoute')) {
   function currentRoute($route)

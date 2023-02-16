@@ -58,7 +58,31 @@
     @yield('content')
 
     @include('front.footer')
+    
+    @if (Auth::check())
+    <button class="open-button" onclick="openForm()">@lang('Leave an review')</button>
 
+    <div class="chat-popup" id="myForm">
+      <form action="/action_page.php" class="form-container">
+        <h4>@lang('Add testimonial')</h4>
+    
+        <label for="msg"><b>@lang('Message (optional)')</b></label>
+        <textarea placeholder="Type message.." name="msg" required></textarea>
+    
+        <button type="submit" class="btn">@lang('Send')</button>
+        <button type="button" class="btn cancel" onclick="closeForm()">@lang('Close')</button>
+      </form>
+    </div> 
+    @endif
+    <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+    
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    </script>
 </body>
 
 </html>

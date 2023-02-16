@@ -8,7 +8,7 @@
         <x-auth.validation-errors :errors="$errors" />
         <h3 class="text-center">@lang('Register')</h3>
     </div>
-    <form class="user-form" name="register-form" method="POST" action="{{ route('register') }}">
+    <form class="user-form" name="register-form" method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
         <div class="">
             @csrf
 
@@ -34,6 +34,13 @@
                     </div>
                 </div>
             </div>
+                <div class="input-image form-group">
+                    <label for="avatar" class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}</label>
+    
+                    <div class="col-md-6">
+                        <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="avatar">
+                    </div>
+                </div>
             <div class="d-flex justify-content-center submit-register">
                 <x-auth.submit title="Register" />
             </div>

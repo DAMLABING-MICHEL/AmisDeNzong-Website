@@ -29,7 +29,8 @@ class User extends Authenticatable
         'token',
         'role',
         'valid',
-        'is_email_verified'
+        'is_email_verified',
+        'avatar'
     ];
 
     public function isAdmin()

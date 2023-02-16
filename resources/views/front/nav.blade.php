@@ -50,8 +50,12 @@
                     </li>
                     @endif
                     <div class="dropdown ml-4">
+                        {{-- <img src="{{ getAvatar(auth()->user()) }}" alt="" style="width: 10%; height: 10%;"> --}}
                         <button class="btn dropdown-toggle" type="button" id="btn-user-name" data-toggle="dropdown"
                             aria-haspopup="true" aria-expanded="false">
+                            @if(!@empty(auth()->user()->avatar))
+                            <img src="{{ getAvatar(auth()->user()) }}" width="40" height="40" class="rounded-circle">
+                            @endif
                             {{ auth()->user()->name }}
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">

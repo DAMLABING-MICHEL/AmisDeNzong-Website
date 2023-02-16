@@ -20,7 +20,7 @@ class TestimonialRepository
     public function store($request){
         $testimonial = Testimonial::create([
             'name' => auth()->user()->name,
-            'feature' => $request->occupation,
+            'feature' => $request->designation,
             'content' => $request->content,
         ]);
         return $testimonial;   

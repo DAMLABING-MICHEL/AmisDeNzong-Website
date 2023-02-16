@@ -131,7 +131,7 @@
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section heading-section-black ftco-animate">
 				<h2 class="mb-4"><span>@lang('7 Years of')</span> @lang('Experience')</h2>
-				<p>@lang('To this day, the Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is full of')</p>
+				{{-- <p>@lang('To this day, the Bilingual school group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is full of')</p> --}}
 			</div>
 		</div>
 		<div class="row d-md-flex align-items-center justify-content-center">
