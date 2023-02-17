@@ -32,13 +32,13 @@
         <div class="sidebar-box ftco-animate">
           <h3>@lang('Recent News')</h3>
           @if(@isset($lattestNews))
-          @foreach($lattestNews as $index=>$newsSingle)
+          @foreach($lattestNews as $news)
           <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url({{ getImage($newsSingle) }});"></a>
+            <a class="blog-img mr-4" style="background-image: url({{ getImage($news,false,false) }});"></a>
             <div class="text">
-              <h3 class="heading"><a href="{{url('news-single/'.$newsSingle->id)}}">{{$newsSingle->title}}</a></h3>
+              <h3 class="heading"><a href="{{url('news-single/'.$news->id)}}">{{$news->title}}</a></h3>
               <div class="meta">
-                <div><a href="#"><span class="icon-calendar"></span> {{$newsSingle->created_at}}</a></div>
+                <div><a href="#"><span class="icon-calendar"></span> {{$news->created_at}}</a></div>
               </div>
             </div>
           </div>

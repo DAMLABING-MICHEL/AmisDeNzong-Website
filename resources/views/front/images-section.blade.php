@@ -6,8 +6,8 @@
             <ul>
                 <li class="btn btn-outline-danger active" data-filter="*">@lang('All')</li>
                 @foreach ($rubrics as $rubric)
-                @if (count($rubric->images()->get()) > 0)
-                <li class="btn btn-outline-danger" data-filter=".{{$rubric->title}}">{{$rubric->title}}</li>
+                @if ((count($rubric->images()->get())) > 0)
+                <li class="btn btn-outline-danger" data-filter=".{{ $rubric->title }}">{{ $rubric->title }}</li>
                 @endif
                 @endforeach
             </ul>
@@ -17,7 +17,7 @@
 <div class="portfolio-item row justify-content-center">
     @foreach ($rubrics as $rubric)
     @foreach ($rubric->images()->get() as $image)
-    <div class="item {{$rubric->title}} col-lg-3 col-md-4 col-6 col-sm">
+    <div class="item {{ $rubric->title  }} col-lg-3 col-md-4 col-6 col-sm">
         <a href="{{ getImage($image,false,true)}}" class="fancylight popup-btn" data-fancybox-group="light">
             <img class="img-fluid" id="gallery-img" src="{{getImage($image,false,true)}}" alt="">
         </a>

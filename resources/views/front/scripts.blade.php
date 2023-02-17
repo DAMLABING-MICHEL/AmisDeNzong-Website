@@ -150,7 +150,7 @@ $(document).ready(function () {
                 showComments();
                 showAlert('infos', 'success', '@lang('Your comment has been saved')');
             } else {
-                showAlert('info', '@lang('Thanks for your comment. It will appear when an administrator has validated it. Once you are validated your other comments immediately appear.')');
+                showAlert('info', '@lang("Thanks for your comment. It will appear when an administrator has validated it. Once you are validated your other comments immediately appear.")');
             }
         } else {
             if (response.status == 422) {
