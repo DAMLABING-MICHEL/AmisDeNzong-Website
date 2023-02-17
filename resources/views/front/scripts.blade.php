@@ -260,6 +260,7 @@ $(document).ready(function () {
                     .then(response => {
                         if (response.ok) {
                             showComments();
+                            showAlert('infos','success','the deletion has been successfully completed!')
                         } else {
                             errorAlert();
                         }

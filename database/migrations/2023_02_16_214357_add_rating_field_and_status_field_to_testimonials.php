@@ -13,12 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('testimonials', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->id();
-            $table->string('name');
-            $table->text('content')->nullable(true);
-            $table->timestamps();
+        Schema::table('testimonials', function (Blueprint $table) {
+            $table->integer('rating');
+            $table->enum('status', ['active', 'deactive'])->default('deactive');
         });
     }
 
@@ -29,6 +26,9 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('testimonials');
+        Schema::table('testimonials', function (Blueprint $table) {
+            $table->dropColumn('rating');
+            $table->dropColumn('status');
+        });
     }
 };

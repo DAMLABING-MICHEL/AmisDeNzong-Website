@@ -43,7 +43,6 @@ Route::controller(StaffController::class)->group(function () {
 });
 Route::get('/',[IndexController::class,'index'])->name('home');
 Route::post('testimonials',[TestimonialController::class,'store'])->name('testimonial.store');
-Route::put('testimonials',[TestimonialController::class,'update'])->name('testimonial.update');
 Route::delete('testimonials/{testimonial}',[TestimonialController::class,'destroy'])->name('testimonial.delete');
 Route::controller(ImageController::class)->group(function () {
     Route::get('/gallery','getImages'); 
@@ -130,7 +129,7 @@ Route::prefix('admin')->group(function () {
                 // Contacts
         Route::resource('contacts', ResourceController::class)->only(['index', 'destroy']);
         Route::name('contacts.indexnew')->get('newcontacts', [ResourceController::class, 'index']);
-        
+        Route::put('testimonial/{id}',[TestimonialController::class,'update'])->name('testimonial.update');
         //newsletter
         Route::resource('subscribers', BackNewsletterController::class)->only(['index', 'destroy']);
         Route::name('subscribers.indexnew')->get('newssubscribers', [BackNewsletterController::class, 'index']);

@@ -112,9 +112,9 @@ class PostsDataTable extends DataTable
      * @param \App\Models\Post $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(Post $post): QueryBuilder
+    public function query(Post $post)
     {
-        $query = isRole('redac') ? auth()->user()->posts() : $post->newQuery();
+        $query = isRole('redac') ? auth()->user()->posts()->newQuery() : $post->newQuery();
         if (Route::currentRouteNamed('posts.indexnew')) {
             $query->has('unreadNotifications');
         }

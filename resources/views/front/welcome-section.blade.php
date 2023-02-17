@@ -104,7 +104,7 @@
 						@endif
 						<div class="card-img-overlay card-image-description">
 							<div>
-								<p class="">{{$certifiedTeacher->description}}</p>
+								<p>{{$certifiedTeacher->description}}</p>
 							</div>
 							<ul class="ftco-social text-center">
 								@foreach ($certifiedTeacher->follows()->get() as $follow)

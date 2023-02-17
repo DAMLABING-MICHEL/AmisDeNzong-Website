@@ -1,4 +1,5 @@
 <section class="ftco-section testimony-section bg-light">
+	@if (@isset($testimonials) && count($testimonials) > 0)
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
@@ -10,7 +11,6 @@
 		<div class="row ftco-animate justify-content-center">
 			<div class="col-md-12">
 				<div class="carousel-testimony owl-carousel">
-					@if(@isset($testimonials))
 					@foreach($testimonials as $index=>$testimonial)
 					<div class="item">
 						<div class="testimony-wrap d-flex">
@@ -28,11 +28,11 @@
 						</div>
 					</div>
 					@endforeach
-					@endif
 				</div>
 			</div>
 		</div>
 	</div>
+	@endif
 </section>
 <script>
 	(()  => {

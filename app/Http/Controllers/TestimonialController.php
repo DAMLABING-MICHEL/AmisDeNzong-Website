@@ -22,7 +22,18 @@ class TestimonialController extends Controller
         $result = $this->repository->store($request);
        return response()->json('success'.$result);
     }
-    
+     
+    public function update($id)
+    {
+        $testimonial = Testimonial::find($id);
+        $testimonial->update([
+        'name' => request()->name,
+        'status' => request()->status,
+        'rating' => request()->rating,
+        'content' => request()->content,
+        ]
+        );
+    }
     public function destroy(Testimonial $testimonial){
         $this->authorize('delete', $testimonial);
         $testimonial->delete();

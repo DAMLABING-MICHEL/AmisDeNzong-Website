@@ -12,7 +12,7 @@ class AboutController extends Controller
     {
         $highestGrade = Grade::where('hight_grade', true)->get()->first();
         $certifiedTeachers = ($highestGrade != null) ? (Grade::findOrFail($highestGrade->id))->staffs()->get():null;
-        $testimonials = Testimonial::all();
+        $testimonials = Testimonial::where('status','active')->get();
         return view('front.about', compact([
         'testimonials',
         'certifiedTeachers'

@@ -63,9 +63,10 @@
     <button class="open-button" onclick="openForm()">@lang('Leave an review')</button>
 
     <div class="chat-popup" id="myForm">
-      <form action="#" class="form-container" id="review-form">
+      <form action="#" class="form-container" name="form-review-rating" id="review-form" method="post">
         <h4>@lang('Add testimonial')</h4>
         <div class="col">
+            @csrf
             <div class="rate">
                <input type="radio" id="star5" class="rate" name="rating" value="5"/>
                <label for="star5" title="Excellent">5 stars</label>
@@ -81,7 +82,7 @@
          </div>
         <label for="msg"><b>@lang('Message (optional)')</b></label>
         <textarea placeholder="Type message.." name="content"></textarea>
-    
+        <input type="hidden" value="{{ auth()->user()->name }}" id="name">
         <button type="submit" class="btn">@lang('Send')</button>
         <button type="button" class="btn cancel" onclick="closeForm()">@lang('Close')</button>
       </form>
@@ -89,43 +90,49 @@
     @endif
     <script>
     (() => {
-        var rating = document.forms["review-form"]["rating"]
+        // Variables
+		const headers = {
+		    'X-CSRF-TOKEN': '{{ csrf_token() }}', 
+		    'Content-Type': 'application/json',
+		    'Accept': 'application/json'
+		}
+        var rating = document.forms["form-review-rating"]["rating"]
+        var content = document.forms["form-review-rating"]["content"]
+        var name = document.getElementById('name')
         const storeReview = async e => {              
     e.preventDefault();
-    window.alert(rating.value)
     const datas = {
+        name:name.value,
+        rating:rating.value,
+        content:content.value
     };
 	
-        // const response = await fetch(`{{ route('testimonial.store') }}`, { 
-        //     method: 'POST',
-        //     headers: headers,
-        //     body: JSON.stringify(datas)
-        //  })
-        // const data = await response.json();
-        // const showAlert = (icon, title, text) => Swal.fire({
-        // icon: icon,
-        // title: title,
-        // text: text,
-        // });
-        // const errorAlert = () => Swal.fire({
-        // icon: 'error',
-        // title: 'Whoops!',
-        // text: 'Something went wrong'
-        // });
-        // if (response.ok) {
-        // } else {
-        //     if (response.status == 422) {
-        //         $.each(data.errors, function (i, error) {
-        //             $('form')
-        //                 .find('[name="' + i + '"]')
-        //                 .addClass('input-invalid')
-        //                 .next()
-        //                 .append(error[0]);
-        //         });
-        //     } else {
-        //         errorAlert();
-        //     }
-        // }
+        const response = await fetch(`{{ route('testimonial.store') }}`, { 
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(datas)
+         })
+        const data = await response.json();
+        const showAlert = (icon, title, text) => Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        });
+        const errorAlert = () => Swal.fire({
+        icon: 'error',
+        title: 'Whoops!',
+        text: 'Something went wrong'
+        });
+        if (response.ok) {
+            showAlert('infos','success','Your review has been submitted Successfully. Thanks!')
+        } else {
+            if (response.status == 422) {
+                showAlert('error','error','please select at least one star before submitting the form!')
+
+            } else {
+                errorAlert();
+            }
+        }
 }
         const wrapper = (selector, type, callback, condition = 'true', capture = false) => {
 	    const element = document.querySelector(selector);

@@ -28,8 +28,34 @@ class TestimonialsDataTable extends DataTable
         ->editColumn('title', function ($testimonial) {
             return $testimonial->title;
         })
+        ->editColumn('rating', function ($testimonial) {
+            return $testimonial->rating;
+        })
+        ->editColumn('content', function ($testimonial) {
+            return $testimonial->content;
+        })
         ->editColumn('created_at', function ($testimonial) {
             return $this->getDate($testimonial);
+        })
+        ->editColumn('status', function ($testimonial) {
+            return $testimonial->status == 'active' ? '<input
+            type="checkbox"
+            id="status"
+            name="status"
+            checked 
+            data-id ="'.$testimonial->id.'"
+            data-status ="'.$testimonial->status.'"
+            data-name ="'.$testimonial->name.'" 
+            data-content ="'.$testimonial->content.'"
+            data-rating ="'.$testimonial->rating.'"/>' : '<input
+            type="checkbox"
+            id="status"
+            name="status" class="text-center" 
+            data-id ="'.$testimonial->id.'"
+            data-status ="'.$testimonial->status.'"
+            data-name ="'.$testimonial->name.'" 
+            data-content ="'.$testimonial->content.'"
+            data-rating ="'.$testimonial->rating.'"/>';
         })
         ->editColumn('action', function ($testimonial) {
             return $this->button(
@@ -57,7 +83,7 @@ class TestimonialsDataTable extends DataTable
                 __('Really delete this testimonial?')
             );
         })
-        ->rawColumns(['action','created_at']);
+        ->rawColumns(['action','created_at','status']);
     }
 
     /**
@@ -107,7 +133,10 @@ class TestimonialsDataTable extends DataTable
     {
         return [
             Column::make('name')->title(__('Name of Testifying')),
+            Column::make('rating')->title(__('Evaluation')),
+            Column::make('content')->title(__('Message')),
             Column::make('created_at')->title(__('Date')),
+            Column::make('status')->title(__('Status')),
             Column::computed('action')->title(__('Action'))->addClass('align-middle text-center'),
         ];
     }

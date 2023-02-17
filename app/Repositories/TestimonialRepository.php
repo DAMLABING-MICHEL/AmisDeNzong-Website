@@ -13,14 +13,14 @@ class TestimonialRepository
     }
     
     public function findTestimonials(){
-       $testimonials = Testimonial::all();
+       $testimonials = Testimonial::where('status','active')->get();
        return $testimonials;
     }
     
     public function store($request){
         $testimonial = Testimonial::create([
             'name' => auth()->user()->name,
-            'feature' => $request->designation,
+            'rating' => $request->rating,
             'content' => $request->content,
         ]);
         return $testimonial;   

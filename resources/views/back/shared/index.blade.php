@@ -66,7 +66,11 @@
             'Content-Type': 'application/json',
             'Accept': 'application/json'
         }
-   
+        const showAlert = (icon, title, text) => Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        });
         // Delete 
         const deleteElement = async e => {              
             e.preventDefault();
@@ -85,6 +89,7 @@
                   .then(response => {
                       if (response.ok) {
                           e.target.parentNode.parentNode.remove();
+                          showAlert('infos','success','the deletion has been successfully completed!')
                       } else {
                         Swal.fire({
                             icon: 'error',
@@ -112,6 +117,34 @@
         // Set listeners
         window.addEventListener('DOMContentLoaded', () => {
             wrapper('table', 'click', deleteElement, "e.target.matches('.btn-danger')");
+        });
+        var status = null
+        const showMessage = async (e) => {
+          e.preventDefault()
+            if(e.target.dataset.status == 'active'){
+              status = 'deactive'
+            }
+            else if(e.target.dataset.status == 'deactive'){
+              status = 'active'
+            }
+            const datas = {
+                name:e.target.dataset.name,
+                status:status,
+                rating:e.target.dataset.rating,
+                content:e.target.dataset.content,
+            };
+        const response = await fetch(`testimonial/${e.target.dataset.id}`, { 
+            method: 'PUT',
+            headers: headers,
+            body: JSON.stringify(datas)
+         })
+        const data = await response.json();
+        if (response.ok) {
+            showAlert('infos', 'success', 'Thank you for your testimony, it has been well recorded, please refresh the page to view it');
+        }
+        }
+        window.addEventListener('DOMContentLoaded', () => {
+            wrapper('table', 'change', showMessage, "e.target.matches('#status')");
         });
 
     })()

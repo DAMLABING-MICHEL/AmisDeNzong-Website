@@ -24,8 +24,7 @@ class TestimonialRequest extends FormRequest
     public function rules()
     {
         return [
-            'designation' => 'required|max:255',
-            'content' => 'required',
+            'rating' => 'required',
         ];
     }
 }
