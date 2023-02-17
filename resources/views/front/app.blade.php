@@ -60,11 +60,12 @@
     @include('front.footer')
     
     @if (Auth::check())
-    <button class="open-button" onclick="openForm()">@lang('Leave an review')</button>
+    <button class="open-button" onclick="openForm()">@lang('Leave a review')</button>
 
     <div class="chat-popup" id="myForm">
       <form action="#" class="form-container" name="form-review-rating" id="review-form" method="post">
         <h4>@lang('Add testimonial')</h4>
+        <p>@lang('How satisfied are you with the quality of teaching in our school?')</p>
         <div class="col">
             @csrf
             <div class="rate">
