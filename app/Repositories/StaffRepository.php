@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Feature;
+use App\Models\Follow;
 use App\Models\Grade;
 
 class StaffRepository
@@ -58,12 +59,17 @@ class StaffRepository
     public function saveImage($staff,$request){
         $this->imageRepository->store($request,null,null,null,null,$staff,null);
     }
+    public function saveRelationShipData($staff,$request){
+        $follows_id = $request->follows;
+        $staff->follows()->sync($follows_id);
+    } 
     public function updateImage($request){
         $this->imageRepository->update($request);
     }
     public function getRelationShipData(){
         $features = Feature::all()->pluck('title', 'id');
         $grades = Grade::all()->pluck('title', 'id');
-        return compact(['features','grades']);
+        $follows = Follow::all()->pluck('title', 'id');
+        return compact(['features','grades','follows']);
     }
 }

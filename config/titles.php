@@ -43,6 +43,11 @@ return [
         'create' => 'Staff Creation',
         'edit'   => 'staff Edit',
     ],
+    'follow' => [
+        'index'  => 'Social links',
+        'create' => 'Social links Creation',
+        'edit'   => 'Social links Edit',
+    ],
     'grades' => [
         'index'  => 'Grades',
         'create' => 'Grade Creation',

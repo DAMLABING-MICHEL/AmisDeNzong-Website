@@ -69,7 +69,19 @@
                 <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
                     :required="true">
                 </x-back.input>
-            <x-back.card type='primary' :outline="false" title='Image'>
+                <x-back.card type='' :outline="false" title='Follows'>
+                    <select multiple
+                    class="form-control{{ $errors->has('follows') ? ' is-invalid' : '' }}" name="follows[]"
+                    id="follows">
+                    @foreach($follows as $id => $title)
+                    <option value="{{ $id }}" {{ old('follows') ? (in_array($id, old('follows')) ? 'selected' : '' ) :
+                        ((isset($staff) ? $staff->follows : collect())->contains('id', $id) ? 'selected' : '') }}>
+                        {{ $title }}
+                    </option>
+                    @endforeach
+                </select>
+                </x-back.card>
+            <x-back.card type='' :outline="false" title='Image'>
                 <div id="holder" title='Image' class="text-center" style="margin-bottom:15px;">
                     @isset($staff)
                     <img style="width:100%;" src="{{ getImage($staff, true) }}" alt="">

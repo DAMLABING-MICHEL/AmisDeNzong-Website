@@ -60,6 +60,9 @@ class ResourceController extends Controller
         if (method_exists($repository, 'saveImage')) {
             $repository->saveImage($element, $request);
         }
+        if (method_exists($repository, 'saveRelationshipData')) {
+            $repository->saveRelationshipData($element, $request);
+        }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully created.')]);
     }
 
@@ -75,14 +78,18 @@ class ResourceController extends Controller
 
     public function update($id)
     {
+        $element = app()->make($this->model)->find($id);
         $request = app()->make($this->formRequest);
         $repository = app()->make($this->repository);
         if (method_exists($repository, 'addData')) {
             $repository->addData($request);
         }
-        app()->make($this->model)->find($id)->update($request->all());
+        $element->update($request->all());
         if (method_exists($repository, 'updateImage')) {
             $repository->updateImage($request);
+        }
+        if (method_exists($repository, 'saveRelationshipData')) {
+            $repository->saveRelationshipData($element, $request);
         }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully updated.')]);
     }

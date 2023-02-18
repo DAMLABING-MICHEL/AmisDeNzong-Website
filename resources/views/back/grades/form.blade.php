@@ -26,10 +26,10 @@
                     input='text' :required="true">
                 </x-back.input>
                 <x-back.input title='Description' name='description' :value="isset($grade) ? $grade->description : ''"
-                    input='textarea' :required="false">
+                    input='textarea' rows="2" :required="false">
                 </x-back.input>
                 <x-back.input name='hight_grade' :value="isset($grade) ? $grade->hight_grade: ''" input='checkbox'
-                    label="Hight_grade">
+                    label="Hight grade">
                 </x-back.input>
             </x-back.card>
 

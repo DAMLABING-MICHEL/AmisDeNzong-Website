@@ -24,6 +24,18 @@
 								</span>
 								<p>{{$testimonial->content}}</p>
 								<p class="name">{{$testimonial->name}}</p>
+								<p>
+									<div class="form-group row">
+										<div class="col">
+										   <div class="rated">
+											@for($i = 0; $i < $testimonial->rating; $i++)
+											  <input type="radio" id="star{{$i}}" class="rate" name="rating" value="5"/>
+											  <label class="star-rating-complete" title=""> {{$i}} stars</label>
+											@endfor
+											</div>
+										</div>
+									</div>
+								</p>
 							</div>
 						</div>
 					</div>
@@ -34,68 +46,3 @@
 	</div>
 	@endif
 </section>
-<script>
-	(()  => {
-		// Variables
-		const headers = {
-		    'X-CSRF-TOKEN': '{{ csrf_token() }}', 
-		    'Content-Type': 'application/json',
-		    'Accept': 'application/json'
-		}
-
-// store testimonial
-const storeTestimonial = async e => {              
-    e.preventDefault();
-    const datas = {
-    };
-	
-        const response = await fetch(`{{ route('testimonial.store') }}`, { 
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(datas)
-         })
-            // Wait for response
-        const data = await response.json();
-        const showAlert = (icon, title, text) => Swal.fire({
-        icon: icon,
-        title: title,
-        text: text,
-        });
-        const errorAlert = () => Swal.fire({
-        icon: 'error',
-        title: 'Whoops!',
-        text: 'Something went wrong'
-        });
-        // Manage response
-        if (response.ok) {
-            showAlert('infos', 'success', 'Thank you for your testimony, it has been well recorded, please refresh the page to view it');
-        } else {
-            if (response.status == 422) {
-                $.each(data.errors, function (i, error) {
-                    $('form')
-                        .find('[name="' + i + '"]')
-                        .addClass('input-invalid')
-                        .next()
-                        .append(error[0]);
-                });
-            } else {
-                errorAlert();
-            }
-        }
-}
-    	// Listener wrapper
-	const wrapper = (selector, type, callback, condition = 'true', capture = false) => {
-	    const element = document.querySelector(selector);
-	    if(element) {
-	        document.querySelector(selector).addEventListener(type, e => { 
-	            if(eval(condition)) {
-	                callback(e);
-	            }
-	        }, capture);
-	    }
-	};
-	window.addEventListener('DOMContentLoaded', () => {
-        wrapper('#testimonial-form', 'submit', storeTestimonial);
-    })
-})()
-</script>

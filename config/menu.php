@@ -156,6 +156,23 @@ return [
         ]
     ],
     
+    'Social links' => [
+        'icon' => 'link',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'All social links',
+                'role'  => 'admin',
+                'route' => 'follows.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'follows.create',
+            ],
+        ]
+    ],
+    
     'Grades' => [
         'icon' => 'graduation-cap',
         'role'   => 'admin',

@@ -60,11 +60,11 @@ class ContactsDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('created_at')->title(__('Date')),
             Column::make('name')->title(__('Name')),
             Column::make('email')->title(__('Email')),
             Column::make('subject')->title(__('Subject')),
             Column::make('message')->title(__('Message')),
-            Column::make('created_at')->title(__('Date')),
             Column::computed('action')->title(__('Action'))->addClass('align-middle text-center'),
         ];
     }

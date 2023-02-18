@@ -34,7 +34,7 @@
 								</div>
 								<ul class="ftco-social text-center">
 									@foreach ($staff->follows()->get() as $follow)
-									<li class="ftco-animate"><a href="#" class="icon-follow"><span class="icon-{{$follow->title}}"></span></a></li>
+										<li class="ftco-animate"><a href="#" class="icon-follow"><span class="icon-{{$follow->title}}"></span></a></li>
 									@endforeach
 								</ul>
 							</div>
