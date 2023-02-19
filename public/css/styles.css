@@ -418,3 +418,19 @@
     .rated > label:hover ~ input:checked ~ label {
     color: #c59b08;
     }
+    .lbl-update-image-profile {
+        /* background-color: indigo; */
+        color: white;
+        padding: 0.5rem;
+        font-family: sans-serif;
+        border-radius: 0.3rem;
+        cursor: pointer;
+        /* margin-top: 1rem; */
+      }
+      #content-avatar{
+        padding-left: 18rem;
+      }
+      #file-chosen{
+        margin-left: 0.3rem;
+        font-family: sans-serif;
+      }

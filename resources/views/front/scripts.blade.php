@@ -16,6 +16,13 @@ $(document).ready(function () {
             enabled: true
         }
     });
+    const updateImageProfileBtn = document.getElementById('update-image-profile-btn');
+
+    const fileChosen = document.getElementById('file-chosen');
+    
+    updateImageProfileBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
     $('#exampleModalLong').modal('toggle')
     if(!!document.forms["register-form"] == true){
         var name = document.forms["register-form"]["name"];

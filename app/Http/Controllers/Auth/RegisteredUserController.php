@@ -36,15 +36,15 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
             'avatar' => ['image'],
         ]);
 
         $token = Str::random(64);
-        $avatarName = "IMG_20220118_120938.jpg";
-        if($request->hasfile('avatar')){
-            $avatarName = time().'.'.request()->avatar->getClientOriginalExtension();
+        $avatarName = null;
+        if ($request->hasfile('avatar')) {
+            $avatarName = time() . '.' . request()->avatar->getClientOriginalExtension();
             request()->avatar->move(public_path('avatars'), $avatarName);
         }
         $user = User::create([
@@ -57,34 +57,41 @@ class RegisteredUserController extends Controller
         $user->notify(new ModelCreatedNotification($user));
         event(new Registered($user));
         try {
-            Mail::send('front.verification-email', ['token' => $token], function($message) use($request){
+            Mail::send('front.verification-email', ['token' => $token], function ($message) use ($request) {
                 $message->to($request->email);
                 $message->subject('Email Verification Mail');
             });
             return back()->with('status', 'You need to confirm your account. We have sent you an activation code, please check your email.');
         } catch (\Throwable $th) {
-            echo("connection failed!");
+            echo ("connection failed!");
         }
     }
-    
+
     public function update(Request $request)
-{
-    $values = $request->only(['name', 'email']);
+    {
+        $values = $request->only(['name', 'email']);
 
-    $rules = [
-        'name' => 'required|max:255|unique:users,name,' . $request->user()->id,
-        'email' => 'required|email|max:255|unique:users,email,' . $request->user()->id,
-    ];
+        $rules = [
+            'name' => 'required|max:255|unique:users,name,' . $request->user()->id,
+            'email' => 'required|email|max:255|unique:users,email,' . $request->user()->id,
+        ];
 
-    if($request->password) {
-        $rules['password'] = 'string|confirmed|min:8';
-        $values['password'] =  Hash::make($request->password);
+        if ($request->password) {
+            $rules['password'] = 'string|confirmed|min:8';
+            $values['password'] =  Hash::make($request->password);
+        }
+
+        $avatarName = null;
+        if ($request->avatar) {
+            $avatarName = time() . '.' . $request->avatar->getClientOriginalExtension();
+            request()->avatar->move(public_path('avatars'), $avatarName);
+            $values['avatar'] =  $avatarName ?? NULL;
+        }
+
+        $request->validate($rules);
+
+        $request->user()->update($values);
+
+        return back()->with('status', __('You have been successfully updated.'));
     }
-
-    $request->validate($rules);
-
-    $request->user()->update($values);
-    
-    return back()->with('status', __('You have been successfully updated.'));
-}
 }

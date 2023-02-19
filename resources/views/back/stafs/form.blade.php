@@ -59,7 +59,7 @@
         <div class="col-md-4">
             <x-back.card type='primary' title=''>
                 @foreach (config("app.locales") as $locale)
-                <x-back.input title='taught class {{ $locale }} of the staff' name='position_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('position',$locale) : ''" input='text'
+                <x-back.input title='position {{ $locale }} of the staff' name='position_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('position',$locale) : ''" input='text'
                     :required="false">
                 </x-back.input>
                 @endforeach
@@ -69,7 +69,7 @@
                 <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
                     :required="true">
                 </x-back.input>
-                <x-back.card type='' :outline="false" title='Follows'>
+                <x-back.card type='' :outline="false" title='Social links'>
                     <select multiple
                     class="form-control{{ $errors->has('follows') ? ' is-invalid' : '' }}" name="follows[]"
                     id="follows">

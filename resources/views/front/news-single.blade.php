@@ -34,7 +34,7 @@
           @if(@isset($lattestNews))
           @foreach($lattestNews as $news)
           <div class="block-21 mb-4 d-flex">
-            <a class="blog-img mr-4" style="background-image: url({{ getImage($news,false,false) }});"></a>
+            <a class="blog-img mr-4" style="background-image: url('{{ getImage($news, true) }}');"></a>
             <div class="text">
               <h3 class="heading"><a href="{{url('news-single/'.$news->id)}}">{{$news->title}}</a></h3>
               <div class="meta">

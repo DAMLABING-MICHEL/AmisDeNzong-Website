@@ -133,7 +133,7 @@
             @if(@isset($lastPosts))
             @foreach($lastPosts as $index=>$post)
             <div class="block-21 mb-4 d-flex">
-              <a class="blog-img mr-4" style="background-image: url({{ getImage($post, true) }});"></a>
+              <a class="blog-img mr-4" style="background-image: url('{{ getImage($post, true) }}');"></a>
               <div class="text">
                 <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">
