@@ -63,7 +63,7 @@
                     :required="false">
                 </x-back.input>
                 @endforeach
-                <x-back.input title='Feature' name='feature' :value="isset($staff) ? $staff->feature->title : ''" input='select' :options="$features"
+                <x-back.input title='Occupation' name='feature' :value="isset($staff) ? $staff->feature->title : ''" input='select' :options="$features"
                     :required="true">
                 </x-back.input>
                 <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"

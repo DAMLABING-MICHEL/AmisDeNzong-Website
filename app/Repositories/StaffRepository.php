@@ -9,17 +9,20 @@ class StaffRepository
 {
     protected $gradeRepository;
     public $imageRepository;
+    public $featureRepository;
     
     public function __construct()
     {
         $this->imageRepository = new ImageRepository();
+        $this->featureRepository = new FeatureRepository();
     }
     public function findCertifiedTeachers(){
         $this->gradeRepository = new GradeRepository();
         $grade = $this->gradeRepository->findHighestGrade();
+        $feature = $this->featureRepository->getFeature('Teachers');
         $certifiedTeachers = null;
         if($grade != null){
-            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->limit(4)->get();
+            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->where('feature_id',$feature->id)->limit(4)->get();
         }
         return $certifiedTeachers;
     }

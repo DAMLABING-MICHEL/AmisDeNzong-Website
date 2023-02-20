@@ -98,7 +98,7 @@ class StafsDataTable extends DataTable
             Column::make('lastName')->title(__('Last Name')),
             Column::make('gender')->title(__('Gender')),
             Column::make('position')->title(__('Position')),
-            Column::make('feature')->title(__('Feature')),
+            Column::make('feature')->title(__('Occupation')),
             Column::computed('action')->title(__('Action'))->addClass('align-middle text-center'),
         ];
     }

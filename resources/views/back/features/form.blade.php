@@ -22,9 +22,11 @@
             @endif
 
             <x-back.card type='info' :outline="true" title=''>
-                <x-back.input title='Title of the feature' name='title' :value="isset($feature) ? $feature->title : ''"
+                @foreach (config('app.locales') as $locale )
+                <x-back.input title='Title {{ $locale }} of the Occupation' name='title_{{ $locale }}' :value="isset($feature) ? $feature->getTranslation('title',$locale) : ''"
                     input='text' :required="true">
                 </x-back.input>
+                @endforeach
                 <x-back.input title='Description' name='description' :value="isset($feature) ? $feature->description : ''"
                     input='textarea' :required="false">
                 </x-back.input>
