@@ -38,7 +38,7 @@
       <div class="col-md-3 d-flex">
         <div class="bg-light align-self-stretch box p-4 text-center">
           <h3 class="mb-4">@lang('Website')</h3>
-          <p><a href="#">www.Lesamisdenzong-fondationcandia.com</a></p>
+          <p><a href="#">amisdenzong-fondationcandia.com</a></p>
         </div>
       </div>
     </div>
