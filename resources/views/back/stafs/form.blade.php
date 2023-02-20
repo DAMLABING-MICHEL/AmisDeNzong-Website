@@ -44,7 +44,7 @@
                     :required="true">
                 </x-back.input>
                 <x-back.input title='Email' name='email' :value="isset($staff) ? $staff->email : ''" input='text'
-                    :required="true">
+                    :required="false">
                 </x-back.input>
                 @foreach (config('app.locales') as $locale)
                     <x-back.input title='Description {{ $locale }} of the staff' name='description_{{ $locale }}' :value="isset($staff) ? $staff->getTranslation('description',$locale) : ''" input='textarea'
@@ -53,7 +53,7 @@
                 @endforeach
             </x-back.card>
             
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
@@ -66,10 +66,10 @@
                 <x-back.input title='Occupation' name='feature' :value="isset($staff) ? $staff->feature->title : ''" input='select' :options="$features"
                     :required="true">
                 </x-back.input>
-                <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
+                {{-- <x-back.input title='Grade' name='grade' :value="isset($staff) ? $staff->grade->title : ''" input='select' :options="$grades"
                     :required="true">
-                </x-back.input>
-                <x-back.card type='' :outline="false" title='Social links'>
+                </x-back.input> --}}
+                {{-- <x-back.card type='' :outline="false" title='Social links'>
                     <select multiple
                     class="form-control{{ $errors->has('follows') ? ' is-invalid' : '' }}" name="follows[]"
                     id="follows">
@@ -80,7 +80,7 @@
                     </option>
                     @endforeach
                 </select>
-                </x-back.card>
+                </x-back.card> --}}
             <x-back.card type='' :outline="false" title='Image'>
                 <div id="holder" title='Image' class="text-center" style="margin-bottom:15px;">
                     @isset($staff)
@@ -116,19 +116,4 @@
 @section('js')
 
 @include('back.shared.editorScript')
-
-<script>
-    (() =>{
-        $('form').submit(function (event) {
-            if ($(this).hasClass('submitted')) {
-                event.preventDefault();
-            }
-            else {
-                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
-                $(this).addClass('submitted');
-                document.getElementById("submit").disabled = true;
-            }
-    });  
-    })
-    </script>
 @endsection

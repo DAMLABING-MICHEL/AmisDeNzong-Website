@@ -46,6 +46,18 @@
         $('#title_en').keyup(function () {
           $('#slug').val(getSlug($(this).val()))
         })
+   
+        $('form').submit(function (event) {
+            if ($(this).hasClass('submitted')) {
+                event.preventDefault();
+            }
+            else {
+                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+                $(this).addClass('submitted');
+                document.getElementById("submit").disabled = true;
+            }
+        });  
+    
     })
       CKEDITOR.replace('content_en', { customConfig: '{{ asset('js/ckeditor.js') }}' });
       CKEDITOR.replace('content_fr', { customConfig: '{{ asset('js/ckeditor.js') }}' });

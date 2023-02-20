@@ -29,7 +29,7 @@ class StaffRequest extends FormRequest
         return [
             'firstName' => ['required', 'string', 'max:255'],
             'lastName' => ['required', 'string', 'max:255'],
-            'email' => ['email', 'max:255', Rule::unique('staff','email')->ignore($this->staff)],
+            // 'email' => ['email', 'max:255', Rule::unique('staff','email')->ignore($this->staff)],
         ];
     }
 }

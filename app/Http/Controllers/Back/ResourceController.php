@@ -63,6 +63,9 @@ class ResourceController extends Controller
         if (method_exists($repository, 'saveRelationshipData')) {
             $repository->saveRelationshipData($element, $request);
         }
+        if (method_exists($repository, 'createNotification')) {
+            $repository->createNotification($element, $request);
+        }
         return back()->with(['ok' => __('The ' . $this->singular . ' has been successfully created.')]);
     }
 

@@ -4,6 +4,8 @@ namespace App\Repositories;
 use App\Models\Feature;
 use App\Models\Follow;
 use App\Models\Grade;
+use App\Models\Staff;
+use App\Notifications\ModelCreatedNotification;
 
 class StaffRepository
 {
@@ -22,8 +24,9 @@ class StaffRepository
         $feature = $this->featureRepository->getFeature('Teachers');
         $certifiedTeachers = null;
         if($grade != null){
-            $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->where('feature_id',$feature->id)->limit(4)->get();
+            // $certifiedTeachers = Grade::findOrFail($grade->id)->staffs()->where('feature_id',$feature->id)->limit(4)->get();
         }
+        $certifiedTeachers = Staff::where('feature_id',$feature->id)->limit(4)->get();
         return $certifiedTeachers;
     }
     
@@ -53,7 +56,7 @@ class StaffRepository
         }
         $request->merge([
             'feature_id' => $feature->id,
-            'grade_id' => $grade->id,
+            'grade_id' => 1,
             'description' => ['en'=>$request->description_en,'fr'=>$request->description_fr,'it'=>$request->description_it,],
             'position' => ['en'=>$request->position_en,'fr'=>$request->position_fr,'it'=>$request->position_it,]
         ]);
@@ -61,6 +64,9 @@ class StaffRepository
     
     public function saveImage($staff,$request){
         $this->imageRepository->store($request,null,null,null,null,$staff,null);
+    }
+    public function createNotification($staff){
+        $staff->notify(new ModelCreatedNotification($staff));
     }
     public function saveRelationShipData($staff,$request){
         $follows_id = $request->follows;
@@ -71,8 +77,8 @@ class StaffRepository
     }
     public function getRelationShipData(){
         $features = Feature::all()->pluck('title', 'id');
-        $grades = Grade::all()->pluck('title', 'id');
+        // $grades = Grade::all()->pluck('title', 'id');
         $follows = Follow::all()->pluck('title', 'id');
-        return compact(['features','grades','follows']);
+        return compact(['features','follows']);
     }
 }

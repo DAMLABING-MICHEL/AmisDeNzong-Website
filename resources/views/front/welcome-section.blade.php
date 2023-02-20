@@ -89,7 +89,7 @@
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('Certified Teachers')</span> </h2>
+				<h2 class="mb-4"><span>@lang('some of the teachers')</span> </h2>
 				<p>@lang("A dynamic, talented and experienced team of staff is here to take care of your children's education.")</p>
 			</div>
 		</div>
@@ -100,7 +100,7 @@
 				<div class="staff">
 					<div class="img-wrap d-flex align-items-stretch">
 						@if(!@empty($certifiedTeacher->image))
-						<div class="img align-self-stretch" id="teacher-img" style="background-image: url( {{ getImage($certifiedTeacher)}} );"></div>
+						<div class="img align-self-stretch" id="teacher-img" style="background-image: url( '{{ getImage($certifiedTeacher)}}' );"></div>
 						@endif
 						<div class="card-img-overlay card-image-description">
 							<div>
@@ -114,14 +114,16 @@
 						</div>
 					</div>
 					<div class="text pt-3 text-center">
-						<h3>{{$certifiedTeacher->lastName}}</h3>
+						<h3>{{$certifiedTeacher->lastName }} {{ $certifiedTeacher->firstName }}</h3>
 						<span class="position mb-2">{{$certifiedTeacher->position}}</span>
 					</div>
 				</div>
 			</div>
 			@endforeach
 			@endif
-
+		</div>
+		<div class="text-center btn-gallery">
+			<p><a href="{{ url('staff')}}" class="btn px-4 py-3 mt-3 text-white">@lang('see all staff')</a></p>
 		</div>
 	</div>
 </section>
