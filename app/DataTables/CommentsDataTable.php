@@ -25,14 +25,7 @@ class CommentsDataTable extends DataTable
                 return formatDate($comment->created_at) . __(' at ') . formatHour($comment->created_at);
             })
             ->editColumn('action', function ($comment) {
-                return $this->button(
-                          'comments.edit', 
-                          $comment->id, 
-                          'warning', 
-                          __('Edit'), 
-                          'edit'
-                      ).'&nbsp;&nbsp;'
-                      .  $this->button(
+                return  $this->button(
                           'comments.destroy', 
                           $comment->id, 
                           'danger', 

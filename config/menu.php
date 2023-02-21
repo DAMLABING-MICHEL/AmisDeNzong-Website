@@ -109,11 +109,6 @@ return [
                 'role'  => 'redac',
                 'route' => 'comments.indexnew',
             ],
-            [
-                'name'  => 'fake',
-                'role'  => 'redac',
-                'route' => 'comments.edit',
-            ],
         ],
     ],
     

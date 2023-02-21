@@ -45,7 +45,7 @@
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}"
                         type="text" name="image"
-                        value="{{ old('image', isset($image) ? getImage($image,false, true) : '') }}" required>
+                        value="{{ old('image', isset($image) ? getImage($image,false, true) : '') }}" required hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId" value="{{ old('image', isset($image) && !empty($image) ? $image->id : '') }}"
                         hidden>
@@ -57,7 +57,7 @@
                 </div>
             </x-back.card>
 
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
     </div>

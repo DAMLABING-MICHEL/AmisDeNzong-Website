@@ -41,5 +41,6 @@
 @endsection
 
 @section('js')
+@include('back.shared.editorScript')
 
 @endsection

@@ -2,76 +2,36 @@
 
 @section('content')
 
-    <form 
-        method="post" 
-        action="{{ route('users.update', $user->id) }}">
-        @method('PUT')
-        @csrf
+<form method="post" action="{{ route('users.update', $user->id) }}">
+    @method('PUT')
+    @csrf
 
-        <div class="row">
-          <div class="col-md-12">
-                
-                <x-back.validation-errors :errors="$errors" />
+    <div class="row">
+        <div class="col-md-12">
 
-                @if(session('ok'))
-                    <x-back.alert 
-                        type='success'
-                        title="{!! session('ok') !!}">
-                    </x-back.alert>
-                @endif
+            <x-back.validation-errors :errors="$errors" />
 
-                <x-back.card
-                    type='info'
-                    :outline="true"
-                    title=''>
-                    <x-back.input
-                        title='Name'
-                        name='name'
-                        :value='$user->name'
-                        input='text'
-                        :required="true">
-                    </x-back.input>
-                    <x-back.input
-                        title='Email'
-                        name='email'
-                        :value='$user->email'
-                        input='text'
-                        :required="true">
-                    </x-back.input>
-                    <x-back.input
-                        title='Role'
-                        name='role'
-                        :value='$user->role'
-                        :options="['admin','redac','user']"
-                        input='select'
-                        :required="true">
-                    </x-back.input>
-                    <x-back.input
-                        name='valid'
-                        :value='$user->valid'
-                        input='checkbox'
-                        label="Valid">
-                    </x-back.input>
-                </x-back.card>
+            @if(session('ok'))
+            <x-back.alert type='success' title="{!! session('ok') !!}">
+            </x-back.alert>
+            @endif
 
-                <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <x-back.card type='info' :outline="true" title=''>
+                <x-back.input title='Name' name='name' :value='$user->name' input='text' :required="true">
+                </x-back.input>
+                <x-back.input title='Email' name='email' :value='$user->email' input='text' :required="true">
+                </x-back.input>
+                <x-back.input title='Role' name='role' :value='$user->role' :options="['admin','redac','user']"
+                    input='select' :required="true">
+                </x-back.input>
+                <x-back.input name='valid' :value='$user->valid' input='checkbox' label="Valid">
+                </x-back.input>
+            </x-back.card>
 
-              </div>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
+
         </div>
-    </form>
-
+    </div>
+</form>
+@include('back.shared.editorScript')
 @endsection
-<script>
-(() =>{
-    $('form').submit(function (event) {
-        if ($(this).hasClass('submitted')) {
-            event.preventDefault();
-        }
-        else {
-            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
-            $(this).addClass('submitted');
-            document.getElementById("submit").disabled = true;
-        }
-});  
-})
-</script>

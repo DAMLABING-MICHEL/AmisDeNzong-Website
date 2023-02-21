@@ -32,7 +32,7 @@
                 </x-back.input>
             </x-back.card>
 
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
     </div>
@@ -43,20 +43,6 @@
 @endsection
 
 @section('js')
-
-<script>
-    (() =>{
-        $('form').submit(function (event) {
-            if ($(this).hasClass('submitted')) {
-                event.preventDefault();
-            }
-            else {
-                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
-                $(this).addClass('submitted');
-                document.getElementById("submit").disabled = true;
-            }
-    });  
-    })
-    </script>
+@include('back.shared.editorScript')
 
 @endsection

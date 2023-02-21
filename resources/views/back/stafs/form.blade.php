@@ -94,7 +94,7 @@
                             class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i>  @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="image" value="{{ old('image', isset($staff) ? getImage($staff, true) : '') }}" required>
+                        name="image" value="{{ old('image', isset($staff) ? getImage($staff, true) : '') }}" required hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId" value="{{ old('image', isset($staff) && !empty($staff->image) ? $staff->image->id : '') }}" hidden>
                     @if ($errors->has('image'))

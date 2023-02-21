@@ -46,7 +46,7 @@
                 @endforeach
             </x-back.card>
             
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
@@ -88,10 +88,10 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white"
-                            class="btn btn-outline-secondary" type="button">Button</a>
+                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i> @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="image" value="{{ old('image', isset($event) ? getImage($event) : '') }}" required>
+                        name="image" value="{{ old('image', isset($event) ? getImage($event) : '') }}" required hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId"
                         value="{{ old('image', isset($event) && !empty($event->image) ? $event->image->id : '') }}"
@@ -116,19 +116,4 @@
 @section('js')
 
 @include('back.shared.editorScript')
-
-<script>
-    (() =>{
-        $('form').submit(function (event) {
-            if ($(this).hasClass('submitted')) {
-                event.preventDefault();
-            }
-            else {
-                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
-                $(this).addClass('submitted');
-                document.getElementById("submit").disabled = true;
-            }
-    });  
-    })
-    </script>
 @endsection

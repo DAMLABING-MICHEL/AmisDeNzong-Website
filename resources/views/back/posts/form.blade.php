@@ -33,7 +33,7 @@
                     </div>
                     @endforeach
                     <div class="modal-footer">
-                        <button type="submit" class="btn btn-primary" name="create-tag">@lang("submit")</button>
+                        <button type="button" class="btn btn-primary" name="create-tag" id="btn-create-tag">@lang("submit")</button>
                         <input type="text" value="{{ route('tags.addTag') }}" id="tag-route" hidden>
                     </div>
                 </form>
@@ -81,7 +81,7 @@
                 </x-back.input>
             </x-back.card>
             @endforeach
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
@@ -128,10 +128,10 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white"
-                            class="btn btn-outline-secondary" type="button">Button</a>
+                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i>  @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required>
+                        name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId"
                         value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
@@ -240,17 +240,8 @@ const wrapper = (selector, type, callback, condition = 'true', capture = false) 
 
 // Set listeners
 window.addEventListener('DOMContentLoaded', () => {
-    wrapper('#tag-form', 'submit', createTag);
+    wrapper('#tag-form', 'click', createTag);
 });
-$('form').submit(function (event) {
-        if ($(this).hasClass('submitted')) {
-            event.preventDefault();
-        }
-        else {
-            $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
-            $(this).addClass('submitted');
-        }
-    });
 
 })()
 </script>

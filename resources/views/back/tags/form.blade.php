@@ -32,7 +32,7 @@
                 </x-back.input>
             </x-back.card>
 
-            <button type="submit" class="btn btn-primary">@lang('Submit')</button>
+            <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
     </div>
