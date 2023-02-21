@@ -173,22 +173,22 @@ return [
         ]
     ],
     
-    'Grades' => [
-        'icon' => 'graduation-cap',
-        'role'   => 'admin',
-        'children' => [
-            [
-                'name'  => 'All grades',
-                'role'  => 'admin',
-                'route' => 'grades.index',
-            ],
-            [
-                'name'  => 'add',
-                'role'  => 'admin',
-                'route' => 'grades.create',
-            ],
-        ]
-    ],
+    // 'Grades' => [
+    //     'icon' => 'graduation-cap',
+    //     'role'   => 'admin',
+    //     'children' => [
+    //         [
+    //             'name'  => 'All grades',
+    //             'role'  => 'admin',
+    //             'route' => 'grades.index',
+    //         ],
+    //         [
+    //             'name'  => 'add',
+    //             'role'  => 'admin',
+    //             'route' => 'grades.create',
+    //         ],
+    //     ]
+    // ],
     
     'Occupations' => [
         'icon' => 'star',

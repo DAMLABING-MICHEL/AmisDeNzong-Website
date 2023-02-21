@@ -48,11 +48,11 @@ return [
         'create' => 'Social links Creation',
         'edit'   => 'Social links Edit',
     ],
-    'grades' => [
-        'index'  => 'Grades',
-        'create' => 'Grade Creation',
-        'edit'   => 'Grade Edit',
-    ],
+    // 'grades' => [
+    //     'index'  => 'Grades',
+    //     'create' => 'Grade Creation',
+    //     'edit'   => 'Grade Edit',
+    // ],
     'features' => [
         'index'  => 'Occupations',
         'create' => 'Occupation Creation',

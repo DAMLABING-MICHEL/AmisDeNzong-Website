@@ -22,7 +22,6 @@ class ResourceController extends Controller
             if (substr($segment, 0, 3) === 'new') {
                 $segment = substr($segment, 3);
             }
-
             $name = substr($segment, 0, -1); // categorie
             $this->singular = Str::singular($segment); // category
 
