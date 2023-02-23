@@ -17,7 +17,7 @@
 		@foreach($features as $index => $feature)
 		<div class="d-flex flex-column">
 			<div class="text-center heading-section ftco-animate d-lex justify-content-center">
-				<h2 class="text-center">{{ $feature->title }}</h2>
+				<h2 class="text-center">{{ __($feature->title) }}</h2>
 			</div>
 			<div class="row justify-content-center">
 				@foreach($staffs as $index => $staff)

@@ -27,7 +27,7 @@
                                 class="icon bg-tertiary mr-2 d-flex justify-content-center align-items-center text-white">
                                 <span class="icon-phone2"></span>
                             </div>
-                            <span class="text text-white">+237 65 71 83 89 / 693 03 44 72</span>
+                            <span class="text text-white">+237 650 71 83 89 / 693 03 44 72</span>
                         </div>
                         <div class="class ml-4">
                             <div class="dropdown" style="display: inline-block;">

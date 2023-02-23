@@ -37,7 +37,7 @@ class ContactController extends Controller
                 'user_query' => $request->get('message'),
             ), function($message) use ($request){
                 $message->from($request->email);
-                $message->to('sylviadamlabing@gmail.com', 'Admin')->subject($request->get('subject'));
+                $message->to('lesamisdenzong.fondationcandia@gmail.com', 'Admin')->subject($request->get('subject'));
             });
             return back()->with('success', __('We have received your message and would like to thank you for writing to us.'));
         } catch (\Throwable $th) {
