@@ -27,13 +27,15 @@
                     @csrf
                     @foreach (config("app.locales") as $locale )
                     <div class="form-group">
-                        <label for="recipient-name" class="col-form-label"> @lang('Title') {{ $locale }} @lang('of the tag') </label>
+                        <label for="recipient-name" class="col-form-label"> @lang('Title') {{ $locale }} @lang('of the
+                            tag') </label>
                         <input type="text" class="form-control" name="tag_{{ $locale }}" id='tag-{{ $locale }}'>
                         <span id="tagError" style="color: red"></span>
                     </div>
                     @endforeach
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary" name="create-tag" id="btn-create-tag">@lang("submit")</button>
+                        <button type="button" class="btn btn-primary" name="create-tag"
+                            id="btn-create-tag">@lang("submit")</button>
                         <input type="text" value="{{ route('tags.addTag') }}" id="tag-route" hidden>
                     </div>
                 </form>
@@ -60,27 +62,76 @@
             </x-back.alert>
             @endif
 
-            @foreach ( config('app.locales') as $locale )
-            <x-back.card type='primary' title="Title {{ $locale }} of the post">
-                <x-back.input name='title_{{ $locale }}'
-                    :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text' :required="true">
-                </x-back.input>
+            <x-back.card type='primary' title='Title'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-title-{{ $locale }}" role="tab"
+                            aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-title-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='title_{{ $locale }}'
+                            :value="isset($post) ? $post->getTranslation('title',$locale) : ''" input='text'
+                            :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
             </x-back.card>
 
-            <x-back.card type='primary' title='Summary {{ $locale }} of the post'>
-                <x-back.input name='summary_{{ $locale }}'
-                    :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
-                    :required="true">
-                </x-back.input>
+
+
+            <x-back.card type='primary' title='Summary'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-summary-{{ $locale }}"
+                            role="tab" aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-summary-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='summary_{{ $locale }}'
+                            :value="isset($post) ? $post->getTranslation('summary',$locale) : ''" input='textarea'
+                            :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
             </x-back.card>
 
-            <x-back.card type='primary' title='Content {{ $locale }} of the post'>
-                <x-back.input name='content_{{ $locale }}'
-                    :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea' rows=10
-                    :required="true">
-                </x-back.input>
+            <x-back.card type='primary' title='Content'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-content-{{ $locale }}"
+                            role="tab" aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-content-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='content_{{ $locale }}'
+                            :value="isset($post) ? $post->getTranslation('content',$locale) : ''" input='textarea'
+                            rows=10 :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
             </x-back.card>
-            @endforeach
             <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
@@ -98,8 +149,7 @@
                 </x-back.input>
             </x-back.card>
             <x-back.card type='danger' :outline="false" title='Tags'>
-                <select multiple
-                    class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags[]"
+                <select multiple class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags[]"
                     id="tags">
                     @foreach($tags as $id => $title)
                     <option value="{{ $id }}" {{ old('tags') ? (in_array($id, old('tags')) ? 'selected' : '' ) :
@@ -128,10 +178,12 @@
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <a id="lfm" data-input="image" data-preview="holder" class="btn btn-primary text-white"
-                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i>  @lang('Upload')</a>
+                            class="btn btn-outline-secondary" type="button"><i class="fa fa-upload"></i>
+                            @lang('Upload')</a>
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
-                        name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required hidden>
+                        name="image" value="{{ old('image', isset($post) ? getImage($post, true) : '') }}" required
+                        hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId"
                         value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
