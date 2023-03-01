@@ -137,18 +137,14 @@
         </div>
         <div class="col-md-4">
 
-            <x-back.card type='primary' :outline="false" title='Publication'>
-                <x-back.input name='active' :value="isset($post) ? $post->active : false" input='checkbox'
-                    label="Active">
+            <x-back.card type='primary' :outline="false" title=''>
+                <x-back.input name='active' title='Publication' :value="isset($post) ? $post->active : false"
+                    input='checkbox' label="Active">
                 </x-back.input>
-            </x-back.card>
-
-            <x-back.card type='warning' :outline="false" title='Category' :required="true">
-                <x-back.input name='category' input='select' :value="isset($post) ? $post->category->id : collect()"
-                    :options="$categories">
+                <x-back.input name='category' title='Category' input='select'
+                    :value="isset($post) ? $post->category->id : collect()" :options="$categories">
                 </x-back.input>
-            </x-back.card>
-            <x-back.card type='danger' :outline="false" title='Tags'>
+                <label for="tags">@lang('Tags')</label>
                 <select multiple class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags[]"
                     id="tags">
                     @foreach($tags as $id => $title)
@@ -159,12 +155,12 @@
                     @endforeach
                 </select>
                 <input type="hidden" value="{{ App::getLocale() }}" id="locale">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Add new
+                <button type="button" class="btn btn-primary mt-1" data-toggle="modal" data-target="#exampleModal">Add new
                     Tag</button>
-            </x-back.card>
-            <x-back.card type='success' :outline="false" title='Slug'>
-                <x-back.input name='slug' :value="isset($post) ? $post->slug : ''" input='text' :required="true">
-                </x-back.input>
+                  <div class="mt-3">
+                    <x-back.input name='slug' title='Slug' :value="isset($post) ? $post->slug : ''" input='text' :required="true">
+                    </x-back.input>
+                  </div>
             </x-back.card>
 
             <x-back.card type='primary' :outline="false" title='Image'>

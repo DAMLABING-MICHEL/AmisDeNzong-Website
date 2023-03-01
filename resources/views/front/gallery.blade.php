@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url('images/gallery-bg.jpg');">
+<section class="hero-wrap hero-wrap-2" style="background-image: url({{ asset('images/gallery-bg.jpg') }});">
 	<div class="overlay"></div>
 	<div class="container">
 		<div class="row no-gutters slider-text align-items-center justify-content-center">
