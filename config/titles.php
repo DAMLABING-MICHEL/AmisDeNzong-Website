@@ -87,4 +87,8 @@ return [
         'index'  => 'subscribers',
         'indexnew' => 'New Subscribers',
     ],
+    'slides' => [
+        'index'  => 'Slides',
+        'create' => 'Slide Creation',
+    ],
 ];

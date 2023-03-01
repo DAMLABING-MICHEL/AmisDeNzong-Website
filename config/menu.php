@@ -300,4 +300,21 @@ return [
             ],
         ]
     ],
+    
+    'Slides' => [
+        'icon' => 'presentation-screen',
+        'role'   => 'admin',
+        'children' => [
+            [
+                'name'  => 'slides list',
+                'role'  => 'admin',
+                'route' => 'slides.index',
+            ],
+            [
+                'name'  => 'add',
+                'role'  => 'admin',
+                'route' => 'slides.create',
+            ],
+        ]
+    ],
 ];

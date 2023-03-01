@@ -63,7 +63,7 @@ class StaffRepository
     }
     
     public function saveImage($staff,$request){
-        $this->imageRepository->store($request,null,null,null,null,$staff,null);
+        $this->imageRepository->store($request,null,null,null,null,$staff,null,null);
     }
     public function createNotification($staff){
         $staff->notify(new ModelCreatedNotification($staff));

@@ -44,7 +44,7 @@ class ImageRepository
         ]);
     }
 
-    public function store($request, $post, $rubric, $news, $event, $staff, $testimonial)
+    public function store($request, $post, $rubric, $news, $event, $staff, $testimonial, $slide)
     {
         $url = $this->getImageUrl($request);
         $image =  Image::create([
@@ -55,7 +55,8 @@ class ImageRepository
             'news_id' => ($news != null) ? $news->id : null,
             'event_id' => ($event != null) ? $event->id : null,
             'staff_id' => ($staff != null) ? $staff->id : null,
-            'testimonial_id' => ($testimonial != null) ? $testimonial->id : null
+            'testimonial_id' => ($testimonial != null) ? $testimonial->id : null,
+            'slide_id' => ($slide != null) ? $slide->id : null
         ]);
 
         return $image;

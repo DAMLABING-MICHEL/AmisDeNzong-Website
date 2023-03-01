@@ -2,27 +2,22 @@
 @section('content')
 
 <section class="home-slider owl-carousel">
-	<div class="slider-item" style="background-image: url(images/slide2.jpg);">
+	@if(@isset($slides))
+	@foreach ($slides as $slide)
+	<div class="slider-item" style="background-image: url({{ getImage($slide) }});">
 		<div class="overlay"></div>
 		<div class="container">
 			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
 				<div class="col-md-8 text-center ftco-animate">
-					<h1 class="mb-4">@lang('Primary Education') <span>@lang('English and Bilingual sections')</span></h1>
+					<h1 class="mb-4">{{ $slide->description }}</h1>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="slider-item" style="background-image: url(images/slide1.jpg);">
-		<div class="overlay"></div>
-		<div class="container">
-			<div class="row no-gutters slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-				<div class="col-md-8 text-center ftco-animate">
-					<h1 class="mb-4">@lang('Kindergarten Education')<span>@lang('English and Bilingual sections')</span></h1>
-				</div>
-			</div>
-		</div>
-	</div>
+	@endforeach
+	@else
+		
+	@endif
 </section>
 
 <section class="ftco-services ftco-no-pb">

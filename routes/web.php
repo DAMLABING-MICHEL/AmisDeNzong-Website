@@ -134,6 +134,8 @@ Route::prefix('admin')->group(function () {
         Route::resource('subscribers', BackNewsletterController::class)->only(['index', 'destroy']);
         Route::name('subscribers.indexnew')->get('newssubscribers', [BackNewsletterController::class, 'index']);
         Route::resource('follows', ResourceController::class)->except(['show']);
+        //slides
+        Route::resource('slides', ResourceController::class)->except(['show']);
     });
 });
 require __DIR__.'/auth.php';

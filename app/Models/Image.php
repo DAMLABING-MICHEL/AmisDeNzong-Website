@@ -19,6 +19,7 @@ class Image extends Model
       'rubric_id',
       'testimonial_id',
       'post_id',
+      'slide_id',
   ];
     
     public function staff(){
@@ -43,5 +44,9 @@ class Image extends Model
      
      public function event(){
       return $this->belongsTo(Event::class);
+     }
+     
+     public function slide(){
+      return $this->belongsTo(Slide::class);
      }
 }
