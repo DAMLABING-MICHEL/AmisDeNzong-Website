@@ -16,7 +16,7 @@ class NewsRepository
             $news = News::limit(3)->select('*')->orderBy('created_at', 'asc')->get();
         }
         else{
-            $news = News::all();
+            $news = News::select('*')->orderBy('created_at', 'asc')->get();
         }
         return $news;
     }
@@ -67,7 +67,7 @@ class NewsRepository
         $this->updateImage($request);
     }
     protected function saveImage($news,$request){
-        $this->imageRepository->store($request,null,null,$news,null,null,null);
+        $this->imageRepository->store($request,null,null,$news,null,null,null,null);
     }
     
     protected function updateImage($request){

@@ -58,6 +58,7 @@
     </div>
     <div class="info">
       <a href="{{ route('profile') }}" class="d-block">{{ auth()->user()->name }}</a>
+      <span class="text-white">{{ auth()->user()->role }}</span class="color-white">
     </div>
   </div>
   <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

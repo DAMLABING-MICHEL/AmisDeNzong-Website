@@ -18,8 +18,13 @@ class Testimonial extends Model
         'content',
         'rating',
         'status',
+        'user_id',
     ];
     public function image(){
         return $this->hasOne(Image::class);
+    }
+    
+    public function user(){
+        return $this->belongsTo(User::class);
     }
 }

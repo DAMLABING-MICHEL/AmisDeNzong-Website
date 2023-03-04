@@ -7,7 +7,7 @@
 					<p>@lang('The Bilingual Private School Group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is a unique and innovative school, consisting of a Bilingual Preschool and Primary School as well as an Anglophone Section for a Quality Education for your children.')</p>
 					<p>@lang('Created in September 2016, the Bilingual Private School Group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is located in the Nzong Village in front of the Bilingual High School of Toula - Nzong..')</p>
 					@request('/')
-					<p><a href="{{ url('about')}}" class="btn px-4 py-3 text-white">@lang('Read More')</a></p>
+					<p><a href="{{ route('about')}}" class="btn px-4 py-3 text-white">@lang('Read More')</a></p>
 					@endrequest
 					{{-- show more details in About Us page --}}
 					@request('about')
@@ -89,7 +89,7 @@
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-2">
 			<div class="col-md-8 text-center heading-section ftco-animate">
-				<h2 class="mb-4"><span>@lang('some of the teachers')</span> </h2>
+				<h2 class="mb-4"><span>@lang('Some of the teachers')</span> </h2>
 				<p>@lang("A dynamic, talented and experienced team of staff is here to take care of your children's education.")</p>
 			</div>
 		</div>
@@ -123,7 +123,7 @@
 			@endif
 		</div>
 		<div class="text-center btn-gallery">
-			<p><a href="{{ url('staff')}}" class="btn px-4 py-3 mt-3 text-white">@lang('see all staff')</a></p>
+			<p><a href="{{ url('staff')}}" class="btn px-4 py-3 mt-3 text-white">@lang('See all staff')</a></p>
 		</div>
 	</div>
 </section>

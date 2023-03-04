@@ -22,6 +22,7 @@ class TestimonialRepository
             'name' => auth()->user()->name,
             'rating' => $request->rating,
             'content' => $request->content,
+            'user_id' => auth()->user()->id,
         ]);
         return $testimonial;   
     }
@@ -29,13 +30,13 @@ class TestimonialRepository
     public function addData($request)
     {
         $request->validate([
-            'testimonial_content_en' => 'required|max:255',
-            'testimonial_content_fr' => 'required|max:255',
-            'testimonial_content_it' => 'required|max:255',
+            'testimonial_content_en' => 'required|max:500',
+            'testimonial_content_fr' => 'required|max:500',
+            'testimonial_content_it' => 'required|max:500',
         ]);
         $request->merge([
             'name' => $request->name,
-            'content' => ['en' => $request->testimonial_content_en, 'fr' => $request->testimonial_content_fr, 'it' => $request->testimonial_content_it,],
+            'content' => ['en' => $request->testimonial_content_en, 'fr' => $request->testimonial_content_fr, 'it' => $request->testimonial_content_it],
         ]);
     }
 

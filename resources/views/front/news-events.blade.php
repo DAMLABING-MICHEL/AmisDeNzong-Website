@@ -29,7 +29,7 @@
 			</div>
 		</div>
 		<div class="row justify-content-center">
-			@if(@isset($events))
+			@if(@isset($events) && count($events) > 0)
 			@foreach($events as $index=>$event)
 			<div class="col-md-6 col-lg-6 ftco-animate">
 				<div class="blog-entry">

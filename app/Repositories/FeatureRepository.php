@@ -20,7 +20,7 @@ class FeatureRepository
         $features = $this->getAll();
         $feature = null;
         foreach ($features as $key => $f) {
-            if($f->title == $title){
+            if($f->getTranslation('title','en')== $title){
                 $feature = $f;
             }
         }

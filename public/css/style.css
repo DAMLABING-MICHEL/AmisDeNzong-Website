@@ -13002,10 +13002,10 @@ textarea.form-control {
     transition: all 0.3s ease;
 }
 
-.ftco-footer .subscribe-form .form-group .submit:hover {
+/* .ftco-footer .subscribe-form .form-group .submit:hover {
     cursor: pointer;
     background: #1eaaf1 !important;
-}
+} */
 
 .ftco-footer .subscribe-form .icon {
     position: absolute;

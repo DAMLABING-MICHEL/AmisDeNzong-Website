@@ -66,10 +66,10 @@ class ImageRepository
         $url = $this->getImageUrl($request);
         $imageId = $request->imageId;
         $image = Image::find($imageId);
-        $image->update([
-            'title' => ($request->title) ? $request->title : null,
-            'url' => $url,
-        ]);
+            $image->update([
+                'title' => ($request->title) ? $request->title : null,
+                'url' => $url,
+            ]);
 
         return $image;
     }

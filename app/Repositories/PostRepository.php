@@ -130,7 +130,7 @@ class PostRepository
         $this->saveTags($post, $request);
     }
     protected function saveImage($post,$request){
-        $this->imageRepository->store($request,$post,null,null,null,null,null);
+        $this->imageRepository->store($request,$post,null,null,null,null,null,null);
     }
     protected function updateImage($request){
         $this->imageRepository->update($request);

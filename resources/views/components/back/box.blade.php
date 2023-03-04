@@ -11,10 +11,10 @@
 <div class="col-lg-3 col-6">
   <div class="small-box" id="{{ $type }}">
     <div class="inner">
-      <h4 class="text-white">{{ __($title )}} : <span class="badge badge-light"> {{ $number }}</span></h4>
+      <h4 class="text-white">@lang($title): <span class="badge badge-light"> {{ $number }}</span></h4>
       <hr>
       @if(@isset($newtitle) && @isset($newnumber))
-      <h5 class="text-white">{{ __($newtitle) }} : {{ __($newnumber) }}</h5>
+      <h5 class="text-white">@lang($newtitle) : {{ $newnumber }}</h5>
       @endif
       <p></p>
     </div>

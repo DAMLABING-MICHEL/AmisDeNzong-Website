@@ -58,8 +58,7 @@
     @yield('content')
 
     @include('front.footer')
-    
-    @if (Auth::check())
+    @if (Auth::check() && empty(auth()->user()->testimonial))
     <button class="open-button" onclick="openForm()">@lang('Leave a review')</button>
 
     <div class="chat-popup" id="myForm">
@@ -70,19 +69,19 @@
             @csrf
             <div class="rate">
                <input type="radio" id="star5" class="rate" name="rating" value="5"/>
-               <label for="star5" title="Excellent">5 stars</label>
+               <label for="star5" title="@lang('Excellent')">5 stars</label>
                <input type="radio" id="star4" class="rate" name="rating" value="4"/>
-               <label for="star4" title="Good">4 stars</label>
+               <label for="star4" title="@lang('Good')">4 stars</label>
                <input type="radio" id="star3" class="rate" name="rating" value="3"/>
-               <label for="star3" title="Ok">3 stars</label>
+               <label for="star3" title="@lang('Ok')">3 stars</label>
                <input type="radio" id="star2" class="rate" name="rating" value="2">
-               <label for="star2" title="Poor">2 stars</label>
+               <label for="star2" title="@lang('Poor')">2 stars</label>
                <input type="radio" id="star1" class="rate" name="rating" value="1"/>
-               <label for="star1" title="Bad">1 star</label>
+               <label for="star1" title="@lang('Bad')">1 star</label>
             </div>
          </div>
         <label for="msg"><b>@lang('Message (optional)')</b></label>
-        <textarea placeholder="Type message.." name="content"></textarea>
+        <textarea placeholder="@lang('Type message..')" name="content"></textarea>
         <input type="hidden" value="{{ auth()->user()->name }}" id="name">
         <button type="submit" class="btn">@lang('Send')</button>
         <button type="button" class="btn cancel" onclick="closeForm()">@lang('Close')</button>
@@ -128,7 +127,7 @@
             showAlert('infos','success','Your review has been submitted Successfully. Thanks!')
         } else {
             if (response.status == 422) {
-                showAlert('error','error','please select at least one star before submitting the form!')
+                showAlert('error','error','@lang("please select at least one star before submitting the form!")')
 
             } else {
                 errorAlert();

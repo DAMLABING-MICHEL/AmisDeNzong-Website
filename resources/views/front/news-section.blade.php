@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-    @if(@isset($news))
+    @if(@isset($news) && count($news) > 0)
     @foreach($news as $indes=>$newsSingle )
     <div class="col-md-6 col-lg-4 ftco-animate">
         <div class="blog-entry">

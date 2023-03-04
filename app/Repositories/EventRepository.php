@@ -15,7 +15,7 @@ class EventRepository
     
     public function findEvents()
     {
-        $events = Event::all();
+        $events = Event::select('*')->orderBy('created_at', 'asc')->get();
         return $events;
     }
 
@@ -53,7 +53,7 @@ class EventRepository
 
     public function saveImage($event, $request)
     {
-        $this->imageRepository->store($request, null, null, null, $event, null, null);
+        $this->imageRepository->store($request, null, null, null, $event, null, null,null);
     }
     
     public function updateImage($request){

@@ -73,7 +73,7 @@
                     </div>
                     <input id="image" class="form-control {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="image" value="{{ old('image', isset($slide) ? getImage($slide, true) : '') }}" required
-                        hidden>
+                        >
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId"
                         value="{{ old('image', isset($slide) && !empty($slide->image) ? $slide->image->id : '') }}" hidden>

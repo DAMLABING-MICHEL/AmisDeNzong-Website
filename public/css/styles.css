@@ -248,6 +248,10 @@
 .ftco-footer-social li #icon-youtube:hover{
     background-color: #FF0000;
 }
+.ftco-footer .subscribe-form .form-group .submit:hover {
+    cursor: pointer;
+    background-color: rgb(128, 22, 22) !important;
+}
 #teacher-image,#event-img{
     object-fit: cover;
 }
@@ -418,7 +422,7 @@
     .rated > label:hover ~ input:checked ~ label {
     color: #c59b08;
     }
-    .lbl-update-image-profile {
+    .lbl-avatar {
         /* background-color: indigo; */
         color: white;
         padding: 0.5rem;

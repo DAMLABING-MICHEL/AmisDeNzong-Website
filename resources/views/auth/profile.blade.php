@@ -24,12 +24,12 @@
                 </div>
                <div>
                  <!--default html file upload button-->
-                 <input type="file" id="update-image-profile-btn" name="avatar" hidden />
+                 <input type="file" id="avatar-btn" name="avatar" hidden />
 
                  <!--our custom file upload button-->
-                 <label for="update-image-profile-btn" class="lbl-update-image-profile bg-primary"> <span class="icon-upload"></span> @lang('Upload')</label>
+                 <label for="avatar-btn" class="lbl-avatar bg-primary"> <span class="icon-upload"></span> @lang('Upload')</label>
                  <!-- name of file chosen -->
-                 <span id="file-chosen">@lang('Update Image (optional)')</span>
+                 <span id="avatar-chosen">@lang('Update Image (optional)')</span>
                </div>
             </div>
             <div class="form-goup">

@@ -27,5 +27,8 @@ class SlideRepository
         $this->imageRepository->store($request,null,null,null,null,null,null,$slide);
     }
     
+    public function updateImage($request){
+        $this->imageRepository->update($request);
+    }
     
 }

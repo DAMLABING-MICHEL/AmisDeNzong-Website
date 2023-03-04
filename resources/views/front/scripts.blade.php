@@ -1,4 +1,6 @@
-$('.portfolio-menu ul li').click(function () {
+<script>
+    
+    $('.portfolio-menu ul li').click(function () {
     $('.portfolio-menu ul li').removeClass('active');
     $(this).addClass('active');
     
@@ -16,14 +18,7 @@ $(document).ready(function () {
             enabled: true
         }
     });
-    const updateImageProfileBtn = document.getElementById('update-image-profile-btn');
-
-    const fileChosen = document.getElementById('file-chosen');
-    
-    updateImageProfileBtn.addEventListener('change', function(){
-      fileChosen.textContent = this.files[0].name
-    })
-    $('#exampleModalLong').modal('toggle')
+    // on vérifie si l'élement existe dans le DOM 
     if(!!document.forms["register-form"] == true){
         var name = document.forms["register-form"]["name"];
         var email = document.forms["register-form"]["email"];
@@ -110,6 +105,15 @@ $(document).ready(function () {
             }
         }
     }
+    submit.disabled = true
+    const avatarBtn = document.getElementById('avatar-btn');
+
+    const fileChosen = document.getElementById('avatar-chosen');
+    
+    avatarBtnBtn.addEventListener('change', function(){
+      fileChosen.textContent = this.files[0].name
+    })
+    $('#exampleModalLong').modal('toggle')
 });
 //   start post comment
 (() => {
@@ -328,4 +332,16 @@ $(document).ready(function () {
     window.addEventListener('DOMContentLoaded', () => {
         wrapper('#newsletter-form', 'submit', subscribeToNewsletter);
     })
+    
+    $('form').submit(function (event) {
+            if ($(this).hasClass('submitted')) {
+                event.preventDefault();
+            }
+            else {
+                $(this).find(':submit').html('<i class="fa fa-spinner fa-spin"></i>');
+                $(this).addClass('submitted');
+                document.getElementById("btn-submit").disabled = true;
+            }
+        });
 })()
+</script>

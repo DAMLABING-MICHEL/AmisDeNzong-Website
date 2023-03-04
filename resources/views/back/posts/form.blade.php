@@ -182,7 +182,7 @@
                         hidden>
                     <input id="image" class=" {{ $errors->has('image') ? 'is-invalid' : '' }}" type="text"
                         name="imageId"
-                        value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" hidden>
+                        value="{{ old('image', isset($post) && !empty($post->image) ? $post->image->id : '') }}" >
                     @if ($errors->has('image'))
                     <div class="invalid-feedback">
                         {{ $errors->first('image') }}
@@ -231,49 +231,49 @@ const headers = {
     const tagRoute = document.getElementById('tag-route')
 
 // Delete 
-const createTag = async e => {              
-    e.preventDefault();
-    const datas = {
-        tag_en: tag_en.value,
-		  tag_fr: tag_fr.value,
-		  tag_it: tag_it.value,
-        };
-        const response = await fetch(`${tagRoute.value}`, { 
-            method: 'POST',
-            headers: headers,
-            body: JSON.stringify(datas)
-         })
-                  // Wait for response
-        const data = await response.json();
-        const errorAlert = () => Swal.fire({
-        icon: 'error',
-        title: 'Whoops!',
-        text: 'Something went wrong'
-    });
-        // Manage response
-        var newTag = null
-        if (response.ok) {
-            tag_ref = JSON.parse(data)
-            if (tag_ref.message != null) {
-                window.alert(tag_ref.message)
-            }else{
-                tagList.innerHTML = '<option value="'+tag_ref.id +'">'+tag_ref.title[locale.value] +'</option>' + tagList.innerHTML
-                $('.alert').show('slow');
-            }
-        } else {
-            if (response.status == 422) {
-                $.each(data.errors, function (i, error) {
-                    $('form')
-                        .find('[name="' + i + '"]')
-                        .addClass('input-invalid')
-                        .next()
-                        .append(error[0]);
-                });
+    const createTag = async e => {              
+        e.preventDefault();
+        const datas = {
+            tag_en: tag_en.value,
+    		  tag_fr: tag_fr.value,
+    		  tag_it: tag_it.value,
+            };
+            const response = await fetch(`${tagRoute.value}`, { 
+                method: 'POST',
+                headers: headers,
+                body: JSON.stringify(datas)
+             })
+                      // Wait for response
+            const data = await response.json();
+            const errorAlert = () => Swal.fire({
+            icon: 'error',
+            title: 'Whoops!',
+            text: 'Something went wrong'
+        });
+            // Manage response
+            var newTag = null
+            if (response.ok) {
+                tag_ref = JSON.parse(data)
+                if (tag_ref.message != null) {
+                    window.alert(tag_ref.message)
+                }else{
+                    tagList.innerHTML = '<option value="'+tag_ref.id +'">'+tag_ref.title[locale.value] +'</option>' + tagList.innerHTML
+                    $('.alert').show('slow');
+                }
             } else {
-                errorAlert();
+                if (response.status == 422) {
+                    $.each(data.errors, function (i, error) {
+                        $('form')
+                            .find('[name="' + i + '"]')
+                            .addClass('input-invalid')
+                            .next()
+                            .append(error[0]);
+                    });
+                } else {
+                    errorAlert();
+                }
             }
-        }
-}
+    }
 // Listener wrapper
 const wrapper = (selector, type, callback, condition = 'true', capture = false) => {
     const element = document.querySelector(selector);

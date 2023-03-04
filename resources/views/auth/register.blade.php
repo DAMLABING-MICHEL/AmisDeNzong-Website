@@ -36,10 +36,15 @@
             </div>
                 <div class="input-image form-group">
                     <label for="avatar" class="col-md-4 col-form-label text-md-end">{{ __('Avatar') }}</label>
-    
-                    <div class="col-md-6">
-                        <input id="avatar" type="file" class="form-control @error('avatar') is-invalid @enderror" name="avatar" value="{{ old('avatar') }}" required autocomplete="avatar">
-                    </div>
+                    <div>
+                        <!--default html file upload button-->
+                        <input type="file" id="avatar-btn" name="avatar" class="form-control @error('avatar') is-invalid @enderror" value="{{ old('avatar') }}" autocomplete="avatar" hidden />
+       
+                        <!--our custom file upload button-->
+                        <label for="avatar-btn" class="lbl-avatar bg-primary"> <span class="icon-upload"></span> @lang('Upload')</label>
+                        <!-- name of file chosen -->
+                        <span id="avatar-chosen">@lang('Choose an avatar (optional)')</span>
+                      </div>
                 </div>
             <div class="d-flex justify-content-center submit-register">
                 <x-auth.submit title="Register" />
