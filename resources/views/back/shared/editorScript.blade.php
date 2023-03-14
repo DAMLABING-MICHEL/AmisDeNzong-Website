@@ -16,7 +16,6 @@
               var file_path = items.map(function (item) {
                 return item.url;
               }).join(',');
-
               // set the value of the desired input to image url
               target_input.val('').val(file_path).trigger('change');
 
@@ -62,4 +61,7 @@
       CKEDITOR.replace('content_en', { customConfig: '{{ asset('js/ckeditor.js') }}' });
       CKEDITOR.replace('content_fr', { customConfig: '{{ asset('js/ckeditor.js') }}' });
       CKEDITOR.replace('content_it', { customConfig: '{{ asset('js/ckeditor.js') }}' });
+      CKEDITOR.replace('summary_en', { customConfig: '{{ asset('js/ckeditor.js') }}' });
+      CKEDITOR.replace('summary_fr', { customConfig: '{{ asset('js/ckeditor.js') }}' });
+      CKEDITOR.replace('summary_it', { customConfig: '{{ asset('js/ckeditor.js') }}' });
 </script>

@@ -17,7 +17,7 @@
 					<p>@lang('-The quality of the environment: Recreation is within a secure compound.')</p>
 					<p>@lang('Transportation of students: A staff is in place to transport your children to and from school.')</p>
 					<p>@lang('With our motto "LOVE-WORK-PERSEVERANCE" ') @lang(',')@lang('we emphasize the importance of the children well-being.')@lang("'") @lang(' We focus on the quality of education and the success of the children is our priority.')</p>
-					<p>@lang('Les Amis de Nzong and Fondation Candia " is a unique school for the development of your children.')</p>
+					<p>@lang('The Bilingual Private School Group LAÏC "LES AMIS DE NZONG ET FONDATION CANDIA" is a unique school for the development of your children.')</p>
 					@endrequest
 				</div>
 			</div>

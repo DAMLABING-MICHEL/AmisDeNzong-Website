@@ -27,7 +27,7 @@
                  <input type="file" id="avatar-btn" name="avatar" hidden />
 
                  <!--our custom file upload button-->
-                 <label for="avatar-btn" class="lbl-avatar bg-primary"> <span class="icon-upload"></span> @lang('Upload')</label>
+                 <label for="avatar-btn" class="lbl-avatar"> <span class="icon-upload"></span> @lang('Upload')</label>
                  <!-- name of file chosen -->
                  <span id="avatar-chosen">@lang('Update Image (optional)')</span>
                </div>

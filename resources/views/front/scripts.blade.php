@@ -1,15 +1,14 @@
 <script>
-    
     $('.portfolio-menu ul li').click(function () {
-    $('.portfolio-menu ul li').removeClass('active');
-    $(this).addClass('active');
-    
-    var selector = $(this).attr('data-filter');
-    $('.portfolio-item').isotope({
-        filter: selector
+        $('.portfolio-menu ul li').removeClass('active');
+        $(this).addClass('active');
+        
+        var selector = $(this).attr('data-filter');
+        $('.portfolio-item').isotope({
+            filter: selector
+        });
+        return false;
     });
-    return false;
-});
 $(document).ready(function () {
     var popup_btn = $('.popup-btn');
     popup_btn.magnificPopup({
@@ -19,7 +18,7 @@ $(document).ready(function () {
         }
     });
     // on vérifie si l'élement existe dans le DOM 
-    if(!!document.forms["register-form"] == true){
+    if(!!document.forms['register-form'] == true){
         var name = document.forms["register-form"]["name"];
         var email = document.forms["register-form"]["email"];
         var password = document.forms["register-form"]["password"];
@@ -343,5 +342,41 @@ $(document).ready(function () {
                 document.getElementById("btn-submit").disabled = true;
             }
         });
+        
+    // Make a div fixed when scrolling vertically
+    function isElementVisible(el) {
+      var rect = el.getBoundingClientRect();
+      var windowHeight = (window.innerHeight || document.documentElement.clientHeight);
+      var windowWidth = (window.innerWidth || document.documentElement.clientWidth);
+    
+      // Return true if the element is within the viewport
+      return (
+        (rect.bottom >= 0 && rect.top <= windowHeight) &&
+        (rect.right >= 0 && rect.left <= windowWidth)
+      );
+    }
+    $(window).scroll(function() {
+        var $w = $(this),
+					st = $w.scrollTop(),
+					sidebar = document.querySelector('.sidebar'),
+                 footer = document.getElementById('footer');
+                 const containerHeight = sidebar.offsetHeight; // Récupérez la hauteur du conteneur
+                  const windowHeight = window.innerHeight; // Récupérez la hauteur de la fenêtre
+                  const windowScroll = window.scrollY; // Récupérez la position de défilement de la fenêtre
+                  // Si la hauteur du conteneur est inférieure à la hauteur de la fenêtre
+                  // et que la position de défilement est inférieure ou égale à la hauteur du conteneur
+                  console.log(containerHeight);
+                  if (containerHeight <=  windowScroll && !isElementVisible(footer)) {
+                    if ( !$('.sidebar').hasClass('fixed') ) {
+					    $('.sidebar').addClass('fixed');	
+				    }
+                  } 
+                  else {
+                    if ( $('.sidebar').hasClass('fixed') ) {
+					    $('.sidebar').removeClass('fixed');	
+				    }
+                  }
+    })
+
 })()
 </script>

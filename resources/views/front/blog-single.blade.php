@@ -1,6 +1,6 @@
 @extends('front.app')
 @section('content')
-<section class="hero-wrap hero-wrap-2" style="background-image: url({{asset('images/blog-bg.jpg')}});">
+<section class="hero-wrap hero-wrap-2 hero-blog" style="background-image: url({{asset('images/blog-bg.jpg')}});">
   <div class="overlay"></div>
   <div class="container">
     <div class="row no-gutters slider-text align-items-center justify-content-center">
@@ -60,8 +60,7 @@
             </div>
             @else
             @if(Auth::guest())
-            <span>@lang('You must be connected to add a comment.') <a
-                href="{{route('login')}}">@lang('login')</a></span>
+            <span>@lang('You must be connected to add a comment.') <a href="{{route('login')}}">@lang('login')</a></span>
             @endif
             @endif
           </div>
@@ -101,8 +100,8 @@
       </div> <!-- .col-md-8 -->
       @endif
 
-      <div class="col-lg-4 sidebar ftco-animate">
-        <div class="sidebar-box">
+      <div class="col-lg-4 sidebar ftco-animate" id="sidebar">
+        <div class="sidebar-box" id="sidebar-box">
           <form method="post" action="{{url('/blog/search-posts')}}" class="search-form">
             @csrf
             <div class="form-group">

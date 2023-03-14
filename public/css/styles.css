@@ -438,3 +438,20 @@
         margin-left: 0.3rem;
         font-family: sans-serif;
       }
+      .fixed{
+        position: fixed !important;
+        right: 0;
+        top: 0;
+        z-index: 1;
+      }
+      #sidebar{
+        height: 500px;
+        padding-bottom: 0px;
+        overflow-y: visible;
+      }
+      .ftco-animate{
+        text-align: justify;
+      }
+      .lbl-avatar{
+        background-color:rgb(99, 8, 8);
+      }
