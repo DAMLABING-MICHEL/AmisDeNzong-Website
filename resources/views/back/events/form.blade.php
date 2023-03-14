@@ -30,32 +30,100 @@
             </x-back.alert>
             @endif
            
-            <x-back.card type='primary' title=''>
-                @foreach (config('app.locales') as $locale)
-                <x-back.input title='Title {{ $locale }} of the event' name='title_{{ $locale }}'
-                    :value="isset($event) ? $event->getTranslation('title',$locale) : ''" input='text' :required="true">
-                </x-back.input>
-                <x-back.input title='Summary {{ $locale }} of the event' name='summary_{{ $locale }}'
-                    :value="isset($event) ? $event->getTranslation('summary',$locale) : ''" input='textarea'
-                    :required="true">
-                </x-back.input>
-                <x-back.input title='Content {{ $locale }} of the event' name='description_{{ $locale }}'
-                    :value="isset($event) ? $event->getTranslation('description',$locale) : ''" input='textarea'
-                    :required="true">
-                </x-back.input>
-                @endforeach
+            <x-back.card type='primary' title='Title of the event'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-title-{{ $locale }}" role="tab"
+                            aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-title-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='title_{{ $locale }}'
+                        :value="isset($event) ? $event->getTranslation('title',$locale) : ''" input='text'
+                            :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
+            </x-back.card>
+           
+            <x-back.card type='primary' title='Summary of the event'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-summary-{{ $locale }}"
+                            role="tab" aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-summary-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='summary_{{ $locale }}'
+                        :value="isset($event) ? $event->getTranslation('summary',$locale) : ''" input='textarea'
+                            :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
             </x-back.card>
             
+            <x-back.card type='primary' title='Content of the event'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-content-{{ $locale }}"
+                            role="tab" aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-content-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='description_{{ $locale }}'
+                        :value="isset($event) ? $event->getTranslation('description',$locale) : ''" input='textarea'
+                            rows=10 :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
+            </x-back.card>
             <button type="submit" class="btn btn-primary" id="submit">@lang('Submit')</button>
 
         </div>
         <div class="col-md-4">
+            <x-back.card type='primary' title='Venue of the event'>
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    @foreach(config('app.locales') as $locale)
+                    <li class="nav-item">
+                        <a class="nav-link {{ $locale == App::getLocale() ? 'active' :'' }}"
+                            id="pills-{{ $locale }}-tab" data-toggle="pill" href="#pills-venue-{{ $locale }}"
+                            role="tab" aria-controls="pills-{{ $locale }}" aria-selected="false">{{ $locale }}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <div class="tab-content" id="pills-tabContent">
+                    @foreach (config('app.locales') as $locale)
+                    <div class="tab-pane fade {{ $locale == App::getLocale() ? 'show active' :'' }}"
+                        id="pills-venue-{{ $locale }}" role="tabpanel" aria-labelledby="pills-{{ $locale }}-tab">
+                        <x-back.input name='venue_{{ $locale }}'
+                        :value="isset($event) ? $event->getTranslation('venue',$locale) : ''" input='text' :required="true">
+                        </x-back.input>
+                    </div>
+                    @endforeach
+                </div>
+            </x-back.card>
             <x-back.card type='primary' title=''>
-                @foreach (config("app.locales") as $locale)
-                <x-back.input title='Venue {{ $locale }} of the event' name='venue_{{ $locale }}'
-                    :value="isset($event) ? $event->getTranslation('venue',$locale) : ''" input='text' :required="true">
-                </x-back.input>
-                @endforeach
                 <div class="form-group">
                     <label for="date">@lang('Date')</label>
                     <input title='Date' name='date' class="form-control"

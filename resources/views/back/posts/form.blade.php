@@ -62,7 +62,7 @@
             </x-back.alert>
             @endif
 
-            <x-back.card type='primary' title='Title'>
+            <x-back.card type='primary' title='Title of the post'>
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     @foreach(config('app.locales') as $locale)
                     <li class="nav-item">
@@ -87,7 +87,7 @@
 
 
 
-            <x-back.card type='primary' title='Summary'>
+            <x-back.card type='primary' title='Summary of the post'>
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     @foreach(config('app.locales') as $locale)
                     <li class="nav-item">
@@ -110,7 +110,7 @@
                 </div>
             </x-back.card>
 
-            <x-back.card type='primary' title='Content'>
+            <x-back.card type='primary' title='Content of the post'>
                 <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                     @foreach(config('app.locales') as $locale)
                     <li class="nav-item">
