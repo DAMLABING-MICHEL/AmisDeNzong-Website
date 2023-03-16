@@ -3,7 +3,7 @@
         <div class="row mb-5">
             <div class="col-md-6 col-lg-3">
                 <div class="ftco-footer-widget mb-5">
-                    <h2 class="ftco-heading-2">@lang('Have a Questions?')</h2>
+                    <h2 class="ftco-heading-2">@lang('Have a Question?')</h2>
                     <div class="block-23 mb-3">
                         <ul>
                             <li><span class="icon icon-map-marker"></span><span class="text">@lang('BP.150 West Region, Menoua Dschang In Nzong-Foto Village, Cameroon')</span></li>
@@ -20,7 +20,7 @@
                     @foreach($latestPosts as $index=>$post)
                     <div class="block-21 mb-4 d-flex">
                         @if (!@empty($post->image))
-                        <a class="blog-img mr-4" style="background-image: url({{ getImage($post) }});"></a>
+                        <a class="blog-img mr-4" style="background-image: url('{{ getImage($post) }}');"></a>
                         @endif
                         <div class="text">
                             <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>

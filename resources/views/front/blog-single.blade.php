@@ -22,7 +22,7 @@
       <div class="col-lg-8 ftco-animate">
         <h2 class="mb-3">#{{$post->id}}. {{$post->title}}</h2>
         <p>{!! $post->summary !!}</p>
-        <p>
+        <p class="d-flex justify-content-center">
           <img src="{{ getImage($post) }}" alt="" class="img-fluid">
         </p>
         {!! $post->content !!}
@@ -60,7 +60,8 @@
             </div>
             @else
             @if(Auth::guest())
-            <span>@lang('You must be connected to add a comment.') <a href="{{route('login')}}">@lang('login')</a></span>
+            <span>@lang('You must be connected to add a comment.') <a
+                href="{{route('login')}}">@lang('login')</a></span>
             @endif
             @endif
           </div>
@@ -88,7 +89,7 @@
               </div>
               <div class="form-group">
                 <input type="submit" value="Post Comment" id="submit" name="send-comment"
-                  class="btn py-3 px-4 btn-primary">
+                  class="btn py-3 px-4 submit-comment">
               </div>
               <p id="commentIcon" class="h-text-center" hidden>
                 <span class="fa fa-spinner fa-pulse fa-3x fa-fw"></span>
@@ -136,7 +137,8 @@
               <div class="text">
                 <h3 class="heading"><a href="{{ url('blog-single/'.$post->slug) }}">{{$post->title}}</a></h3>
                 <div class="meta">
-                  <div><a href="#"><span class="icon-calendar"></span> {{ \carbon\carbon::parse($post->created_at)->isoFormat('LL') }}</a></div>
+                  <div><a href="#"><span class="icon-calendar"></span> {{
+                      \carbon\carbon::parse($post->created_at)->isoFormat('LL') }}</a></div>
                   <div><a href="#"><span class="icon-person"></span>{{$post->user->name}}</< /a>
                   </div>
                   @if($post->valid_comments_count)
@@ -154,9 +156,9 @@
           @if(@isset($tags))
           <ul class="tagcloud m-0 p-0">
             @foreach($tags as $index=>$tag)
-              @if (count($tag->posts()->get()) > 0)
-              <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
-              @endif
+            @if (count($tag->posts()->get()) > 0)
+            <a href="{{url('/blog/view-posts-by-tags/'.$tag->slug)}}" class="tag-cloud-link">{{$tag->title}}</a>
+            @endif
             @endforeach
           </ul>
           @endif

@@ -7,7 +7,7 @@
     'title', 
     'label', 
     'options', 
-    'value' => '', 
+    'value', 
     'Values',
     'multiple' => false,
 ])
@@ -40,7 +40,6 @@
                 {{ __($label) }}
             </label>
         </div>
-
       @elseif ($input === 'select')
         <select 
             @if($required) required @endif 

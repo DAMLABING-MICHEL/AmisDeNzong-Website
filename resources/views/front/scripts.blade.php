@@ -365,7 +365,6 @@ $(document).ready(function () {
                   const windowScroll = window.scrollY; // Récupérez la position de défilement de la fenêtre
                   // Si la hauteur du conteneur est inférieure à la hauteur de la fenêtre
                   // et que la position de défilement est inférieure ou égale à la hauteur du conteneur
-                  console.log(containerHeight);
                   if (containerHeight <=  windowScroll && !isElementVisible(footer)) {
                     if ( !$('.sidebar').hasClass('fixed') ) {
 					    $('.sidebar').addClass('fixed');	

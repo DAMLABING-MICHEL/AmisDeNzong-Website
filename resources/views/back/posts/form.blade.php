@@ -23,7 +23,7 @@
                 <span>The tag has been successfuly created</span>
             </div>
             <div class="modal-body">
-                <form method="post" action="#" id="tag-form">
+                <form method="post" action="#">
                     @csrf
                     @foreach (config("app.locales") as $locale )
                     <div class="form-group">
@@ -35,7 +35,7 @@
                     @endforeach
                     <div class="modal-footer">
                         <button type="button" class="btn btn-primary" name="create-tag"
-                            id="btn-create-tag">@lang("submit")</button>
+                        id="tag-form">@lang("submit")</button>
                         <input type="text" value="{{ route('tags.addTag') }}" id="tag-route" hidden>
                     </div>
                 </form>
@@ -142,7 +142,7 @@
                     input='checkbox' label="Active">
                 </x-back.input>
                 <x-back.input name='category' title='Category' input='select'
-                    :value="isset($post) ? $post->category->id : collect()" :options="$categories">
+                    :value="isset($post) ? $post->category->title : '' " :options="$categories">
                 </x-back.input>
                 <label for="tags">@lang('Tags')</label>
                 <select multiple class="form-control{{ $errors->has('tags') ? ' is-invalid' : '' }}" name="tags[]"
