@@ -18,9 +18,9 @@ class PostRepository
         $this->tagRepository = new TagRepository();
         $this->imageRepository = new ImageRepository();
     }
-    public function findPosts($limit)
+    public function findPosts($limit,$nbrpages)
     {
-        $posts = Post::limit($limit)->select('*')->whereActive(true)->orderBy('created_at', 'asc')->get();
+        $posts = Post::limit($limit)->select('*')->whereActive(true)->orderBy('created_at', 'asc')->paginate($nbrpages);
         for ($i = 0; $i < count($posts); $i++) {
             $posts[$i] = $this->postWithValidComments($posts[$i]);
         }

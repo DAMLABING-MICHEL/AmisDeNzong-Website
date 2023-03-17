@@ -34,6 +34,11 @@
     </div>
     @endif
     @include('front.posts-section')
+    <div class="row flex justify-content-center">
+      <div class="column large-12">
+          {{ $posts->links('front.pagination') }}
+      </div>
+  </div>
   </div>
 </section>
 @endsection

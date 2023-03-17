@@ -18,8 +18,8 @@ class PostService
         $this->categoryRepository = new CategoryRepository();
         $this->tagRepository = new TagRepository();
     }
-    public function getPosts($limit){
-        return $this->postRepository->findPosts($limit);
+    public function getPosts($limit,$nbrpages){
+        return $this->postRepository->findPosts($limit,$nbrpages);
     }
     
     public function getPostBySlug($slug){

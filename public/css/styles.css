@@ -264,6 +264,16 @@
 .posts-list{
     margin-bottom: 10px;
 }
+nav .pagination a,.active-link-text{
+    text-decoration: none;
+    color: #f987a0;
+}
+.my-active{
+    background-color: rgb(99, 8, 8) !important;
+}
+.my-disablead{
+    cursor: not-allowed !important;
+}
 .submit-comment:hover{
     background-color: rgb(99, 8, 8) !important;
 }

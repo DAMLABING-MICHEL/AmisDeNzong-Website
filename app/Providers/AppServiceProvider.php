@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\Number;
 use App\Services\PostService;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Route;
@@ -48,5 +49,8 @@ class AppServiceProvider extends ServiceProvider
                 $view->with(compact('title'));
             });
         }
+        
+        
+        Paginator::useBootstrap();
     }
 }

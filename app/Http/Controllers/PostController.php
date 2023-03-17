@@ -21,7 +21,7 @@ class PostController extends Controller
     }
     public function getPosts()
     {
-        $posts = $this->postService->getPosts(null);
+        $posts = $this->postService->getPosts(null,config('app.nbrPages.posts'));
         return view('front.blog', compact('posts'));
     }
     

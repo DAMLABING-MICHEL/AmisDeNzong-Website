@@ -36,7 +36,7 @@ class IndexController extends Controller
         $images = $this->imageService->getImages(3);
         $testimonials = $this->testimonialService->getTestimonials();
         $news = $this->newsService->getNews(3);
-        $posts = $this->postService->getPosts(3);
+        $posts = $this->postService->getPosts(3,config('app.nbrPages.posts'));
         $slides = $this->slideRepository->findAll();
         return view('front.index', compact(['certifiedTeachers','images', 'rubrics','news', 'posts', 'testimonials','slides']));
     }
