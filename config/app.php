@@ -235,7 +235,7 @@ return [
 */
 
 'nbrPages' => [
-    'posts' => 1,
+    'posts' => 6,
 ],
 
 ];
